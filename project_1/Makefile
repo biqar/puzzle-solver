@@ -11,3 +11,4 @@ all:
 	$(CC) $(CFLAGS) src/dls.cpp -o $(directory)/dls
 	$(CC) $(CFLAGS) src/ids.cpp -o $(directory)/ids
 	$(CC) $(CFLAGS) src/a_star.cpp -o $(directory)/a_star
+	$(CC) $(CFLAGS) src/ida_star.cpp -o $(directory)/ida_star
