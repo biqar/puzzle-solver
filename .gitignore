@@ -1,0 +1,72 @@
+#exclude all extension-less executable from the repo
+*
+!*.*
+!*/
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Custom input files
+project_1/input/random/in_custom.txt
+project_1/output/insertion_sort/out_custom.txt
+project_1/output/merge_sort/out_custom.txt
+project_1/plotting/.ipynb_checkpoints/
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# ide specific settings
+.idea
+
+# mac os system file
+*.DS_Store
+
+# build directory
+**/build/*
