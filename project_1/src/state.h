@@ -186,11 +186,11 @@ State *construct_initial_state() {
 
     initial_state->board[0][0] = 1;
     initial_state->board[0][1] = 2;
-    initial_state->board[0][2] = 3;
+    initial_state->board[0][2] = 0;
 
     initial_state->board[1][0] = 4;
     initial_state->board[1][1] = 5;
-    initial_state->board[1][2] = 0;
+    initial_state->board[1][2] = 3;
 
     initial_state->board[2][0] = 7;
     initial_state->board[2][1] = 8;
