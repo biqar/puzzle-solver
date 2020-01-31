@@ -6,7 +6,6 @@
 #define NODE_H
 
 #include "state.h"
-#include <cstdlib>
 #include <list>
 #include <iostream>
 #include <stdlib.h>
