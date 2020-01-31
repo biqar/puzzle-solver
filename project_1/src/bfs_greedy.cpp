@@ -23,7 +23,7 @@ struct comp {
 
 std::priority_queue< Node *, std::vector< Node * >, comp > Q;
 
-void run_ucs() {
+void run_bfs_greedy() {
     int node_expanded = 0;
     Q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
 
@@ -60,6 +60,6 @@ void run_ucs() {
 int main() {
     goal_state = construct_goal_state();
     initial_state = construct_initial_state();
-    run_ucs();
+    run_bfs_greedy();
     return 0;
 }
