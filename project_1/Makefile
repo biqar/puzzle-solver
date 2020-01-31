@@ -5,6 +5,7 @@ directory=build
 all:
 	mkdir -p $(directory)
 	$(CC) $(CFLAGS) src/bfs.cpp -o $(directory)/bfs
+	$(CC) $(CFLAGS) src/bfs_bidir.cpp -o $(directory)/bfs_bidir
 	$(CC) $(CFLAGS) src/bfs_greedy.cpp -o $(directory)/bfs_greedy
 	$(CC) $(CFLAGS) src/dfs_recursive.cpp -o $(directory)/dfs_recursive
 	$(CC) $(CFLAGS) src/dfs_stack.cpp -o $(directory)/dfs_stack
