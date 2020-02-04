@@ -74,3 +74,7 @@ void AStarEightPuzzle::run_astar() {
 int AStarEightPuzzle::run() {
     return 1;
 }
+
+void AStarEightPuzzle::destroy() {
+    //
+}
