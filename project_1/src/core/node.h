@@ -60,4 +60,14 @@ int get_total_cost(Node *node) {
     return node->depth + node->h_cost;
 }
 
+int get_total_cost(int depth, int h_cost) {
+    return (depth + h_cost);
+}
+
+struct NodeComparator {
+    bool operator ()(Node *a, Node *b) {
+        return (get_total_cost(a) < get_total_cost(b));
+    }
+};
+
 #endif //NODE_H

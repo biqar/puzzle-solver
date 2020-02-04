@@ -4,10 +4,12 @@
 
 #include "solver_factory.h"
 
+#include "../8-puzzle/a_star.cpp"
+
 Solver *SolverFactory::CreateSolver(Properties &props) {
     if (props["puzzle"] == "8-puzzle") {
         if(props["algorithm"] == "a_star") {
-            //return new StoredsDB();
+            return new AStarEightPuzzle(construct_initial_state(), construct_goal_state());
         }
         if(props["algorithm"] == "ida_star") {
             //return new StoredsDB();

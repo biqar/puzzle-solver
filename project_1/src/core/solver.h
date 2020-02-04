@@ -5,9 +5,11 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
+#include "state.h"
+
 class Solver {
 public:
-    virtual int init() = 0;
+    virtual int init(State *_initial_state, State *_goal_state) = 0;
 
     virtual int run() = 0;
 
