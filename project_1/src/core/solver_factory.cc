@@ -3,8 +3,7 @@
 //
 
 #include "solver_factory.h"
-
-#include "../8-puzzle/a_star.cpp"
+#include "../8-puzzle/a_star.cc"
 
 Solver *SolverFactory::CreateSolver(Properties &props) {
     if (props["puzzle"] == "8-puzzle") {
