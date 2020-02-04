@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-std=c++11 -g -Wall -I./ -O2
 SUBDIRS=src/core
-SUBSRCS=$(wildcard core/*.cpp) $(wildcard 8-puzzle/*.cpp)
+SUBSRCS=$(wildcard src/core/*.cpp)
 OBJECTS=$(SUBSRCS:.cpp=.o)
 EXEC=puzzle
 directory=build
