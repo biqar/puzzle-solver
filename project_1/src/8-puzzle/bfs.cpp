@@ -2,8 +2,8 @@
 // Created by aislam6 on 1/29/20.
 //
 
-#include "node.h"
-#include "state.h"
+#include "../core/node.h"
+#include "../core/state.h"
 
 #include <stdio.h>
 #include <queue>
@@ -12,11 +12,7 @@
 State *goal_state;
 State *initial_state;
 
-bool comp(Node *a, Node *b) {
-    return (get_total_cost(a) < get_total_cost(b));
-}
-
-void run_astar() {
+void run_bfs() {
     int node_expanded = 0;
     std::queue<Node *> q;
     q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
@@ -33,7 +29,6 @@ void run_astar() {
         }
         std::list<Node *> child_list = expand_node(current_node, goal_state);
         node_expanded += 1;
-        child_list.sort(comp);
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             q.push(*it);
         }
@@ -46,6 +41,6 @@ void run_astar() {
 int main() {
     goal_state = construct_goal_state();
     initial_state = construct_initial_state();
-    run_astar();
+    run_bfs();
     return 0;
 }

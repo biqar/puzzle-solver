@@ -5,7 +5,7 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "utills.h"
+#include "../utill/utills.h"
 #include <stdio.h>
 #include <stdlib.h>
 
