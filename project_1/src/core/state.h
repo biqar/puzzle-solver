@@ -31,7 +31,7 @@ typedef struct State {
  * */
 State *move_to_new_state(State *current_state, Move move) {
     State *new_state = (State *) malloc(sizeof(State));
-    int blk_row, blk_col;
+    int blk_row = -1, blk_col = -1;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {
         for(int j=0; j<BOARD_DIM_Y; j+=1) {
