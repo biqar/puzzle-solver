@@ -6,11 +6,12 @@
 #define SOLVER_FACTORY_H
 
 #include "solver.h"
-#include "../utill/properties.h"
+//#include "../utill/utills.h"
+using utils::Properties;
 
 class SolverFactory {
 public:
-    static Solver *CreateSolver(Properties &props);
+    static Solver *CreateSolver(utils::Properties &props);
 };
 
 #endif //SOLVER_FACTORY_H

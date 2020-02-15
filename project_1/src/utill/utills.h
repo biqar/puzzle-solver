@@ -8,31 +8,58 @@
 #include <algorithm>
 #include <iostream>
 #include <cstring>
+#include <map>
 using namespace std;
 
-int _abs(int a) {
-    return a < 0 ? -a : a;
-}
+namespace utils {
+    int _abs(int a) {
+        return a < 0 ? -a : a;
+    }
 
-int _min(int a, int b) {
-    return a < b ? a : b;
-}
+    int _min(int a, int b) {
+        return a < b ? a : b;
+    }
 
-int _max(int a, int b) {
-    return a > b ? a : b;
-}
+    int _max(int a, int b) {
+        return a > b ? a : b;
+    }
 
-void UsageMessage(const char *command) {
-    cout << "Usage: " << command << " [options]" << endl;
-    cout << "Options:" << endl;
-    cout << "  -threads n: execute using n threads (default: 1)" << endl;
-    cout << "  -db dbname: specify the name of the DB to use (default: basic)" << endl;
-    cout << "  -P propertyfile: load properties from the given file. Multiple files can" << endl;
-    cout << "                   be specified, and will be processed in the order specified" << endl;
-}
+    class Properties {
+    public:
+        std::string GetProperty(const std::string &key,
+                                const std::string &default_value = std::string()) const;
 
-inline bool StrStartWith(const char *str, const char *pre) {
-    return strncmp(str, pre, strlen(pre)) == 0;
-}
+        const std::string &operator[](const std::string &key) const;
+
+        const std::map <std::string, std::string> &properties() const;
+
+        void SetProperty(const std::string &key, const std::string &value);
+
+    private:
+        std::map <std::string, std::string> properties_;
+    };
+
+    inline std::string Properties::GetProperty(const std::string &key,
+                                               const std::string &default_value) const {
+        std::map<std::string, std::string>::const_iterator it = properties_.find(key);
+        if (properties_.end() == it) {
+            return default_value;
+        } else return it->second;
+    }
+
+    inline const std::string &Properties::operator[](const std::string &key) const {
+        return properties_.at(key);
+    }
+
+    inline const std::map <std::string, std::string> &Properties::properties() const {
+        return properties_;
+    }
+
+    inline void Properties::SetProperty(const std::string &key,
+                                        const std::string &value) {
+        properties_[key] = value;
+    }
+
+} // utils
 
 #endif //UTILLS_H

@@ -5,15 +5,19 @@
 #include <string>
 #include <iostream>
 
-#include "utill/properties.h"
+//#include "utill/properties.h"
 #include "core/solver_factory.h"
 #include "core/solver.h"
+
+using utils::Properties;
 using namespace std;
 
-void ParseCommandLine(int argc, const char *argv[], Properties &props);
+void ParseCommandLine(int argc, const char *argv[], utils::Properties &props);
+void UsageMessage(const char *command);
+bool StrStartWith(const char *str, const char *pre);
 
 int main(const int argc, const char *argv[]) {
-    Properties props;
+    utils::Properties props;
     ParseCommandLine(argc, argv, props);
 
     Solver *solver = SolverFactory::CreateSolver(props);
@@ -21,7 +25,7 @@ int main(const int argc, const char *argv[]) {
     return 0;
 }
 
-void ParseCommandLine(int argc, const char *argv[], Properties &props) {
+void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
     int argindex = 1;
     while (argindex < argc && StrStartWith(argv[argindex], "-")) {
         if (strcmp(argv[argindex], "-problem") == 0) {
@@ -76,4 +80,17 @@ void ParseCommandLine(int argc, const char *argv[], Properties &props) {
         UsageMessage(argv[0]);
         exit(0);
     }
+}
+
+void UsageMessage(const char *command) {
+    cout << "Usage: " << command << " [options]" << endl;
+    cout << "Options:" << endl;
+    cout << "  -threads n: execute using n threads (default: 1)" << endl;
+    cout << "  -db dbname: specify the name of the DB to use (default: basic)" << endl;
+    cout << "  -P propertyfile: load properties from the given file. Multiple files can" << endl;
+    cout << "                   be specified, and will be processed in the order specified" << endl;
+}
+
+inline bool StrStartWith(const char *str, const char *pre) {
+    return strncmp(str, pre, strlen(pre)) == 0;
 }

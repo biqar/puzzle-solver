@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//using namespace utils;
+
 #define BLANK_TILE 0
 #define BOARD_DIM_X 3
 #define BOARD_DIM_Y 3
@@ -100,7 +102,7 @@ int calculate_manhattan_distance(State *current_state, State *compare_state) {
                 for(int ii=0; ii<BOARD_DIM_X; ii+=1) {
                     for(int jj=0; jj<BOARD_DIM_Y; jj+=1) {
                         if(current_state->board[i][j] == compare_state->board[ii][jj]) {
-                            ret += (_abs(i-ii) + _abs(j-jj));
+                            ret += (utils::_abs(i-ii) + utils::_abs(j-jj));
                             found = true;
                             break;
                         }

@@ -5,7 +5,9 @@
 #include "solver_factory.h"
 #include "../8-puzzle/a_star.cc"
 
-Solver *SolverFactory::CreateSolver(Properties &props) {
+using utils::Properties;
+
+Solver *SolverFactory::CreateSolver(utils::Properties &props) {
     if (props["puzzle"] == "8-puzzle") {
         if(props["algorithm"] == "a_star") {
             return new AStarEightPuzzle(construct_initial_state(), construct_goal_state());
