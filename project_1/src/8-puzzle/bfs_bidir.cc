@@ -12,18 +12,55 @@
 
 #define DEPTH_ONE 1
 
-State *goal_state;
-State *initial_state;
-std::queue<Node *> initial_to_goal_q;
-std::queue<Node *> goal_to_initial_q;
-std::map <long long int, int> initial_to_goal_m;
-std::map <long long int, int> goal_to_initial_m;
-bool solution_found;
-int node_expanded;
+class BfsBidirEightPuzzle : public Solver {
+public:
+    BfsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
+        BfsBidirEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-void initial_to_goal_bfs(int depth);
+    int init(State *_initial_state, State *_goal_state);
 
-void goal_to_initial_bfs(int depth) {
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::queue<Node *> initial_to_goal_q;
+    std::queue<Node *> goal_to_initial_q;
+    std::map<long long int, int> initial_to_goal_m;
+    std::map<long long int, int> goal_to_initial_m;
+    bool solution_found;
+    int node_expanded;
+
+    void initial_to_goal_bfs(int depth);
+    void goal_to_initial_bfs(int depth);
+};
+
+int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+
+    Node *initial_node = create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state);
+    Node *goal_node = create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state);
+
+    initial_to_goal_q.push(initial_node);
+    long long int initial_state_key = construct_board_key(initial_state);
+    initial_to_goal_m[initial_state_key] = 0;
+
+    goal_to_initial_q.push(goal_node);
+    long long int goal_state_key = construct_board_key(goal_state);
+    goal_to_initial_m[goal_state_key] = 0;
+
+    solution_found = false;
+    node_expanded = 0;
+
+    return 1;
+}
+
+void BfsBidirEightPuzzle::goal_to_initial_bfs(int depth) {
     while(!goal_to_initial_q.empty()) {
         Node *current_node = goal_to_initial_q.front();
         if(current_node->depth >= depth) {
@@ -56,7 +93,7 @@ void goal_to_initial_bfs(int depth) {
     }
 }
 
-void initial_to_goal_bfs(int depth) {
+void BfsBidirEightPuzzle::initial_to_goal_bfs(int depth) {
     while(!initial_to_goal_q.empty()) {
         Node *current_node = initial_to_goal_q.front();
         if(current_node->depth >= depth) {
@@ -89,24 +126,11 @@ void initial_to_goal_bfs(int depth) {
     }
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
-
-    Node *initial_node = create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state);
-    Node *goal_node = create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state);
-
-    initial_to_goal_q.push(initial_node);
-    long long int initial_state_key = construct_board_key(initial_state);
-    initial_to_goal_m[initial_state_key] = 0;
-
-    goal_to_initial_q.push(goal_node);
-    long long int goal_state_key = construct_board_key(goal_state);
-    goal_to_initial_m[goal_state_key] = 0;
-
-    solution_found = false;
-    node_expanded = 0;
+int BfsBidirEightPuzzle::run() {
     initial_to_goal_bfs(DEPTH_ONE);
+    return 1;
+}
 
-    return 0;
+void BfsBidirEightPuzzle::destroy() {
+    //
 }

@@ -39,7 +39,7 @@ private:
 int AStarEightPuzzle::init(State *_initial_state, State *_goal_state) {
     goal_state = _goal_state;
     initial_state = _initial_state;
-    return 0;
+    return 1;
 }
 
 void AStarEightPuzzle::run_astar() {
@@ -61,7 +61,7 @@ void AStarEightPuzzle::run_astar() {
         node_expanded += 1;
         //todo: need to fix this first
         //child_list.sort(comp);
-        child_list.sort(AstarNodeComparator());
+        child_list.sort(NodeComparatorOnTotalCost());
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             q.push(*it);
         }
@@ -72,6 +72,7 @@ void AStarEightPuzzle::run_astar() {
 }
 
 int AStarEightPuzzle::run() {
+    run_astar();
     return 1;
 }
 

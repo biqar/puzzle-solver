@@ -13,17 +13,41 @@
 
 #define INF (1 << 28)
 
+class IdaStarEightPuzzle : public Solver {
+public:
+    IdaStarEightPuzzle(State *_initial_state, State *_goal_state) {
+        IdaStarEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-State *goal_state;
-State *initial_state;
-bool is_found;
-int node_expanded;
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    bool is_found;
+    int node_expanded;
+
+    void ida_star();
+
+    int run_astar(int max_cost, Node *current_node);
+};
+
+int IdaStarEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+    return 1;
+}
 
 bool comp(Node *a, Node *b) {
     return (get_total_cost(a) < get_total_cost(b));
 }
 
-int run_astar(int max_cost, Node *current_node) {
+int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
     int current_node_total_cost = get_total_cost(current_node);
 
 //    printf("current node depth: %d\n", current_node->depth);
@@ -45,17 +69,14 @@ int run_astar(int max_cost, Node *current_node) {
     int ret = INF;
     child_list.sort(comp);
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
-        ret = _min(ret, run_astar(max_cost, *it));
+        ret = utils::_min(ret, run_astar(max_cost, *it));
 
         if(is_found) return ret;
     }
     return ret;
 }
 
-void ida_star() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
-
+void IdaStarEightPuzzle::ida_star() {
     int bound = calculate_manhattan_distance(initial_state, goal_state);
     int initial_goal_hval = bound;
     is_found = false;
@@ -77,7 +98,11 @@ void ida_star() {
     }
 }
 
-int main() {
+int IdaStarEightPuzzle::run() {
     ida_star();
-    return 0;
+    return 1;
+}
+
+void IdaStarEightPuzzle::destroy() {
+    //
 }

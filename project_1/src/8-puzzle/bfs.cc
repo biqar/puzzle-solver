@@ -9,10 +9,33 @@
 #include <queue>
 #include <list>
 
-State *goal_state;
-State *initial_state;
+class BfsEightPuzzle : public Solver {
+public:
+    BfsEightPuzzle(State *_initial_state, State *_goal_state) {
+        BfsEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-void run_bfs() {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+
+    void run_bfs();
+};
+
+int BfsEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+    return 1;
+}
+
+void BfsEightPuzzle::run_bfs() {
     int node_expanded = 0;
     std::queue<Node *> q;
     q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
@@ -38,9 +61,11 @@ void run_bfs() {
     printf("found solution by expending [%d] nodes\n", node_expanded);
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
+int BfsEightPuzzle::run() {
     run_bfs();
-    return 0;
+    return 1;
+}
+
+void BfsEightPuzzle::destroy() {
+    //
 }

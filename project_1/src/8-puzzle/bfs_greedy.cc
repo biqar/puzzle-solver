@@ -11,19 +11,35 @@
 #include <map>
 #include <list>
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, bool> m;
-
-struct comp {
-    bool operator() (Node *a, Node *b) {
-        return a->h_cost > b->h_cost;
+class BfsGreedyEightPuzzle : public Solver {
+public:
+    BfsGreedyEightPuzzle(State *_initial_state, State *_goal_state) {
+        BfsGreedyEightPuzzle::init(_initial_state, _goal_state);
     }
+
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, bool> m;
+    std::priority_queue< Node *, std::vector< Node * >, NodeComparatorOnHeuristicCost > Q;
+
+    void run_bfs_greedy();
 };
 
-std::priority_queue< Node *, std::vector< Node * >, comp > Q;
+int BfsGreedyEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+    return 1;
+}
 
-void run_bfs_greedy() {
+void BfsGreedyEightPuzzle::run_bfs_greedy() {
     int node_expanded = 0;
     Q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
 
@@ -57,9 +73,11 @@ void run_bfs_greedy() {
     printf("found solution by expending [%d] nodes\n", node_expanded);
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
+int BfsGreedyEightPuzzle::run() {
     run_bfs_greedy();
-    return 0;
+    return 1;
+}
+
+void BfsGreedyEightPuzzle::destroy() {
+    //
 }

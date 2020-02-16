@@ -10,12 +10,39 @@
 #include <list>
 #include <map>
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, bool> m;
-int node_expanded;
+class DfsRecursivEightPuzzle : public Solver {
+public:
+    DfsRecursivEightPuzzle(State *_initial_state, State *_goal_state) {
+        DfsRecursivEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-bool run_dfs_recursive(Node *current_node) {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, bool> m;
+    int node_expanded;
+
+    bool run_dfs_recursive(Node *current_node);
+};
+
+int DfsRecursivEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+
+    node_expanded = 0;
+    m[construct_board_key(initial_state)] = true;
+
+    return 1;
+}
+
+bool DfsRecursivEightPuzzle::run_dfs_recursive(Node *current_node) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
@@ -40,12 +67,11 @@ bool run_dfs_recursive(Node *current_node) {
     return false;
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
-    node_expanded = 0;
-
-    m[construct_board_key(initial_state)] = true;
+int DfsRecursivEightPuzzle::run() {
     run_dfs_recursive(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
-    return 0;
+    return 1;
+}
+
+void DfsRecursivEightPuzzle::destroy() {
+    //
 }
