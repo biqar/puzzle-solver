@@ -60,8 +60,8 @@ void AStarEightPuzzle::run_astar() {
         std::list<Node *> child_list = expand_node(current_node, goal_state);
         node_expanded += 1;
         //todo: need to fix this first
-        //child_list.sort(AStarEightPuzzle::comp);
-        child_list.sort(NodeComparator());
+        //child_list.sort(comp);
+        child_list.sort(AstarNodeComparator());
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             q.push(*it);
         }

@@ -64,7 +64,7 @@ inline int get_total_cost(int depth, int h_cost) {
     return (depth + h_cost);
 }
 
-struct NodeComparator {
+struct AstarNodeComparator {
     bool operator ()(Node *a, Node *b) {
         return (get_total_cost(a) < get_total_cost(b));
     }
