@@ -31,7 +31,7 @@ typedef struct State {
 /**
  * this method will generate a @return{new_state} from the @param{current_state} with the help of @param{move}
  * */
-State *move_to_new_state(State *current_state, Move move) {
+inline State *move_to_new_state(State *current_state, Move move) {
     State *new_state = (State *) malloc(sizeof(State));
     int blk_row = -1, blk_col = -1;
 
@@ -78,7 +78,7 @@ State *move_to_new_state(State *current_state, Move move) {
     return new_state = NULL;
 }
 
-int calculate_hamming_distance(State *current_state, State *compare_state) {
+inline int calculate_hamming_distance(State *current_state, State *compare_state) {
     int ret = 0;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {
@@ -92,7 +92,7 @@ int calculate_hamming_distance(State *current_state, State *compare_state) {
     return ret;
 }
 
-int calculate_manhattan_distance(State *current_state, State *compare_state) {
+inline int calculate_manhattan_distance(State *current_state, State *compare_state) {
     int ret = 0;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {
@@ -117,7 +117,7 @@ int calculate_manhattan_distance(State *current_state, State *compare_state) {
 }
 
 //todo: need to be confirm if: without square-root, euclidean distance is a Admissible Heuristics
-int calculate_euclidean_distance(State *current_state, State *compare_state) {
+inline int calculate_euclidean_distance(State *current_state, State *compare_state) {
     int ret = 0;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {
@@ -141,7 +141,7 @@ int calculate_euclidean_distance(State *current_state, State *compare_state) {
     return ret;
 }
 
-bool equal_state(State *current_state, State *compare_state) {
+inline bool equal_state(State *current_state, State *compare_state) {
     for(int i=0; i<BOARD_DIM_X; i+=1) {
         for (int j = 0; j < BOARD_DIM_Y; j += 1) {
             if (current_state->board[i][j] != compare_state->board[i][j]) {
@@ -153,7 +153,7 @@ bool equal_state(State *current_state, State *compare_state) {
     return true;
 }
 
-void print_board(State *state) {
+inline void print_board(State *state) {
     for(int i=0; i<BOARD_DIM_X; i+=1) {
         for(int j=0; j<BOARD_DIM_Y; j+=1) {
             printf(" %d", state->board[i][j]);
@@ -163,7 +163,7 @@ void print_board(State *state) {
     printf("\n");
 }
 
-State *construct_goal_state() {
+inline State *construct_goal_state() {
     State *goal_state = (State *) malloc(sizeof(State));
 
     goal_state->board[0][0] = 1;
@@ -183,7 +183,7 @@ State *construct_goal_state() {
     return goal_state;
 }
 
-State *construct_initial_state() {
+inline State *construct_initial_state() {
     State *initial_state = (State *) malloc(sizeof(State));
 
     initial_state->board[0][0] = 1;
@@ -203,7 +203,7 @@ State *construct_initial_state() {
     return initial_state;
 }
 
-long long int construct_board_key(State *_state) {
+inline long long int construct_board_key(State *_state) {
     long long int ret = 0;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {

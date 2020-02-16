@@ -17,7 +17,7 @@ typedef struct Node {
     State *state;
 } Node;
 
-Node *create_new_node(int _depth, int _h_cost, Node *_parent, State *_state) {
+inline Node *create_new_node(int _depth, int _h_cost, Node *_parent, State *_state) {
     Node *new_node = (Node *) malloc(sizeof(Node));
     if(new_node == NULL) {
         exit(EXIT_FAILURE);
@@ -31,7 +31,7 @@ Node *create_new_node(int _depth, int _h_cost, Node *_parent, State *_state) {
     return new_node;
 }
 
-std::list<Node *> expand_node(Node *current_node, State *goal_state) {
+inline std::list<Node *> expand_node(Node *current_node, State *goal_state) {
     State *new_state;
     Node *child;
     std::list<Node *> ret;
@@ -56,11 +56,11 @@ std::list<Node *> expand_node(Node *current_node, State *goal_state) {
     return ret;
 }
 
-int get_total_cost(Node *node) {
+inline int get_total_cost(Node *node) {
     return node->depth + node->h_cost;
 }
 
-int get_total_cost(int depth, int h_cost) {
+inline int get_total_cost(int depth, int h_cost) {
     return (depth + h_cost);
 }
 

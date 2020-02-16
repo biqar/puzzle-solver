@@ -12,15 +12,15 @@
 using namespace std;
 
 namespace utils {
-    int _abs(int a) {
+    inline int _abs(int a) {
         return a < 0 ? -a : a;
     }
 
-    int _min(int a, int b) {
+    inline int _min(int a, int b) {
         return a < b ? a : b;
     }
 
-    int _max(int a, int b) {
+    inline int _max(int a, int b) {
         return a > b ? a : b;
     }
 
