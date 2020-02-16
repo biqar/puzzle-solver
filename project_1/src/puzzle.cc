@@ -28,6 +28,7 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
     int argindex = 1;
     while (argindex < argc && StrStartWith(argv[argindex], "-")) {
         if (strcmp(argv[argindex], "-problem") == 0) {
+            // it denotes the puzzle name we will solve
             argindex++;
             if (argindex >= argc) {
                 UsageMessage(argv[0]);
@@ -36,6 +37,7 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             props.SetProperty("puzzle", argv[argindex]);
             argindex++;
         } else if (strcmp(argv[argindex], "-algo") == 0) {
+            // it denotes the algorithm strategy we will use
             argindex++;
             if (argindex >= argc) {
                 UsageMessage(argv[0]);
@@ -44,7 +46,7 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             props.SetProperty("algorithm", argv[argindex]);
             argindex++;
         } else if (strcmp(argv[argindex], "-mode") == 0) {
-            // -type is only with storedsDB, it denotes the inner data structures we will use
+            // it denotes the inner methodology we will use
             argindex++;
             if (argindex >= argc) {
                 UsageMessage(argv[0]);
@@ -53,7 +55,7 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             props.SetProperty("mode", argv[argindex]);
             argindex++;
         } else if (strcmp(argv[argindex], "-initial") == 0) {
-            // -dbpath is only with storedsDB, it shows where the db file is
+            // it denotes the initial board configuration
             argindex++;
             if (argindex >= argc) {
                 UsageMessage(argv[0]);
@@ -62,6 +64,7 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             props.SetProperty("initial_state", argv[argindex]);
             argindex++;
         } else if (strcmp(argv[argindex], "-goal") == 0) {
+            // it denotes the goal state of the board
             argindex++;
             if (argindex >= argc) {
                 UsageMessage(argv[0]);
@@ -84,10 +87,12 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
 void UsageMessage(const char *command) {
     cout << "Usage: " << command << " [options]" << endl;
     cout << "Options:" << endl;
-    cout << "  -threads n: execute using n threads (default: 1)" << endl;
-    cout << "  -db dbname: specify the name of the DB to use (default: basic)" << endl;
-    cout << "  -P propertyfile: load properties from the given file. Multiple files can" << endl;
-    cout << "                   be specified, and will be processed in the order specified" << endl;
+    cout << "  -problem puzzle-name: specify the puzzle name to solve" << endl;
+    cout << "  -algo search-strategy: specify the search strategy to solve the puzzle" << endl;
+    cout << "  -mode inner-methodology: specify the inner methodology for the search strategy" << endl;
+    cout << "  -heuristic heuristic-function: specify the heuristic function you want to use" << endl;
+    cout << "  -initial initial-board-setup: specify the initial board setup for your puzzle" << endl;
+    cout << "  -goal goal-state: specify the goal state of your puzzle" << endl;
 }
 
 inline bool StrStartWith(const char *str, const char *pre) {
