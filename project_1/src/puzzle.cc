@@ -4,8 +4,6 @@
 
 #include <string>
 #include <iostream>
-
-//#include "utill/properties.h"
 #include "core/solver_factory.h"
 #include "core/solver.h"
 

@@ -6,7 +6,6 @@
 #define SOLVER_FACTORY_H
 
 #include "solver.h"
-//#include "../utill/utills.h"
 using utils::Properties;
 
 class SolverFactory {
