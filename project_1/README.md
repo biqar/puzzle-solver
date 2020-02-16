@@ -1,10 +1,37 @@
-# Problem Solving Techniques
+# Game Solver (by using problem solving techniques)
 
 ### Project goal
 
+The goal of this project is to build a generic interactive plugable application for solving puzzles (i.e. 8-puzzle, 8-queen, Sudoku, etc.) using different problem solving techniques (i.e. informed search, uninformed search, etc.).
+Here the plugable means, user can independently decide the search strategy along with the custom heuristic functions. If needed, user can choose to implement their own versions for them.
+
+Besides, this application is designed in a way that, it will be a easy going platform for further extension of puzzles/strategy/heuristics.
+
 ### Restriction to use
 
+For solving 8-puzzle game, I have implemented the algorithms (with the modes) listed bellow.
+
+|  | bi-directional | greedy | recursive | stack-based |
+| --- | --- | --- | --- | --- |
+| a_star | - | - | - | - |
+| ida_star | - | - | - | - |
+| bfs | y | y | - | - |
+| dfs | - | - | y | y |
+| dls | y | - | - | - |
+| ids | y | - | - | - |
+
 ### How to run
+General run command:
+
+```
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
+```
+For 8-puzzle game, here is the list of run commands for different implemented algorithms along with the corresponding mode.
+
+* stack-based dfs
+```
+./puzzle -problem 8-puzzle -algo dfs -mode stack-based -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0
+```
 
 ### Search strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
