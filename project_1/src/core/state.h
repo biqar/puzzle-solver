@@ -8,12 +8,16 @@
 #include "../utill/utills.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-//using namespace utils;
+#include <string>
+#include <algorithm>
+#include <sstream>
 
 #define BLANK_TILE 0
 #define BOARD_DIM_X 3
 #define BOARD_DIM_Y 3
+
+#define STATE_SEPARATOR ','
+#define CHAR_SPACE ' '
 
 typedef enum Move {
     UP,
@@ -201,6 +205,28 @@ inline State *construct_initial_state() {
     initial_state->move = MOVE_MAX;
 
     return initial_state;
+}
+
+inline State *construct_state(std::string state_str) {
+    std::replace(state_str.begin(), state_str.end(), STATE_SEPARATOR, CHAR_SPACE);
+    std::stringstream ss(state_str);
+    State *state = (State *) malloc(sizeof(State));
+
+    ss >> state->board[0][0];
+    ss >> state->board[0][1];
+    ss >> state->board[0][2];
+
+    ss >> state->board[1][0];
+    ss >> state->board[1][1];
+    ss >> state->board[1][2];
+
+    ss >> state->board[2][0];
+    ss >> state->board[2][1];
+    ss >> state->board[2][2];
+
+    state->move = MOVE_MAX;
+
+    return state;
 }
 
 inline long long int construct_board_key(State *_state) {
