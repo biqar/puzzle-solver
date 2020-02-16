@@ -21,6 +21,7 @@ int main(const int argc, const char *argv[]) {
     ParseCommandLine(argc, argv, props);
 
     Solver *solver = SolverFactory::CreateSolver(props);
+    solver->run();
 
     return 0;
 }

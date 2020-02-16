@@ -10,12 +10,37 @@
 #include <list>
 #include <map>
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, bool> m;
-int node_expanded;
+class DfsStackEightPuzzle : public Solver {
+public:
+    DfsStackEightPuzzle(State *_initial_state, State *_goal_state) {
+        DfsStackEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-void run_dfs_stack() {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, bool> m;
+    int node_expanded;
+
+    void run_dfs_stack();
+};
+
+int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+    node_expanded = 0;
+
+    return 1;
+}
+
+void DfsStackEightPuzzle::run_dfs_stack() {
     std::stack<Node *> s;
     s.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
@@ -45,11 +70,11 @@ void run_dfs_stack() {
     }
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
-    node_expanded = 0;
+int DfsStackEightPuzzle::run() {
     run_dfs_stack();
+    return 1;
+}
 
-    return 0;
+void DfsStackEightPuzzle::destroy() {
+    //
 }

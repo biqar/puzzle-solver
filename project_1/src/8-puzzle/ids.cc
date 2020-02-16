@@ -10,19 +10,45 @@
 #include <list>
 #include <map>
 
-#define MAX_DEPTH 400
+#define IDS_MAX_DEPTH 400
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, bool> m;
-int node_expanded;
+class IdsEightPuzzle : public Solver {
+public:
+    IdsEightPuzzle(State *_initial_state, State *_goal_state) {
+        IdsEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-bool run_dls(Node *current_node, int depth_limit) {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, bool> m;
+    int node_expanded;
+
+    bool run_dls(Node *current_node, int depth_limit);
+
+    void run_iddfs();
+};
+
+int IdsEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+
+    return 1;
+}
+
+bool IdsEightPuzzle::run_dls(Node *current_node, int depth_limit) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
 
-    if(current_node->depth > MAX_DEPTH) return false;
+    if(current_node->depth > IDS_MAX_DEPTH) return false;
 
     if(equal_state(current_node->state, goal_state)) {
         printf("found solution by expending [%d] nodes\n", node_expanded);
@@ -41,8 +67,8 @@ bool run_dls(Node *current_node, int depth_limit) {
     return false;
 }
 
-void run_iddfs() {
-    for(int depth=0; depth < MAX_DEPTH; depth+=1) {
+void IdsEightPuzzle::run_iddfs() {
+    for(int depth=0; depth < IDS_MAX_DEPTH; depth+=1) {
         m.clear();
         m[construct_board_key(initial_state)] = true;
         node_expanded = 0;
@@ -53,9 +79,11 @@ void run_iddfs() {
     }
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
+int IdsEightPuzzle::run() {
     run_iddfs();
-    return 0;
+    return 1;
+}
+
+void IdsEightPuzzle::destroy() {
+    //
 }

@@ -10,21 +10,49 @@
 #include <list>
 #include <map>
 
-#define MAX_DEPTH 400
+#define IDS_BIDIR_MAX_DEPTH 400
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, int> initial_to_goal_m;
-std::map <long long int, int> goal_to_initial_m;
-bool solution_found;
-int node_expanded;
+class IdsBidirEightPuzzle : public Solver {
+public:
+    IdsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
+        IdsBidirEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-bool initial_to_goal_dls(Node *current_node, int depth_limit) {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, int> initial_to_goal_m;
+    std::map<long long int, int> goal_to_initial_m;
+    bool solution_found;
+    int node_expanded;
+
+    bool initial_to_goal_dls(Node *current_node, int depth_limit);
+
+    bool goal_to_initial_dls(Node *current_node, int depth_limit);
+
+    void run_iddfs_bidir();
+};
+
+int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+
+    return 1;
+}
+
+bool IdsBidirEightPuzzle::initial_to_goal_dls(Node *current_node, int depth_limit) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
 
-    if(current_node->depth > MAX_DEPTH) return false;
+    if(current_node->depth > IDS_BIDIR_MAX_DEPTH) return false;
 
     if(equal_state(current_node->state, goal_state)) {
         printf("found solution by expending [%d] nodes\n", node_expanded);
@@ -43,12 +71,12 @@ bool initial_to_goal_dls(Node *current_node, int depth_limit) {
     return false;
 }
 
-bool goal_to_initial_dls(Node *current_node, int depth_limit) {
+bool IdsBidirEightPuzzle::goal_to_initial_dls(Node *current_node, int depth_limit) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
 
-    if(current_node->depth > MAX_DEPTH) return false;
+    if(current_node->depth > IDS_BIDIR_MAX_DEPTH) return false;
 
     if(equal_state(current_node->state, initial_state)) {
         printf("found solution by expending [%d] nodes\n", node_expanded);
@@ -74,10 +102,10 @@ bool goal_to_initial_dls(Node *current_node, int depth_limit) {
     return false;
 }
 
-void run_iddfs_bidir() {
+void IdsBidirEightPuzzle::run_iddfs_bidir() {
     long long int initial_state_key = construct_board_key(initial_state);
     long long int goal_state_key = construct_board_key(goal_state);
-    for(int depth=0; depth < MAX_DEPTH; depth+=1) {
+    for(int depth=0; depth < IDS_BIDIR_MAX_DEPTH; depth+=1) {
         initial_to_goal_m.clear();
         goal_to_initial_m.clear();
         node_expanded = 0;
@@ -96,9 +124,11 @@ void run_iddfs_bidir() {
     }
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
+int IdsBidirEightPuzzle::run() {
     run_iddfs_bidir();
-    return 0;
+    return 1;
+}
+
+void IdsBidirEightPuzzle::destroy() {
+    //
 }

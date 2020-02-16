@@ -12,14 +12,46 @@
 
 #define MAX_DEPTH 40
 
-State *goal_state;
-State *initial_state;
-std::map <long long int, bool> forward_m;
-std::map <long long int, bool> backward_m;
-int node_expanded;
-bool is_found;
+class DlsBidirEightPuzzle : public Solver {
+public:
+    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
+        DlsBidirEightPuzzle::init(_initial_state, _goal_state);
+    }
 
-void run_dls_backward(Node *current_node) {
+    int init(State *_initial_state, State *_goal_state);
+
+    int run();
+
+    void destroy();
+
+private:
+    /* Private Data */
+    State *goal_state;
+    State *initial_state;
+    std::map<long long int, bool> forward_m;
+    std::map<long long int, bool> backward_m;
+    int node_expanded;
+    bool is_found;
+
+    void run_dls_backward(Node *current_node);
+
+    void run_dls_forward(Node *current_node);
+};
+
+int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+    goal_state = _goal_state;
+    initial_state = _initial_state;
+
+    forward_m[construct_board_key(initial_state)] = true;
+    backward_m[construct_board_key(goal_state)] = true;
+
+    node_expanded = 0;
+    is_found = false;
+
+    return 1;
+}
+
+void DlsBidirEightPuzzle::run_dls_backward(Node *current_node) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
@@ -44,7 +76,7 @@ void run_dls_backward(Node *current_node) {
     }
 }
 
-void run_dls_forward(Node *current_node) {
+void DlsBidirEightPuzzle::run_dls_forward(Node *current_node) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
     //print_board(current_node->state);
@@ -68,20 +100,14 @@ void run_dls_forward(Node *current_node) {
     }
 }
 
-int main() {
-    goal_state = construct_goal_state();
-    initial_state = construct_initial_state();
-
-    forward_m[construct_board_key(initial_state)] = true;
-    backward_m[construct_board_key(goal_state)] = true;
-
-    node_expanded = 0;
-    is_found = false;
-
+int DlsBidirEightPuzzle::run() {
     run_dls_forward(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
     if(!is_found) {
         run_dls_backward(create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state));
     }
+    return 1;
+}
 
-    return 0;
+void DlsBidirEightPuzzle::destroy() {
+    //
 }
