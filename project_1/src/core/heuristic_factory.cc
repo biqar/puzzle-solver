@@ -16,6 +16,6 @@ Heuristic *HeuristicFactory::CreateHeuristic(utils::Properties &props) {
     } else if (props["heuristic"] == "euclidean") {
         return new Euclidean();
     } else {
-        return NULL;
+        return new Manhattan();
     }
 }

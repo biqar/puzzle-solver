@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -14,11 +15,11 @@
 
 class DlsBidirEightPuzzle : public Solver {
 public:
-    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
-        DlsBidirEightPuzzle::init(_initial_state, _goal_state);
+    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        DlsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -32,15 +33,17 @@ private:
     std::map<long long int, bool> backward_m;
     int node_expanded;
     bool is_found;
+    Heuristic *heuristic;
 
     void run_dls_backward(Node *current_node);
 
     void run_dls_forward(Node *current_node);
 };
 
-int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
 
     forward_m[construct_board_key(initial_state)] = true;
     backward_m[construct_board_key(goal_state)] = true;
@@ -64,7 +67,7 @@ void DlsBidirEightPuzzle::run_dls_backward(Node *current_node) {
         is_found = true;
         return;
     }
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -88,7 +91,7 @@ void DlsBidirEightPuzzle::run_dls_forward(Node *current_node) {
         is_found = true;
         return;
     }
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -101,9 +104,9 @@ void DlsBidirEightPuzzle::run_dls_forward(Node *current_node) {
 }
 
 int DlsBidirEightPuzzle::run() {
-    run_dls_forward(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
+    run_dls_forward(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
     if(!is_found) {
-        run_dls_backward(create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state));
+        run_dls_backward(create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state));
     }
     return 1;
 }

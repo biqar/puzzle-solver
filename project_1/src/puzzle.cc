@@ -4,8 +4,10 @@
 
 #include <string>
 #include <iostream>
-#include "core/solver_factory.h"
 #include "core/solver.h"
+#include "core/heuristic.h"
+#include "core/solver_factory.h"
+#include "core/heuristic_factory.h"
 
 using utils::Properties;
 using namespace std;
@@ -18,7 +20,8 @@ int main(const int argc, const char *argv[]) {
     utils::Properties props;
     ParseCommandLine(argc, argv, props);
 
-    Solver *solver = SolverFactory::CreateSolver(props);
+    Heuristic *_heuristic = HeuristicFactory::CreateHeuristic(props);
+    Solver *solver = SolverFactory::CreateSolver(props, _heuristic);
     solver->run();
 
     return 0;
@@ -90,7 +93,7 @@ void UsageMessage(const char *command) {
     cout << "  -problem puzzle-name: specify the puzzle name to solve" << endl;
     cout << "  -algo search-strategy: specify the search strategy to solve the puzzle" << endl;
     cout << "  -mode inner-methodology: specify the inner methodology for the search strategy" << endl;
-    cout << "  -heuristic heuristic-function: specify the heuristic function you want to use" << endl;
+    cout << "  -heuristic heuristic-function: specify the heuristic function you want to use, [default: manhattan]" << endl;
     cout << "  -initial initial-board-setup: specify the initial board setup for your puzzle" << endl;
     cout << "  -goal goal-state: specify the goal state of your puzzle" << endl;
 }

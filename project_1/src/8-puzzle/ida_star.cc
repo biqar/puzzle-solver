@@ -5,6 +5,7 @@
 #include "../core/node.h"
 #include "../core/state.h"
 #include "../utill/utills.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,11 +16,11 @@
 
 class IdaStarEightPuzzle : public Solver {
 public:
-    IdaStarEightPuzzle(State *_initial_state, State *_goal_state) {
-        IdaStarEightPuzzle::init(_initial_state, _goal_state);
+    IdaStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        IdaStarEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -31,15 +32,17 @@ private:
     State *initial_state;
     bool is_found;
     int node_expanded;
+    Heuristic *heuristic;
 
     void ida_star();
 
     int run_astar(int max_cost, Node *current_node);
 };
 
-int IdaStarEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int IdaStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
     return 1;
 }
 
@@ -64,7 +67,7 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
     }
 
 
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     int ret = INF;
     child_list.sort(comp);
@@ -77,7 +80,7 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
 }
 
 void IdaStarEightPuzzle::ida_star() {
-    int bound = calculate_manhattan_distance(initial_state, goal_state);
+    int bound = heuristic->guess_distance(initial_state, goal_state);
     int initial_goal_hval = bound;
     is_found = false;
     node_expanded = 0;

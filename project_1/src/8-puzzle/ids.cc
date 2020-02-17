@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -14,11 +15,11 @@
 
 class IdsEightPuzzle : public Solver {
 public:
-    IdsEightPuzzle(State *_initial_state, State *_goal_state) {
-        IdsEightPuzzle::init(_initial_state, _goal_state);
+    IdsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        IdsEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -30,15 +31,17 @@ private:
     State *initial_state;
     std::map<long long int, bool> m;
     int node_expanded;
+    Heuristic *heuristic;
 
     bool run_dls(Node *current_node, int depth_limit);
 
     void run_iddfs();
 };
 
-int IdsEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int IdsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
 
     return 1;
 }
@@ -54,7 +57,7 @@ bool IdsEightPuzzle::run_dls(Node *current_node, int depth_limit) {
         printf("found solution by expending [%d] nodes\n", node_expanded);
         return true;
     }
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -72,7 +75,7 @@ void IdsEightPuzzle::run_iddfs() {
         m.clear();
         m[construct_board_key(initial_state)] = true;
         node_expanded = 0;
-        if(run_dls(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state), depth)) {
+        if(run_dls(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state), depth)) {
             printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, depth);
             break;
         }

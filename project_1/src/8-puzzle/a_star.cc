@@ -5,6 +5,7 @@
 #include "../core/node.h"
 #include "../core/state.h"
 #include "../core/solver.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -12,11 +13,11 @@
 
 class AStarEightPuzzle : public Solver {
 public:
-    AStarEightPuzzle(State *_initial_state, State *_goal_state) {
-        AStarEightPuzzle::init(_initial_state, _goal_state);
+    AStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        AStarEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -26,6 +27,7 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
 
 //    bool comp(Node *a, Node *b);
 
@@ -36,16 +38,17 @@ private:
 //    return (get_total_cost(a) < get_total_cost(b));
 //}
 
-int AStarEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
     return 1;
 }
 
 void AStarEightPuzzle::run_astar() {
     int node_expanded = 0;
     std::queue<Node *> q;
-    q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
+    q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
 
     while(!q.empty()) {
         Node *current_node = q.front(); q.pop();
@@ -57,7 +60,7 @@ void AStarEightPuzzle::run_astar() {
             printf("solution found!");
             break;
         }
-        std::list<Node *> child_list = expand_node(current_node, goal_state);
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
         //todo: need to fix this first
         //child_list.sort(comp);

@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <stack>
@@ -12,11 +13,11 @@
 
 class DfsStackEightPuzzle : public Solver {
 public:
-    DfsStackEightPuzzle(State *_initial_state, State *_goal_state) {
-        DfsStackEightPuzzle::init(_initial_state, _goal_state);
+    DfsStackEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        DfsStackEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -26,15 +27,17 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
     std::map<long long int, bool> m;
     int node_expanded;
 
     void run_dfs_stack();
 };
 
-int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
     node_expanded = 0;
 
     return 1;
@@ -42,7 +45,7 @@ int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state) {
 
 void DfsStackEightPuzzle::run_dfs_stack() {
     std::stack<Node *> s;
-    s.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
+    s.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
 
     while(!s.empty()) {
@@ -58,7 +61,7 @@ void DfsStackEightPuzzle::run_dfs_stack() {
             printf("found solution by expending [%d] nodes\n", node_expanded);
             break;
         }
-        std::list<Node *> child_list = expand_node(current_node, goal_state);
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             long long int child_state_key = construct_board_key((*it)->state);

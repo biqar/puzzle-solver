@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -13,11 +14,11 @@
 
 class BfsGreedyEightPuzzle : public Solver {
 public:
-    BfsGreedyEightPuzzle(State *_initial_state, State *_goal_state) {
-        BfsGreedyEightPuzzle::init(_initial_state, _goal_state);
+    BfsGreedyEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        BfsGreedyEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -27,21 +28,23 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
     std::map<long long int, bool> m;
     std::priority_queue< Node *, std::vector< Node * >, NodeComparatorOnHeuristicCost > Q;
 
     void run_bfs_greedy();
 };
 
-int BfsGreedyEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int BfsGreedyEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
     return 1;
 }
 
 void BfsGreedyEightPuzzle::run_bfs_greedy() {
     int node_expanded = 0;
-    Q.push(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state));
+    Q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
 
     while(!Q.empty()) {
         Node *current_node = Q.top(); Q.pop();
@@ -58,7 +61,7 @@ void BfsGreedyEightPuzzle::run_bfs_greedy() {
             printf("solution found!");
             break;
         }
-        std::list<Node *> child_list = expand_node(current_node, goal_state);
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             long long int child_state_key = construct_board_key((*it)->state);

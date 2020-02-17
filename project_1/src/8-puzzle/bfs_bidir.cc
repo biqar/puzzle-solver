@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -14,11 +15,11 @@
 
 class BfsBidirEightPuzzle : public Solver {
 public:
-    BfsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
-        BfsBidirEightPuzzle::init(_initial_state, _goal_state);
+    BfsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        BfsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -34,17 +35,19 @@ private:
     std::map<long long int, int> goal_to_initial_m;
     bool solution_found;
     int node_expanded;
+    Heuristic *heuristic;
 
     void initial_to_goal_bfs(int depth);
     void goal_to_initial_bfs(int depth);
 };
 
-int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
 
-    Node *initial_node = create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state);
-    Node *goal_node = create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state);
+    Node *initial_node = create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state);
+    Node *goal_node = create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state);
 
     initial_to_goal_q.push(initial_node);
     long long int initial_state_key = construct_board_key(initial_state);
@@ -82,7 +85,7 @@ void BfsBidirEightPuzzle::goal_to_initial_bfs(int depth) {
             solution_found = true;
             return;
         }
-        std::list<Node *> child_list = expand_node(current_node, goal_state);
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             long long int child_state_key = construct_board_key((*it)->state);
@@ -115,7 +118,7 @@ void BfsBidirEightPuzzle::initial_to_goal_bfs(int depth) {
             solution_found = true;
             return;
         }
-        std::list<Node *> child_list = expand_node(current_node, goal_state);
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             long long int child_state_key = construct_board_key((*it)->state);

@@ -4,6 +4,7 @@
 
 #include "../core/node.h"
 #include "../core/state.h"
+#include "../core/heuristic.h"
 
 #include <stdio.h>
 #include <queue>
@@ -14,11 +15,11 @@
 
 class IdsBidirEightPuzzle : public Solver {
 public:
-    IdsBidirEightPuzzle(State *_initial_state, State *_goal_state) {
-        IdsBidirEightPuzzle::init(_initial_state, _goal_state);
+    IdsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+        IdsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
     }
 
-    int init(State *_initial_state, State *_goal_state);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
 
     int run();
 
@@ -32,6 +33,7 @@ private:
     std::map<long long int, int> goal_to_initial_m;
     bool solution_found;
     int node_expanded;
+    Heuristic *heuristic;
 
     bool initial_to_goal_dls(Node *current_node, int depth_limit);
 
@@ -40,9 +42,10 @@ private:
     void run_iddfs_bidir();
 };
 
-int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state) {
+int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
     initial_state = _initial_state;
+    heuristic = _heuristic;
 
     return 1;
 }
@@ -58,7 +61,7 @@ bool IdsBidirEightPuzzle::initial_to_goal_dls(Node *current_node, int depth_limi
         printf("found solution by expending [%d] nodes\n", node_expanded);
         return true;
     }
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -89,7 +92,7 @@ bool IdsBidirEightPuzzle::goal_to_initial_dls(Node *current_node, int depth_limi
         return true;
     }
 
-    std::list<Node *> child_list = expand_node(current_node, goal_state);
+    std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -111,12 +114,12 @@ void IdsBidirEightPuzzle::run_iddfs_bidir() {
         node_expanded = 0;
 
         initial_to_goal_m[initial_state_key] = 0;
-        if(initial_to_goal_dls(create_new_node(0, calculate_manhattan_distance(initial_state, goal_state), NULL, initial_state), depth)) {
+        if(initial_to_goal_dls(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state), depth)) {
             printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, initial_to_goal_m[goal_state_key]);
             break;
         }
         goal_to_initial_m[goal_state_key] = 0;
-        if(goal_to_initial_dls(create_new_node(0, calculate_manhattan_distance(goal_state, initial_state), NULL, goal_state), depth)) {
+        if(goal_to_initial_dls(create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state), depth)) {
             //todo: need to fix the depth here ...
             printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, goal_to_initial_m[initial_state_key]);
             break;
