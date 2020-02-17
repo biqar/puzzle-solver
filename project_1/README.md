@@ -9,6 +9,16 @@ Besides, this application is designed in a way that, it will be a easy going pla
 
 ### Restriction to use
 
+Currently I have implemented the following heuristic functions:
+
+| Heuristic Functions | Parameter token for this application |
+| --- | --- |
+| Hamming Distance | hamming |
+| Manhattan Distance | manhattan |
+| Euclidean Distance | euclidean |
+
+If you do not specify any particular heuristic function in the program parameter, `manhattan` will be considered as the default one. 
+
 For solving 8-puzzle game, I have implemented the algorithms (with the modes) listed bellow.
 
 |  | bi-directional | greedy | recursive | stack-based |
