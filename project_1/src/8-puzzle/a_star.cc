@@ -29,14 +29,8 @@ private:
     State *initial_state;
     Heuristic *heuristic;
 
-//    bool comp(Node *a, Node *b);
-
     void run_astar();
 };
-
-//bool AStarEightPuzzle::comp(Node *a, Node *b) {
-//    return (get_total_cost(a) < get_total_cost(b));
-//}
 
 int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
     goal_state = _goal_state;
@@ -62,8 +56,6 @@ void AStarEightPuzzle::run_astar() {
         }
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
-        //todo: need to fix this first
-        //child_list.sort(comp);
         child_list.sort(NodeComparatorOnTotalCost());
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             q.push(*it);
