@@ -57,6 +57,15 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             }
             props.SetProperty("mode", argv[argindex]);
             argindex++;
+        } else if (strcmp(argv[argindex], "-heu") == 0) {
+            // it denotes the heuristic method that the algorithm will use
+            argindex++;
+            if (argindex >= argc) {
+                UsageMessage(argv[0]);
+                exit(0);
+            }
+            props.SetProperty("heuristic", argv[argindex]);
+            argindex++;
         } else if (strcmp(argv[argindex], "-initial") == 0) {
             // it denotes the initial board configuration
             argindex++;
