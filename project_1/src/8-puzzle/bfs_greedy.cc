@@ -31,6 +31,8 @@ private:
     Heuristic *heuristic;
     std::map<long long int, bool> m;
     std::priority_queue< Node *, std::vector< Node * >, NodeComparatorOnHeuristicCost > Q;
+    int node_expanded;
+    int node_generated;
 
     void run_bfs_greedy();
 };
@@ -39,45 +41,49 @@ int BfsGreedyEightPuzzle::init(State *_initial_state, State *_goal_state, Heuris
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+
+    Q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    m[construct_board_key(initial_state)] = true;
+
+    node_expanded = 0;
+    node_generated = 1;
     return 1;
 }
 
 void BfsGreedyEightPuzzle::run_bfs_greedy() {
-    int node_expanded = 0;
-    Q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
-
+    if(equal_state(initial_state, goal_state)) {
+        printf("solution found!\n");
+        print_board(initial_state);
+        return;
+    }
     while(!Q.empty()) {
         Node *current_node = Q.top(); Q.pop();
-
-        long long int current_state_key = construct_board_key(current_node->state);
-        if(m.find(current_state_key) != m.end()) {
-            continue;
-        }
-
-        printf("current node depth: %d\n", current_node->depth);
-        print_board(current_node->state);
-
-        if(equal_state(current_node->state, goal_state)) {
-            printf("solution found!");
-            break;
-        }
-        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         node_expanded += 1;
+
+//        printf("current node depth: %d\n", current_node->depth);
+//        print_board(current_node->state);
+
+        std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
+            if(equal_state((*it)->state, goal_state)) {
+                printf("solution found!\n");
+                print_path(*it);
+                return;
+            }
+
             long long int child_state_key = construct_board_key((*it)->state);
             if(m.find(child_state_key) == m.end()) {
+                m[child_state_key] = true;
                 Q.push(*it);
+                node_generated += 1;
             }
         }
-
-        m[current_state_key] = true;
-        //if(node_expand > 20) break;
     }
-    printf("found solution by expending [%d] nodes\n", node_expanded);
 }
 
 int BfsGreedyEightPuzzle::run() {
     run_bfs_greedy();
+    printf("[8-puzzle] [bfs-greedy] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
     return 1;
 }
 
