@@ -57,6 +57,13 @@ inline std::list<Node *> expand_node(Node *current_node, State *goal_state, Heur
     return ret;
 }
 
+inline void print_path(Node *current_node) {
+    if(current_node == NULL) return;
+
+    print_board(current_node->state);
+    print_path(current_node->parent);
+}
+
 inline int get_total_cost(Node *node) {
     return node->depth + node->h_cost;
 }
