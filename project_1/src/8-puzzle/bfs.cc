@@ -27,6 +27,10 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    std::queue<Node *> q;
+    std::map<long long int, bool> m;        //mapping already generated nodes
+    int node_expanded;
+    int node_generated;
 
     void run_bfs();
 };
@@ -35,37 +39,45 @@ int BfsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+
+    q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    m[construct_board_key(initial_state)] = true;
+
+    node_expanded = 0;
+    node_generated = 1;
+
     return 1;
 }
 
 void BfsEightPuzzle::run_bfs() {
-    int node_expanded = 0;
-    std::queue<Node *> q;
-    q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
-
     while(!q.empty()) {
         Node *current_node = q.front(); q.pop();
+        node_expanded += 1;
 
-        printf("current node depth: %d\n", current_node->depth);
-        print_board(current_node->state);
+        //printf("current node depth: %d\n", current_node->depth);
+        //print_board(current_node->state);
 
         if(equal_state(current_node->state, goal_state)) {
-            printf("solution found!");
+            printf("solution found!\n");
+            print_path(current_node);
             break;
         }
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
-        node_expanded += 1;
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
-            q.push(*it);
+            long long int child_node_key = construct_board_key((*it)->state);
+            if(m.find(child_node_key) == m.end()) {
+                m[child_node_key] = true;
+                q.push(*it);
+                node_generated += 1;
+            }
         }
-
-        //if(node_expand > 20) break;
     }
     printf("found solution by expending [%d] nodes\n", node_expanded);
 }
 
 int BfsEightPuzzle::run() {
     run_bfs();
+    printf("[8-puzzle] [bfs] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
     return 1;
 }
 
