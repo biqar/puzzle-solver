@@ -21,27 +21,76 @@ If you do not specify any particular heuristic function in the program parameter
 
 For solving 8-puzzle game, I have implemented the algorithms (with the modes) listed bellow.
 
-|  | bi-directional | greedy | recursive | stack-based |
-| --- | --- | --- | --- | --- |
-| a_star | - | - | - | - |
-| ida_star | - | - | - | - |
-| bfs | y | y | - | - |
-| dfs | - | - | y | y |
-| dls | y | - | - | - |
-| ids | y | - | - | - |
+|  | bi-directional | greedy | recursive | stack-based | optimized |
+| --- | --- | --- | --- | --- | --- |
+| a_star | - | - | - | - | - |
+| ida_star | - | - | - | - | - |
+| bfs | y | y | - | - | y |
+| dfs | - | - | y | y | - |
+| dls | y | - | - | - | - |
+| ids | y | - | - | - | - |
 
 ### How to run
 General run command:
 
 ```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
 ```
 For 8-puzzle game, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
 * stack-based dfs
 ```
-./puzzle -problem 8-puzzle -algo dfs -mode stack-based -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0
 ```
+
+* a-star
+```
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
+```
+
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0
+
+### Sample bord configuration
+|  | initial state | goal state |
+| --- | --- | --- |
+| input [1] | 1,2,3,7,4,5,6,8,0 | 1,2,3,8,6,4,7,5,0 |
+| input [2] | 2,8,1,3,4,6,7,5,0 | 3,2,1,8,0,4,7,5,6 |
+| input [3] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
+| input [4] | 2,8,1,3,4,6,7,5,0 | 2,1,6,3,8,0,7,4,5 |
+| input [5] | 4,1,3,2,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
+| input [6] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,8,5,7,6,0 |
+| input [7] | 8,6,7,2,5,4,3,0,1 | 1,2,3,4,5,6,7,8,0 |
+| input [8] | 6,4,7,8,5,0,3,2,1 | 1,2,3,4,5,6,7,8,0 |
+| input [9] | 2,1,3,8,0,4,6,7,5 | 1,2,3,4,5,6,7,8,0 |
+| input [10] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
+
+### Output for the sample bord configuration
+
+Here is the list of node generated and expanded by the algorithms,
+
+| Algorithm\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| a_star | - | - | - | - | - | - | - | - | - | - |
+| ida_star | - | - | - | - | - | - | - | - | - | - |
+| bfs | - | - | - | - | - | - | - | - | - | - |
+| bfs [optimized] | - | - | - | - | - | - | - | - | - | - |
+| bfs [greedy] | - | - | - | - | - | - | - | - | - | - |
+| bfs [bi-directional] | - | - | - | - | - | - | - | - | - | - |
+| dfs [recursive] | - | - | - | - | - | - | - | - | - | - |
+| dfs [stack-based] | - | - | - | - | - | - | - | - | - | - |
+| dls | - | - | - | - | - | - | - | - | - | - |
+| dls [bi-directional] | - | - | - | - | - | - | - | - | - | - |
+| ids | - | - | - | - | - | - | - | - | - | - |
+| ids [bi-directional] | - | - | - | - | - | - | - | - | - | - |
+
+Here is the list of node generated and expanded by the A* algorithm for different heuristic functions,
+
+| Heuristic\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Manhattan Distance | - | - | - | - | - | - | - | - | - | - |
+| Hamming Distance | - | - | - | - | - | - | - | - | - | - |
+| Euclidean Distance | - | - | - | - | - | - | - | - | - | - |
 
 ### Search strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
