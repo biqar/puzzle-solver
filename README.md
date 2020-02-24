@@ -1,4 +1,4 @@
-# Game Solver (by using problem solving techniques)
+# Puzzle Solver (by using problem solving techniques)
 
 ### Project goal
 
@@ -19,7 +19,7 @@ Currently I have implemented the following heuristic functions:
 
 If you do not specify any particular heuristic function in the program parameter, `manhattan` will be considered as the default one. 
 
-For solving 8-puzzle game, I have implemented the algorithms (with the modes) listed bellow.
+For solving 8-puzzle, I have implemented the algorithms (with the modes) listed bellow.
 
 |  | bi-directional | greedy | recursive | stack-based | optimized |
 | --- | --- | --- | --- | --- | --- |
@@ -34,9 +34,9 @@ For solving 8-puzzle game, I have implemented the algorithms (with the modes) li
 General run command:
 
 ```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_PUZZLE} -goal {GOAL_STATE_OF_THE_PUZZLE}
 ```
-For 8-puzzle game, here is the list of run commands for different implemented algorithms along with the corresponding mode.
+For 8-puzzle, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
 * stack-based dfs
 ```
