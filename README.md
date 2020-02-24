@@ -1,4 +1,4 @@
-# Game Solver (by using problem solving techniques)
+# Puzzle Solver (by using problem solving techniques)
 
 ### Project goal
 
@@ -19,7 +19,7 @@ Currently I have implemented the following heuristic functions:
 
 If you do not specify any particular heuristic function in the program parameter, `manhattan` will be considered as the default one. 
 
-For solving 8-puzzle game, I have implemented the algorithms (with the modes) listed bellow.
+For solving 8-puzzle, I have implemented the algorithms (with the modes) listed bellow.
 
 |  | bi-directional | greedy | recursive | stack-based | optimized |
 | --- | --- | --- | --- | --- | --- |
@@ -34,22 +34,22 @@ For solving 8-puzzle game, I have implemented the algorithms (with the modes) li
 General run command:
 
 ```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} -print_path {YES/NO}
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
 ```
-For 8-puzzle game, here is the list of run commands for different implemented algorithms along with the corresponding mode.
+For 8-puzzle, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
 * stack-based dfs
 ```
-./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0 -print_path false
+./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0
 ```
 
 * a-star
 ```
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0 -print_path false
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
 ```
 
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 1,2,3,4,5,6,7,8,0 -goal 1,2,3,4,5,6,7,8,0 -print_path false
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0 -print_path false
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0
 
 ### Sample bord configuration
 |  | initial state | goal state |
