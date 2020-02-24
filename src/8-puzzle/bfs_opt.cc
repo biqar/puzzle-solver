@@ -12,11 +12,11 @@
 
 class BfsOptEightPuzzle : public Solver {
 public:
-    BfsOptEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        BfsOptEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    BfsOptEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        BfsOptEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -27,6 +27,8 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::queue<Node *> q;
     std::map<long long int, bool> m;        //mapping already generated nodes
     int node_expanded;
@@ -35,10 +37,11 @@ private:
     void run_bfs();
 };
 
-int BfsOptEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int BfsOptEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
@@ -52,7 +55,7 @@ int BfsOptEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic
 void BfsOptEightPuzzle::run_bfs() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
-        print_board(initial_state);
+        if(is_print_path) print_board(initial_state);
         return;
     }
     while(!q.empty()) {
@@ -63,7 +66,7 @@ void BfsOptEightPuzzle::run_bfs() {
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             if(equal_state((*it)->state, goal_state)) {
                 printf("solution found!\n");
-                print_path(*it);
+                if(is_print_path) print_path(*it);
                 return;
             }
 

@@ -12,11 +12,11 @@
 
 class BfsEightPuzzle : public Solver {
 public:
-    BfsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        BfsEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    BfsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        BfsEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -27,6 +27,8 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::queue<Node *> q;
     std::map<long long int, bool> m;        //mapping already generated nodes
     int node_expanded;
@@ -35,10 +37,11 @@ private:
     void run_bfs();
 };
 
-int BfsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int BfsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
@@ -59,7 +62,7 @@ void BfsEightPuzzle::run_bfs() {
 
         if(equal_state(current_node->state, goal_state)) {
             printf("solution found!\n");
-            print_path(current_node);
+            if(is_print_path) print_path(current_node);
             break;
         }
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);

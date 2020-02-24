@@ -14,11 +14,11 @@
 
 class AStarEightPuzzle : public Solver {
 public:
-    AStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        AStarEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    AStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        AStarEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -29,6 +29,8 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::priority_queue<Node *, vector<Node *>, NodeComparatorOnTotalCost> q;
     std::map<long long int, bool> m;        //mapping already explored nodes
     int node_expanded;
@@ -37,10 +39,12 @@ private:
     void run_astar();
 };
 
-int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
+
     node_expanded = 0;
     node_generated = 1;
     q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
@@ -51,7 +55,7 @@ int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic 
 void AStarEightPuzzle::run_astar() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
-        print_board(initial_state);
+        if(is_print_path) print_board(initial_state);
         return;
     }
     while(!q.empty()) {
@@ -70,7 +74,7 @@ void AStarEightPuzzle::run_astar() {
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
             if(equal_state((*it)->state, goal_state)) {
                 printf("solution found!\n");
-                print_path(*it);
+                if(is_print_path) print_path(*it);
                 return;
             }
 

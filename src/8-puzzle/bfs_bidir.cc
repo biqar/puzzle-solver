@@ -15,11 +15,11 @@
 
 class BfsBidirEightPuzzle : public Solver {
 public:
-    BfsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        BfsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    BfsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        BfsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -29,22 +29,25 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::queue<Node *> initial_to_goal_q;
     std::queue<Node *> goal_to_initial_q;
     std::map<long long int, int> initial_to_goal_m;
     std::map<long long int, int> goal_to_initial_m;
     bool solution_found;
     int node_expanded;
-    Heuristic *heuristic;
 
     void initial_to_goal_bfs(int depth);
     void goal_to_initial_bfs(int depth);
 };
 
-int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     Node *initial_node = create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state);
     Node *goal_node = create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state);

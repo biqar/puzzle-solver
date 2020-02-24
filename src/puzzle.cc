@@ -84,6 +84,15 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             }
             props.SetProperty("goal_state", argv[argindex]);
             argindex++;
+        } else if (strcmp(argv[argindex], "-print_path") == 0) {
+            // flag denotes if you like to print the path after reaching goal
+            argindex++;
+            if (argindex >= argc) {
+                UsageMessage(argv[0]);
+                exit(0);
+            }
+            props.SetProperty("print_path", argv[argindex]);
+            argindex++;
         } else {
             cout << "Unknown option '" << argv[argindex] << "'" << endl;
             exit(0);

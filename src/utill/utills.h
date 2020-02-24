@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <iostream>
 #include <cstring>
+#include <sstream>
 #include <map>
 using namespace std;
 
@@ -22,6 +23,14 @@ namespace utils {
 
     inline int _max(int a, int b) {
         return a > b ? a : b;
+    }
+
+    inline bool to_bool(std::string str) {
+        bool ret;
+        std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+        std::istringstream is(str);
+        is >> std::boolalpha >> ret;
+        return ret;
     }
 
     class Properties {

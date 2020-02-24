@@ -16,11 +16,11 @@
 
 class IdaStarEightPuzzle : public Solver {
 public:
-    IdaStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        IdaStarEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    IdaStarEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        IdaStarEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -30,19 +30,23 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
+    bool is_print_path = false;
+
     bool is_found;
     int node_expanded;
-    Heuristic *heuristic;
 
     void ida_star();
 
     int run_astar(int max_cost, Node *current_node);
 };
 
-int IdaStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int IdaStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
+
     return 1;
 }
 

@@ -15,11 +15,11 @@
 
 class DlsBidirEightPuzzle : public Solver {
 public:
-    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        DlsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        DlsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -29,21 +29,24 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::map<long long int, bool> forward_m;
     std::map<long long int, bool> backward_m;
     int node_expanded;
     bool is_found;
-    Heuristic *heuristic;
 
     void run_dls_backward(Node *current_node);
 
     void run_dls_forward(Node *current_node);
 };
 
-int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     forward_m[construct_board_key(initial_state)] = true;
     backward_m[construct_board_key(goal_state)] = true;

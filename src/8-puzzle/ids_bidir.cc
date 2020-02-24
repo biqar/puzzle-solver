@@ -15,11 +15,11 @@
 
 class IdsBidirEightPuzzle : public Solver {
 public:
-    IdsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        IdsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    IdsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        IdsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -29,11 +29,13 @@ private:
     /* Private Data */
     State *goal_state;
     State *initial_state;
+    Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::map<long long int, int> initial_to_goal_m;
     std::map<long long int, int> goal_to_initial_m;
     bool solution_found;
     int node_expanded;
-    Heuristic *heuristic;
 
     bool initial_to_goal_dls(Node *current_node, int depth_limit);
 
@@ -42,10 +44,11 @@ private:
     void run_iddfs_bidir();
 };
 
-int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     return 1;
 }

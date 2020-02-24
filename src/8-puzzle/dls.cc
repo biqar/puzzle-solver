@@ -15,11 +15,11 @@
 
 class DlsEightPuzzle : public Solver {
 public:
-    DlsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        DlsEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    DlsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        DlsEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -30,16 +30,19 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::map<long long int, bool> m;
     int node_expanded;
 
     void run_dls(Node *current_node);
 };
 
-int DlsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int DlsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
 
     m[construct_board_key(initial_state)] = true;
     node_expanded = 0;

@@ -10,7 +10,7 @@
 
 class Solver {
 public:
-    virtual int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) = 0;
+    virtual int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool print_path) = 0;
 
     virtual int run() = 0;
 

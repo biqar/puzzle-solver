@@ -13,11 +13,11 @@
 
 class DfsStackEightPuzzle : public Solver {
 public:
-    DfsStackEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
-        DfsStackEightPuzzle::init(_initial_state, _goal_state, _heuristic);
+    DfsStackEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
+        DfsStackEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic);
+    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
 
     int run();
 
@@ -28,16 +28,20 @@ private:
     State *goal_state;
     State *initial_state;
     Heuristic *heuristic;
+    bool is_print_path = false;
+
     std::map<long long int, bool> m;
     int node_expanded;
 
     void run_dfs_stack();
 };
 
-int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic) {
+int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
     goal_state = _goal_state;
     initial_state = _initial_state;
     heuristic = _heuristic;
+    is_print_path = _print_path;
+
     node_expanded = 0;
 
     return 1;
