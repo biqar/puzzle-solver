@@ -7,6 +7,7 @@
 #include "../8-puzzle/a_star.cc"
 #include "../8-puzzle/ida_star.cc"
 #include "../8-puzzle/bfs.cc"
+#include "../8-puzzle/bfs_opt.cc"
 #include "../8-puzzle/bfs_bidir.cc"
 #include "../8-puzzle/bfs_greedy.cc"
 #include "../8-puzzle/dfs_recursive.cc"
@@ -32,6 +33,9 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
             }
             if(props["mode"] == "greedy") {
                 return new BfsGreedyEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic);
+            }
+            if(props["mode"] == "optimized") {
+                return new BfsOptEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic);
             }
             return new BfsEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic);
         }
