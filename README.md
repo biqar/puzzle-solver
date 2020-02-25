@@ -55,10 +55,10 @@ For 8-puzzle, here is the list of run commands for different implemented algorit
 |  | initial state | goal state |  | initial state | goal state |
 | --- | --- | --- | --- | --- | --- |
 | input [1] | 1 2 3<br>7 4 5<br>6 8 0 | 1 2 3<br>8 6 4<br>7 5 0 | input [2] | 2 8 1<br>3 4 6<br>7 5 0 | 3 2 1<br>8 0 4<br>7 5 6 |
-| input [3] | <p>1 2 3<br>4 5 6<br>7 8 0</p> | <p>1 2 3<br>4 5 6<br>7 8 0</p> | input [4] | <p>2 8 1<br>3 4 6<br>7 5 0</p> | <p>2 1 6<br>3 8 0<br>7 4 5</p> |
-| input [5] | <p>4 1 3<br>2 5 6<br>7 8 0</p> | <p>1 2 3<br>4 5 6<br>7 8 0</p> | input [6] | <p>1 2 3<br>4 5 6<br>7 8 0</p> | <p>1 2 3<br>4 8 5<br>7 6 0</p> |
-| input [7] | <p>8 6 7<br>2 5 4<br>3 0 1</p> | <p>1 2 3<br>4 5 6<br>7 8 0</p> | input [8] | <p>6 4 7<br>8 5 0<br>3 2 1</p> | <p>1 2 3<br>4 5 6<br>7 8 0</p> |
-| input [9] | <p>2 1 3<br>8 0 4<br>6 7 5</p> | <p>1 2 3<br>4 5 6<br>7 8 0</p> | input [10] | <p>1 3 4<br>8 6 2<br>7 0 5</p> | <p>1 2 3<br>8 0 4<br>7 6 5</p> |
+| input [3] | 1 2 3<br>4 5 6<br>7 8 0 | 1 2 3<br>4 5 6<br>7 8 0 | input [4] | 2 8 1<br>3 4 6<br>7 5 0 | 2 1 6<br>3 8 0<br>7 4 5 |
+| input [5] | 4 1 3<br>2 5 6<br>7 8 0 | 1 2 3<br>4 5 6<br>7 8 0 | input [6] | 1 2 3<br>4 5 6<br>7 8 0 | 1 2 3<br>4 8 5<br>7 6 0 |
+| input [7] | 8 6 7<br>2 5 4<br>3 0 1 | 1 2 3<br>4 5 6<br>7 8 0 | input [8] | 6 4 7<br>8 5 0<br>3 2 1 | 1 2 3<br>4 5 6<br>7 8 0 |
+| input [9] | 2 1 3<br>8 0 4<br>6 7 5 | 1 2 3<br>4 5 6<br>7 8 0 | input [10] | 1 3 4<br>8 6 2<br>7 0 5 | 1 2 3<br>8 0 4<br>7 6 5 |
 
 ### Output for the sample bord configuration
 
