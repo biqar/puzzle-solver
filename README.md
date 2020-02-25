@@ -1,13 +1,73 @@
 # Puzzle Solver (by using problem solving techniques)
 
-### Project goal
+## Project Goal
 
 The goal of this project is to build a generic interactive plugable application for solving puzzles (i.e. 8-puzzle, 8-queen, Sudoku, etc.) using different problem solving techniques (i.e. informed search, uninformed search, etc.).
 Here the plugable means, user can independently decide the search strategy along with the custom heuristic functions. If needed, user can choose to implement their own versions for them.
 
 Besides, this application is designed in a way that, it will be a easy going platform for further extension of puzzles/strategy/heuristics.
 
-### Restriction to use
+### Search Strategies
+A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
+* Completeness: does it always find a solution if one exists?
+* Optimality: does it always find a least-cost solution?
+* Time complexity: number of nodes generated
+* Space complexity: maximum number of nodes in memory
+
+Time and space complexity are measured in terms of
+* b: maximum branching factor of the search tree
+* d: depth of the optimal solution
+* m: maximum length of any path in the state space (may be infinite)
+
+### Uninformed Search Strategies
+Uninformed search strategies use only the information available in the problem definition
+* Breadth-first search
+* Uniform-cost search
+* Depth-first search
+* Iterative deepening search
+
+### Informed Search
+Idea: give the algorithm “hints” about the desirability of different states. Use an evaluation function to rank nodes and select the most promising one for expansion
+* Greedy best-first search
+* A* search
+
+### Heuristic Function
+Heuristic function h(n) estimates the cost of reaching goal from node n
+
+Relaxed heuristic functions
+* Pattern Database Heuristics 
+* Linear Conflict Heuristics
+* Gaschnig’s Heuristics
+
+## How to Build
+
+```
+# go to project directory
+$ cd puzzle-solver
+
+# build the project
+$ make clean && make
+```
+
+## How to Run
+
+General run command:
+```
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} -print_path {PRINT_INITIAL_TO_GOAL}
+```
+
+Here is the parameter definition,
+1. **-problem:** Specify the puzzle name to solve, for example, "8-puzzle".
+2. **-algo:** Specify the search strategy to solve the puzzle, for example, "A*", "bfs", "dfs", etc.
+3. **-mode:** Specify the inner methodology for the search strategy, for example, "bi-directional" bfs, "stack-based" dfs, etc.
+4. **-heuristic:** Specify the heuristic function you want to use, for example, "hamming", "manhattan", "euclidean", etc. [default: manhattan]
+5. **-initial:** Specify the initial board setup for your puzzle
+6. **-goal:** Specify the goal state of your puzzle
+7. **-print_path:** Flag to indicate printing path if solution exist. Possible options "true"/"false".
+
+## 8-puzzle
+
+### Implementation Domain
 
 Currently I have implemented the following heuristic functions:
 
@@ -19,7 +79,7 @@ Currently I have implemented the following heuristic functions:
 
 If you do not specify any particular heuristic function in the program parameter, `manhattan` will be considered as the default one. 
 
-For solving 8-puzzle, I have implemented the algorithms (with the modes) listed bellow.
+I have used the following algorithms (with the modes) for solving 8-puzzle,
 
 |  | bi-directional | greedy | recursive | stack-based | optimized |
 | --- | --- | --- | --- | --- | --- |
@@ -30,28 +90,75 @@ For solving 8-puzzle, I have implemented the algorithms (with the modes) listed 
 | dls | y | - | - | - | - |
 | ids | y | - | - | - | - |
 
-### How to run
-General run command:
+Please keep in mind that, for the current implementation all the names specified above is actually expected as the parameter name.
 
-```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} -print_path {PRINT_INITIAL_TO_GOAL}
-```
+### 8-Puzzle Run Commands
+
 For 8-puzzle, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
-* stack-based dfs
+* A*
 ```
-./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0 -print_path false
-```
-
-* a-star
-```
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0 -print_path false
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
 ```
 
-./puzzle -problem 8-puzzle -algo bfs -mode optimized -heu manhattan -initial 2,8,1,3,4,6,7,5,0 -goal 2,1,6,3,8,0,7,4,5 -print_path false
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0 -print_path false
+* IDA*
+```
+./puzzle -problem 8-puzzle -algo ida_star -mode na -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
 
-### Sample bord configuration
+* BFS
+```
+./puzzle -problem 8-puzzle -algo bfs -mode na -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Optimized BFS
+```
+./puzzle -problem 8-puzzle -algo bfs -mode optimized -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* BFS Greedy
+```
+./puzzle -problem 8-puzzle -algo bfs -mode greedy -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Bi-directional BFS
+```
+./puzzle -problem 8-puzzle -algo bfs -mode bi-directiona -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Recursive DFS
+```
+./puzzle -problem 8-puzzle -algo dfs -mode recursive -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Stack Based DFS
+```
+./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* DLS
+```
+./puzzle -problem 8-puzzle -algo dls -mode na -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Bi-directional DLS
+```
+./puzzle -problem 8-puzzle -algo dls -mode bi-directional -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* IDS
+```
+./puzzle -problem 8-puzzle -algo ids -mode na -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+* Bi-directional IDS
+```
+./puzzle -problem 8-puzzle -algo ids -mode bi-directional -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
+```
+
+### Basic Algorithm Description
+
+### Sample Bord Configuration
 |  | initial state | goal state |  | initial state | goal state |
 | --- | --- | --- | --- | --- | --- |
 | input [1] | 1 2 3<br>7 4 5<br>6 8 0 | 1 2 3<br>8 6 4<br>7 5 0 | input [2] | 2 8 1<br>3 4 6<br>7 5 0 | 3 2 1<br>8 0 4<br>7 5 6 |
@@ -60,7 +167,7 @@ For 8-puzzle, here is the list of run commands for different implemented algorit
 | input [7] | 8 6 7<br>2 5 4<br>3 0 1 | 1 2 3<br>4 5 6<br>7 8 0 | input [8] | 6 4 7<br>8 5 0<br>3 2 1 | 1 2 3<br>4 5 6<br>7 8 0 |
 | input [9] | 2 1 3<br>8 0 4<br>6 7 5 | 1 2 3<br>4 5 6<br>7 8 0 | input [10] | 1 3 4<br>8 6 2<br>7 0 5 | 1 2 3<br>8 0 4<br>7 6 5 |
 
-### Output for the sample bord configuration
+### Output for the Sample Bord Configuration
 
 Here is the list of node generated and expanded by the algorithms,
 
@@ -126,38 +233,6 @@ Here is the list of node generated and expanded by the A* algorithm for differen
     <td colspan="3" align="middle">Figure 2: Comparing performance of different heuristic methods for solving 8-puzzle using A* algorithm</td>
   </tr>
 </table>
-
-### Search strategies
-A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
-* Completeness: does it always find a solution if one exists?
-* Optimality: does it always find a least-cost solution?
-* Time complexity: number of nodes generated
-* Space complexity: maximum number of nodes in memory
-
-Time and space complexity are measured in terms of
-* b: maximum branching factor of the search tree
-* d: depth of the optimal solution
-* m: maximum length of any path in the state space (may be infinite)
-
-### Uninformed search strategies
-Uninformed search strategies use only the information available in the problem definition
-* Breadth-first search
-* Uniform-cost search
-* Depth-first search
-* Iterative deepening search
-
-### Informed search
-Idea: give the algorithm “hints” about the desirability of different states. Use an evaluation function to rank nodes and select the most promising one for expansion
-* Greedy best-first search
-* A* search
-
-### Heuristic function
-Heuristic function h(n) estimates the cost of reaching goal from node n
-
-Relaxed heuristic functions
-* Pattern Database Heuristics 
-* Linear Conflict Heuristics
-* Gaschnig’s Heuristics
 
 ### Future works
 * Try with advanced heuristic functions
