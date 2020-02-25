@@ -34,36 +34,56 @@ For solving 8-puzzle, I have implemented the algorithms (with the modes) listed 
 General run command:
 
 ```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME}
+./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} -print_path {PRINT_INITIAL_TO_GOAL}
 ```
 For 8-puzzle, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
 * stack-based dfs
 ```
-./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo dfs -mode stack-based -heu manhattan -initial 1,2,0,4,5,3,7,8,6 -goal 1,2,3,4,5,6,7,8,0 -print_path false
 ```
 
 * a-star
 ```
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0 -print_path false
 ```
 
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu manhattan -initial 2,1,3,8,0,4,6,7,5 -goal 1,2,3,4,5,6,7,8,0
-./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0
+./puzzle -problem 8-puzzle -algo bfs -mode optimized -heu manhattan -initial 2,8,1,3,4,6,7,5,0 -goal 2,1,6,3,8,0,7,4,5 -print_path false
+./puzzle -problem 8-puzzle -algo a_star -mode na -heu hamming -initial 1,2,3,4,5,6,7,0,8 -goal 1,2,3,4,5,6,7,8,0 -print_path false
 
 ### Sample bord configuration
 |  | initial state | goal state |
 | --- | --- | --- |
-| input [1] | 1,2,3,7,4,5,6,8,0 | 1,2,3,8,6,4,7,5,0 |
-| input [2] | 2,8,1,3,4,6,7,5,0 | 3,2,1,8,0,4,7,5,6 |
-| input [3] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
-| input [4] | 2,8,1,3,4,6,7,5,0 | 2,1,6,3,8,0,7,4,5 |
-| input [5] | 4,1,3,2,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
-| input [6] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,8,5,7,6,0 |
-| input [7] | 8,6,7,2,5,4,3,0,1 | 1,2,3,4,5,6,7,8,0 |
-| input [8] | 6,4,7,8,5,0,3,2,1 | 1,2,3,4,5,6,7,8,0 |
-| input [9] | 2,1,3,8,0,4,6,7,5 | 1,2,3,4,5,6,7,8,0 |
-| input [10] | 1,2,3,4,5,6,7,8,0 | 1,2,3,4,5,6,7,8,0 |
+| input [1] | 1 2 3 | 1 2 3 |
+|           | 7 4 5 | 8 6 4 |
+|           | 6 8 0 | 7 5 0 |
+| input [2] | 2 8 1 | 3 2 1 |
+|           | 3 4 6 | 8 0 4 |
+|           | 7 5 0 | 7 5 6 |
+| input [3] | 1 2 3 | 1 2 3 |
+|           | 4 5 6 | 4 5 6 |
+|           | 7 8 0 | 7 8 0 |
+| input [4] | 2 8 1 | 2 1 6 |
+|           | 3 4 6 | 3 8 0 |
+|           | 7 5 0 | 7 4 5 |
+| input [5] | 4 1 3 | 1 2 3 |
+|           | 2 5 6 | 4 5 6 |
+|           | 7 8 0 | 7 8 0 |
+| input [6] | 1 2 3 | 1 2 3 |
+|           | 4 5 6 | 4 8 5 |
+|           | 7 8 0 | 7 6 0 |
+| input [7] | 8 6 7 | 1 2 3 |
+|           | 2 5 4 | 4 5 6 |
+|           | 3 0 1 | 7 8 0 |
+| input [8] | 6 4 7 | 1 2 3 |
+|           | 8 5 0 | 4 5 6 |
+|           | 3 2 1 | 7 8 0 |
+| input [9] | 2 1 3 | 1 2 3 |
+|           | 8 0 4 | 4 5 6 |
+|           | 6 7 5 | 7 8 0 |
+| input [10] | 1 3 4 | 1 2 3 |
+|            | 8 6 2 | 8 0 4 |
+|            | 7 0 5 | 7 6 5 |
 
 ### Output for the sample bord configuration
 
