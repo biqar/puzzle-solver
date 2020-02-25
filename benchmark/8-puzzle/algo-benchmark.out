@@ -1,0 +1,354 @@
+1  /  10  :  1,2,3,7,4,5,6,8,0  :  1,2,3,8,6,4,7,5,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [17], expanded_node: [9]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [19], expanded_node: [9]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [328], expanded_node: [196]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [195], expanded_node: [113]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [17], expanded_node: [9]
+
+[goal_to_initial_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [59], expanded_node: [29]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [45902], expanded_node: [25414]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [172532], expanded_node: [139521]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [89990], expanded_node: [54204]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [2515], expanded_node: [1517]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [720], expanded_node: [423]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [2515], expanded_node: [1517]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+2  /  10  :  2,8,1,3,4,6,7,5,0  :  3,2,1,8,0,4,7,5,6
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [12], expanded_node: [6]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [13], expanded_node: [6]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [104], expanded_node: [63]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [62], expanded_node: [37]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [12], expanded_node: [6]
+
+[goal_to_initial_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [34], expanded_node: [19]
+
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [44928], expanded_node: [25911]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [89991], expanded_node: [54206]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [2782], expanded_node: [1677]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [662], expanded_node: [390]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [2782], expanded_node: [1677]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+3  /  10  :  1,2,3,4,5,6,7,8,0  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [1], expanded_node: [1]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [2], expanded_node: [0]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [0], expanded_node: [0]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [1], expanded_node: [0]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [1], expanded_node: [0]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [1], expanded_node: [0]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+4  /  10  :  2,8,1,3,4,6,7,5,0  :  2,1,6,3,8,0,7,4,5
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [11], expanded_node: [5]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [71], expanded_node: [42]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [41], expanded_node: [24]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [10], expanded_node: [5]
+
+[initial_to_goal_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [20], expanded_node: [10]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [47], expanded_node: [25]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [132509], expanded_node: [89866]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [121282], expanded_node: [73158]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [4665], expanded_node: [2802]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [47], expanded_node: [25]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [4665], expanded_node: [2802]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+5  /  10  :  4,1,3,2,5,6,7,8,0  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [32], expanded_node: [16]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [29], expanded_node: [13]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [333], expanded_node: [203]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [202], expanded_node: [116]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [20], expanded_node: [10]
+
+[goal_to_initial_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [49], expanded_node: [24]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [3302], expanded_node: [1825]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [106652], expanded_node: [67853]
+
+[8-puzzle] [dls] generated_nodes: [89991], expanded_node: [54205]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [6809], expanded_node: [4072]
+
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [6809], expanded_node: [4072]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+6  /  10  :  1,2,3,4,5,6,7,8,0  :  1,2,3,4,8,5,7,6,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [8], expanded_node: [4]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [10], expanded_node: [4]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [37], expanded_node: [20]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [19], expanded_node: [10]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [8], expanded_node: [4]
+
+[goal_to_initial_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [12], expanded_node: [6]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [1539], expanded_node: [849]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [53], expanded_node: [30]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [110642], expanded_node: [66666]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [2801], expanded_node: [1687]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [669], expanded_node: [394]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [2801], expanded_node: [1687]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+7  /  10  :  8,6,7,2,5,4,3,0,1  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [11927], expanded_node: [7535]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [8549], expanded_node: [5336]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [181440], expanded_node: [181440]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [181439], expanded_node: [181385]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [146], expanded_node: [89]
+
+[initial_to_goal_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [16129], expanded_node: [10240]
+
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [111292], expanded_node: [71403]
+
+[8-puzzle] [dls] generated_nodes: [104943], expanded_node: [58901]
+
+[run_dls_backward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [16254], expanded_node: [9094]
+
+
+[goal_to_initial_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [16253], expanded_node: [9094]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+8  /  10  :  6,4,7,8,5,0,3,2,1  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [13119], expanded_node: [8296]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [11427], expanded_node: [7122]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [181440], expanded_node: [181440]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [181439], expanded_node: [181399]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [213], expanded_node: [123]
+
+[initial_to_goal_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [16164], expanded_node: [10261]
+
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [112424], expanded_node: [72473]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [103680], expanded_node: [58336]
+
+[run_dls_backward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [7751], expanded_node: [4319]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [92439], expanded_node: [51938]
+
+[goal_to_initial_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [7750], expanded_node: [4319]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+9  /  10  :  2,1,3,8,0,4,6,7,5  :  1,2,3,4,5,6,7,8,0
+[8-puzzle] [A-Star] generated_nodes: [241921], expanded_node: [181440]
+
+[8-puzzle] [IDA-Star] generated_nodes: [13822196], expanded_node: [8491127]
+
+[8-puzzle] [bfs] generated_nodes: [181440], expanded_node: [181440]
+
+found solution by expending [181440] nodes
+[8-puzzle] [bfs-optimized] generated_nodes: [181440], expanded_node: [181440]
+
+[8-puzzle] [bfs-greedy] generated_nodes: [181440], expanded_node: [181440]
+
+[8-puzzle] [bfs-bidir] generated_nodes: [362878], expanded_node: [362657]
+
+
+[8-puzzle] [dfs-stack] generated_nodes: [181439], expanded_node: [181440]
+
+[8-puzzle] [dls] generated_nodes: [111711], expanded_node: [67385]
+
+[8-puzzle] [dls-bidir] generated_nodes: [29119], expanded_node: [17439]
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+10  /  10  :  1,3,4,8,6,2,7,0,5  :  1,2,3,8,0,4,7,6,5
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [IDA-Star] generated_nodes: [12], expanded_node: [5]
+
+solution found!
+[8-puzzle] [bfs] generated_nodes: [69], expanded_node: [38]
+
+solution found!
+[8-puzzle] [bfs-optimized] generated_nodes: [37], expanded_node: [22]
+
+solution found!
+[8-puzzle] [bfs-greedy] generated_nodes: [10], expanded_node: [5]
+
+[initial_to_goal_bfs] solution found!
+[8-puzzle] [bfs-bidir] generated_nodes: [24], expanded_node: [11]
+
+solution found!
+[8-puzzle] [dfs-recursive] generated_nodes: [58013], expanded_node: [32132]
+
+solution found!
+[8-puzzle] [dfs-stack] generated_nodes: [98579], expanded_node: [61635]
+
+solution found!
+[8-puzzle] [dls] generated_nodes: [104943], expanded_node: [58903]
+
+[run_dls_forward] solution found!
+[8-puzzle] [dls-bidir] generated_nodes: [1303], expanded_node: [727]
+
+solution found!
+[8-puzzle] [ids] generated_nodes: [52477], expanded_node: [29331]
+
+[initial_to_goal_dls] solution found!
+[8-puzzle] [ids-bidir] generated_nodes: [1303], expanded_node: [727]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~

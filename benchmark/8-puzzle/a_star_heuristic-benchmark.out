@@ -1,0 +1,107 @@
+1  /  10  :  1,2,3,7,4,5,6,8,0  :  1,2,3,8,6,4,7,5,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [17], expanded_node: [9]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [40], expanded_node: [21]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [17], expanded_node: [9]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+2  /  10  :  2,8,1,3,4,6,7,5,0  :  3,2,1,8,0,4,7,5,6
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [12], expanded_node: [6]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [14], expanded_node: [7]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [12], expanded_node: [6]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+3  /  10  :  1,2,3,4,5,6,7,8,0  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [1], expanded_node: [0]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [1], expanded_node: [0]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+4  /  10  :  2,8,1,3,4,6,7,5,0  :  2,1,6,3,8,0,7,4,5
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+5  /  10  :  4,1,3,2,5,6,7,8,0  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [32], expanded_node: [16]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [39], expanded_node: [21]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [32], expanded_node: [16]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+6  /  10  :  1,2,3,4,5,6,7,8,0  :  1,2,3,4,8,5,7,6,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [8], expanded_node: [4]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [8], expanded_node: [4]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+7  /  10  :  8,6,7,2,5,4,3,0,1  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [11927], expanded_node: [7535]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [186288], expanded_node: [128467]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [195], expanded_node: [116]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+8  /  10  :  6,4,7,8,5,0,3,2,1  :  1,2,3,4,5,6,7,8,0
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [13119], expanded_node: [8296]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [179773], expanded_node: [122814]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [121], expanded_node: [73]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+9  /  10  :  2,1,3,8,0,4,6,7,5  :  1,2,3,4,5,6,7,8,0
+[8-puzzle] [A-Star] generated_nodes: [241921], expanded_node: [181440]
+
+[8-puzzle] [A-Star] generated_nodes: [241921], expanded_node: [181440]
+
+[8-puzzle] [A-Star] generated_nodes: [241921], expanded_node: [181440]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
+10  /  10  :  1,3,4,8,6,2,7,0,5  :  1,2,3,8,0,4,7,6,5
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [12], expanded_node: [6]
+
+solution found!
+[8-puzzle] [A-Star] generated_nodes: [10], expanded_node: [5]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~<>~~~~~~~~~~~~~~~~~~~~~~~~~
