@@ -88,9 +88,9 @@ Here is the list of node generated and expanded by the A* algorithm for differen
 
 | Heuristic\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Manhattan Distance | 17 / 9          | 12 / 6        | 1 / 0 | 10 / 5         | 32 / 16            | 8 / 4          | 11927 / 7535    | 13119 / 8296    | X -> 241921 / 181440    | 10 / 5 |
-| Hamming Distance | - | - | - | - | - | - | - | - | - | - |
-| Euclidean Distance | - | - | - | - | - | - | - | - | - | - |
+| Manhattan Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 11927 / 7535    | 13119 / 8296    | X -> 241921 / 181440 | 10 / 5 |
+| Hamming Distance   | 40 / 21 | 14 / 7 | 1 / 0 | 10 / 5 | 39 / 21 | 10 / 5 | 186288 / 128467 | 179773 / 122814 | X -> 241921 / 181440 | 12 / 6 |
+| Euclidean Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 195 / 116       | 121 / 73        | X -> 241921 / 181440 | 10 / 5 |
 
 ### Search strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
