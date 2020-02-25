@@ -84,6 +84,26 @@ Here is the list of node generated and expanded by the algorithms,
 | ids                  | 720 / 423       | 662 / 390     | 1 / 0 | 47 / 25        | segfault           | 669 / 394      | segfault        | 92439 / 51938   | segfault                | 52477 / 29331  |
 | ids [bi-directional] | 2515 / 1517     | 2782 / 1677   | 1 / 0 | 4665 / 2802    | 6809 / 4072        | 2801 / 1687    | 16253 / 9094    | 7750 / 4319     | segfault                | 1303 / 727     |
 
+<table>
+  <tr>
+    <td>
+       <img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_algo_compare_input_1.png" alt="8puzzle_algo_comp_input_1"/>
+    </td>
+    <td><img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_algo_compare_input_4.png" alt="8puzzle_algo_comp_input_4"/>
+    </td>
+    <td><img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_algo_compare_input_8.png" alt="8puzzle_algo_comp_input_8"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="middle">Figure 1 (a): Input 1</td>
+    <td align="middle">Figure 1 (b): Input 4</td>
+    <td align="middle">Figure 1 (c): Input 8</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="middle">Figure 1: Comparing performance of different algorithms for solving 8-puzzle</td>
+  </tr>
+</table>
+
 Here is the list of node generated and expanded by the A* algorithm for different heuristic functions,
 
 | Heuristic\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
@@ -91,6 +111,26 @@ Here is the list of node generated and expanded by the A* algorithm for differen
 | Manhattan Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 11927 / 7535    | 13119 / 8296    | X -> 241921 / 181440 | 10 / 5 |
 | Hamming Distance   | 40 / 21 | 14 / 7 | 1 / 0 | 10 / 5 | 39 / 21 | 10 / 5 | 186288 / 128467 | 179773 / 122814 | X -> 241921 / 181440 | 12 / 6 |
 | Euclidean Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 195 / 116       | 121 / 73        | X -> 241921 / 181440 | 10 / 5 |
+
+<table>
+  <tr>
+    <td>
+       <img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_a_star_heuristic_compare_input_1.png" alt="a*_heuristic_comp_input_1"/>
+    </td>
+    <td><img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_a_star_heuristic_compare_input_7.png" alt="a*_heuristic_comp_input_7"/>
+    </td>
+    <td><img align="left" src="https://github.com/biqar/puzzle-solver/blob/master/resources/8puzzle_a_star_heuristic_compare_input_8.png" alt="a*_heuristic_comp_input_8"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="middle">Figure 2 (a): Input 1</td>
+    <td align="middle">Figure 2 (b): Input 7</td>
+    <td align="middle">Figure 2 (c): Input 8</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="middle">Figure 2: Comparing performance of different heuristic methods for solving 8-puzzle using A* algorithm</td>
+  </tr>
+</table>
 
 ### Search strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
