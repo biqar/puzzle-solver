@@ -114,6 +114,7 @@ void UsageMessage(const char *command) {
     cout << "  -heuristic heuristic-function: specify the heuristic function you want to use, [default: manhattan]" << endl;
     cout << "  -initial initial-board-setup: specify the initial board setup for your puzzle" << endl;
     cout << "  -goal goal-state: specify the goal state of your puzzle" << endl;
+    cout << "  -print_path print-flag: Flag to indicate printing path if solution exist, accepts boolean string (i.e. true or false)." << endl;
 }
 
 inline bool StrStartWith(const char *str, const char *pre) {
