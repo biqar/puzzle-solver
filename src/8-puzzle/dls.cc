@@ -34,6 +34,7 @@ private:
 
     std::map<long long int, bool> m;
     int node_expanded;
+    int node_generated;
 
     void run_dls(Node *current_node);
 };
@@ -46,22 +47,23 @@ int DlsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
 
     m[construct_board_key(initial_state)] = true;
     node_expanded = 0;
+    node_generated = 1;
 
     return 1;
 }
 
 void DlsEightPuzzle::run_dls(Node *current_node) {
-    //printf("current node depth: %d\n", current_node->depth);
-    //printf("board_key: %lld\n", construct_board_key(current_node->state));
-    //print_board(current_node->state);
+//    printf("current node depth: %d\n", current_node->depth);
+//    print_board(current_node->state);
 
     if(current_node->depth > DLS_MAX_DEPTH) return;
 
     if(equal_state(current_node->state, goal_state)) {
-        printf("found solution by expending [%d] nodes\n", node_expanded);
+        printf("solution found!\n");
         return;
     }
     std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
+    node_generated += child_list.size();
     node_expanded += 1;
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
         long long int child_state_key = construct_board_key((*it)->state);
@@ -74,6 +76,7 @@ void DlsEightPuzzle::run_dls(Node *current_node) {
 
 int DlsEightPuzzle::run() {
     run_dls(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    printf("[8-puzzle] [dls] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
     return 1;
 }
 
