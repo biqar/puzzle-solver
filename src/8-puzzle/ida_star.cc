@@ -35,6 +35,7 @@ private:
 
     bool is_found;
     int node_expanded;
+    int node_generated;
 
     void ida_star();
 
@@ -70,12 +71,12 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
         return current_node_total_cost;
     }
 
-
     std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
     int ret = INF;
-    child_list.sort(comp);
+    //child_list.sort(comp);
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
+        node_generated += 1;
         ret = utils::_min(ret, run_astar(max_cost, *it));
 
         if(is_found) return ret;
@@ -88,17 +89,19 @@ void IdaStarEightPuzzle::ida_star() {
     int initial_goal_hval = bound;
     is_found = false;
     node_expanded = 0;
+    node_generated = 0;
 
     while(true) {
+        node_generated += 1;
         int ret = run_astar(bound, create_new_node(0, initial_goal_hval, NULL, initial_state));
 
         if(is_found) {
-            printf("found solution by expending [%d] nodes\n", node_expanded);
+            printf("[8-puzzle] [IDA-Star] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
             return;
         }
 
         if(ret == INF) {
-            printf("Not possible to find a solution!");
+            printf("[8-puzzle] [IDA-Star] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
             exit(EXIT_FAILURE);
         }
         bound = ret;
