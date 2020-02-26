@@ -11,7 +11,7 @@
 #include <list>
 #include <map>
 
-#define IDS_MAX_DEPTH 400
+#define IDS_MAX_DEPTH 40
 
 class IdsEightPuzzle : public Solver {
 public:
@@ -54,9 +54,9 @@ int IdsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
 }
 
 bool IdsEightPuzzle::run_dls(Node *current_node, int depth_limit) {
-    //printf("current node depth: %d\n", current_node->depth);
-    //printf("board_key: %lld\n", construct_board_key(current_node->state));
-    //print_board(current_node->state);
+//    printf("depth_limit: %d\n", depth_limit);
+//    printf("current node depth: %d\n", current_node->depth);
+//    print_board(current_node->state);
 
     if(current_node->depth > IDS_MAX_DEPTH) return false;
 

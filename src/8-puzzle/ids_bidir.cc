@@ -11,7 +11,7 @@
 #include <list>
 #include <map>
 
-#define IDS_BIDIR_MAX_DEPTH 400
+#define IDS_BIDIR_MAX_DEPTH 20
 
 class IdsBidirEightPuzzle : public Solver {
 public:

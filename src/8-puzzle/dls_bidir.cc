@@ -11,7 +11,7 @@
 #include <list>
 #include <map>
 
-#define MAX_DEPTH 40
+#define MAX_DEPTH 20
 
 class DlsBidirEightPuzzle : public Solver {
 public:
