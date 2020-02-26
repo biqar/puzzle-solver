@@ -12,7 +12,7 @@
 #include <queue>
 #include <list>
 
-#define INF (1 << 28)
+#define INF (200)
 
 class IdaStarEightPuzzle : public Solver {
 public:
@@ -36,6 +36,7 @@ private:
     bool is_found;
     int node_expanded;
     int node_generated;
+    std::map<long long int, bool> m;
 
     void ida_star();
 
@@ -62,7 +63,7 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
 //    print_board(current_node->state);
 
     if(equal_state(current_node->state, goal_state)) {
-        printf("solution found!");
+        printf("solution found!\n");
         is_found = true;
         return current_node_total_cost;
     }
@@ -73,13 +74,16 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
 
     std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
     node_expanded += 1;
+    node_generated += child_list.size();
     int ret = INF;
     //child_list.sort(comp);
     for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
-        node_generated += 1;
-        ret = utils::_min(ret, run_astar(max_cost, *it));
-
-        if(is_found) return ret;
+        long long int child_state_key = construct_board_key((*it)->state);
+        if(m.find(child_state_key) == m.end()) {
+            m[child_state_key] = true;
+            ret = utils::_min(ret, run_astar(max_cost, *it));
+            if (is_found) return ret;
+        }
     }
     return ret;
 }
@@ -92,7 +96,10 @@ void IdaStarEightPuzzle::ida_star() {
     node_generated = 0;
 
     while(true) {
+        m.clear();
+        m[construct_board_key(initial_state)] = true;
         node_generated += 1;
+//        printf("bound: %d\n", bound);
         int ret = run_astar(bound, create_new_node(0, initial_goal_hval, NULL, initial_state));
 
         if(is_found) {
