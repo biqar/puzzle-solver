@@ -118,6 +118,7 @@ DFS is avoiding stack overflow due to excessively deep recursions.
 For 8-puzzle, here is the list of run commands for different implemented algorithms along with the corresponding mode.
 
 * A*
+
 Implemented standard A* algorithm, used summation of heuristic cost and path cost to choose the node to explore. 
 Used priority_queue from C++ Standard Template Library (STL).
 
@@ -127,6 +128,7 @@ Run command:
 ```
 
 * IDA*
+
 Iterative deepening A* (IDA*), a variant of iterative deepening depth-first search (IDS), that borrows the idea of using
 heuristic function to evaluate the remaining cost to get to the goal from the A* search algorithm. As the working principle 
 is depth-first search, you can consider IDA* as a memory constraint version of A* algorithm. Here for 8-puzzle while applying 
@@ -138,6 +140,7 @@ Run command:
 ```
 
 * BFS
+
 This one is the plain implementation of BFS, where the goal test is perform on the exploration phase.
 
 Run command:
@@ -146,6 +149,7 @@ Run command:
 ```
 
 * Optimized BFS
+
 This is a slight variation of the previous one, where the goal test is perform on the new state generation phase. 
 So the number of generated and expanded nodes has significantly reduced.
 
@@ -155,6 +159,7 @@ Run command:
 ```
 
 * BFS Greedy
+
 This variation of BFS is also known as best-first search, where we consider the heuristic path cost to predict the goal 
 and expand the node which has lowest such cost. For efficient selection of the current best node to expand, I used 
 priority_queue from C++ Standard Template Library (STL). From table ??? we can observe that, BFS greedy performs the best 
@@ -166,6 +171,7 @@ Run command:
 ```
 
 * Bi-directional BFS
+
 Started 2 search simultaneously, one from initial state to the goal and another in the reverse direction. To avoid the complexity
 of multiple threads, we make an alternate strategy to expand the nodes by a single layer from both direction. By this strategy, 
 the search from initial state to the goal state expand one depth and check if any solution found from the reverse direction 
@@ -178,6 +184,7 @@ Run command:
 ```
 
 * Recursive DFS
+
 This is the plain recursive version of DFS.
 
 Run command:
@@ -186,6 +193,7 @@ Run command:
 ```
 
 * Stack Based DFS
+
 To avoid the stack overflow by deep recursion, we introduce the stack based implementation of DFS. We found it particularly 
 useful as from the table ??? we can observer recursive DFS caught segmentation fault in 4 out of 10 cases due to stack 
 overflow. On the other hand, stack based DFS receive 0 segmentation fault.
@@ -196,6 +204,7 @@ Run command:
 ```
 
 * DLS
+
 This is the plain depth limit search implementation, where we consider maximum depth as 40.
 
 Run command:
@@ -204,6 +213,7 @@ Run command:
 ```
 
 * Bi-directional DLS
+
 This is the bi-directional version of the depth limit search. As we launch 2 search while applying bi-directional strategy,
 we halved the maximum depth of the search space comparing to the plain DLS.
 
@@ -213,6 +223,7 @@ Run command:
 ```
 
 * IDS
+
 Similar to DLS, maximum depth is set to 40.
 
 Run command:
@@ -221,6 +232,7 @@ Run command:
 ```
 
 * Bi-directional IDS
+
 Similar to bi-directional DLS, halved the maximum depth of the search space comparing to the plain IDS.
 
 Run command:
@@ -243,16 +255,16 @@ Here is the list of node generated and expanded by the algorithms,
 
 | Algorithm\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| a_star               | 17 / 9          | 12 / 6        | 1 / 0 | 10 / 5         | 32 / 16            | 8 / 4          | 11927 / 7535    | 13119 / 8296    | X -> 241921 / 181440    | 10 / 5         |
-| ida_star             | 19 / 9          | 13 / 6        | 1 / 0 | 11 / 5         | 29 / 13            | 10 / 4         | 8549 / 5336     | 11427 / 7122    | X -> 13822196 / 8491127 | 12 / 5         |
-| bfs                  | 328 / 196       | 104 / 63      | 1 / 1 | 71 / 42        | 333 / 203          | 37 / 20        | 181440 / 181440 | 181440 / 181440 | X -> 181440 / 181440    | 69 / 38        |
-| bfs [optimized]      | 195 / 113       | 62 / 37       | 1 / 0 | 41 / 24        | 202 / 116          | 19 / 10        | 181439 / 181385 | 181439 / 181399 | X -> 181440 / 181440    | 37 / 22        |
-| bfs [greedy]         | 17 / 9          | 12 / 6        | 1 / 0 | 10 / 5         | 20 / 10            | 8 / 4          | 146 / 89        | 213 / 123       | X -> 181440 / 181440    | 10 / 5         |
-| bfs [bi-directional] | 59 / 29         | 34 / 19       | 2 / 0 | 20 / 10        | 49 / 24            | 12 / 6         | 16129 / 10240   | 16164 / 10261   | X -> 362878 / 362657    | 24 / 11        |
+| a_star               | 17 / 9          | 12 / 6        | 1 / 0 | 10 / 5         | 32 / 16            | 8 / 4          | 11927 / 7535    | 13119 / 8296    | Solution Not Found <br> 241921 / 181440    | 10 / 5         |
+| ida_star             | 19 / 9          | 13 / 6        | 1 / 0 | 11 / 5         | 29 / 13            | 10 / 4         | 8549 / 5336     | 11427 / 7122    | Solution Not Found <br> 13822196 / 8491127 | 12 / 5         |
+| bfs                  | 328 / 196       | 104 / 63      | 1 / 1 | 71 / 42        | 333 / 203          | 37 / 20        | 181440 / 181440 | 181440 / 181440 | Solution Not Found <br> 181440 / 181440    | 69 / 38        |
+| bfs [optimized]      | 195 / 113       | 62 / 37       | 1 / 0 | 41 / 24        | 202 / 116          | 19 / 10        | 181439 / 181385 | 181439 / 181399 | Solution Not Found <br> 181440 / 181440    | 37 / 22        |
+| bfs [greedy]         | 17 / 9          | 12 / 6        | 1 / 0 | 10 / 5         | 20 / 10            | 8 / 4          | 146 / 89        | 213 / 123       | Solution Not Found <br> 181440 / 181440    | 10 / 5         |
+| bfs [bi-directional] | 59 / 29         | 34 / 19       | 2 / 0 | 20 / 10        | 49 / 24            | 12 / 6         | 16129 / 10240   | 16164 / 10261   | Solution Not Found <br> 362878 / 362657    | 24 / 11        |
 | dfs [recursive]      | 45902 / 25414   | segfault      | 1 / 0 | 47 / 25        | 3302 / 1825        | 1539 / 849     | segfault        | segfault        | segfault                | 58013 / 32132  |
-| dfs [stack-based]    | 172532 / 139521 | 44928 / 25911 | 0 / 0 | 132509 / 89866 | 106652 / 67853     | 53 / 30        | 111292 / 71403  | 112424 / 72473  | X -> 181439 / 181440    | 98579 / 61635  |
-| dls                  | 89990 / 54204   | 89991 / 54206 | 1 / 0 | 121282 / 73158 | X -> 89991 / 54205 | 110642 / 66666 | 104943 / 58901  | 103680 / 58336  | X -> 111711 / 67385     | 104943 / 58903 |
-| dls [bi-directional] | 2515 / 1517     | 2782 / 1677   | 1 / 0 | 4665 / 2802    | 6809 / 4072        | 2801 / 1687    | 16254 / 9094    | 7751 / 4319     | X -> 29119 / 17439      | 1303 / 727     |
+| dfs [stack-based]    | 172532 / 139521 | 44928 / 25911 | 0 / 0 | 132509 / 89866 | 106652 / 67853     | 53 / 30        | 111292 / 71403  | 112424 / 72473  | Solution Not Found <br> 181439 / 181440    | 98579 / 61635  |
+| dls                  | 89990 / 54204   | 89991 / 54206 | 1 / 0 | 121282 / 73158 | Solution Not Found <br> 89991 / 54205 | 110642 / 66666 | 104943 / 58901  | 103680 / 58336  | Solution Not Found <br> 111711 / 67385     | 104943 / 58903 |
+| dls [bi-directional] | 2515 / 1517     | 2782 / 1677   | 1 / 0 | 4665 / 2802    | 6809 / 4072        | 2801 / 1687    | 16254 / 9094    | 7751 / 4319     | Solution Not Found <br> 29119 / 17439      | 1303 / 727     |
 | ids                  | 720 / 423       | 662 / 390     | 1 / 0 | 47 / 25        | segfault           | 669 / 394      | segfault        | 92439 / 51938   | segfault                | 52477 / 29331  |
 | ids [bi-directional] | 2515 / 1517     | 2782 / 1677   | 1 / 0 | 4665 / 2802    | 6809 / 4072        | 2801 / 1687    | 16253 / 9094    | 7750 / 4319     | segfault                | 1303 / 727     |
 | Table 1: Showing results|||||||||||
@@ -281,9 +293,9 @@ Here is the list of node generated and expanded by the A* algorithm for differen
 
 | Heuristic\Input | input [1] | input [2] | input [3] | input [4] | input [5] | input [6] | input [7] | input [8] | input [9] | input [10] |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Manhattan Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 11927 / 7535    | 13119 / 8296    | X -> 241921 / 181440 | 10 / 5 |
-| Hamming Distance   | 40 / 21 | 14 / 7 | 1 / 0 | 10 / 5 | 39 / 21 | 10 / 5 | 186288 / 128467 | 179773 / 122814 | X -> 241921 / 181440 | 12 / 6 |
-| Euclidean Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 195 / 116       | 121 / 73        | X -> 241921 / 181440 | 10 / 5 |
+| Manhattan Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 11927 / 7535    | 13119 / 8296    | Solution Not Found <br> 241921 / 181440 | 10 / 5 |
+| Hamming Distance   | 40 / 21 | 14 / 7 | 1 / 0 | 10 / 5 | 39 / 21 | 10 / 5 | 186288 / 128467 | 179773 / 122814 | Solution Not Found <br> 241921 / 181440 | 12 / 6 |
+| Euclidean Distance | 17 / 9  | 12 / 6 | 1 / 0 | 10 / 5 | 32 / 16 | 8 / 4  | 195 / 116       | 121 / 73        | Solution Not Found <br> 241921 / 181440 | 10 / 5 |
 
 <table>
   <tr>
