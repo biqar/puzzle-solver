@@ -75,7 +75,6 @@ void BfsEightPuzzle::run_bfs() {
             }
         }
     }
-    printf("found solution by expending [%d] nodes\n", node_expanded);
 }
 
 int BfsEightPuzzle::run() {
