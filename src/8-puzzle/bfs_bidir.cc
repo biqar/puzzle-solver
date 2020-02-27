@@ -78,7 +78,7 @@ void BfsBidirEightPuzzle::goal_to_initial_bfs(int depth) {
         node_expanded += 1;
 
 //        printf("current node depth: %d\n", current_node->depth);
-//        print_board(current_node->state);
+//        print_board(current_node->state); printf("\n");
 
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
@@ -109,7 +109,7 @@ void BfsBidirEightPuzzle::initial_to_goal_bfs(int depth) {
         node_expanded += 1;
 
 //        printf("current node depth: %d\n", current_node->depth);
-//        print_board(current_node->state);
+//        print_board(current_node->state); printf("\n");
 
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {
@@ -133,6 +133,7 @@ int BfsBidirEightPuzzle::run() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
         if(is_print_path) print_board(initial_state);
+        printf("\n");
         printf("[8-puzzle] [bfs-bidir] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
         return 1;
     }

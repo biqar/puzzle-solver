@@ -57,6 +57,7 @@ void BfsGreedyEightPuzzle::run_bfs_greedy() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
         if(is_print_path) print_board(initial_state);
+        printf("\n");
         return;
     }
     while(!Q.empty()) {
@@ -64,7 +65,7 @@ void BfsGreedyEightPuzzle::run_bfs_greedy() {
         node_expanded += 1;
 
 //        printf("current node depth: %d\n", current_node->depth);
-//        print_board(current_node->state);
+//        print_board(current_node->state); printf("\n");
 
         std::list<Node *> child_list = expand_node(current_node, goal_state, heuristic);
         for (std::list<Node *>::iterator it=child_list.begin(); it != child_list.end(); ++it) {

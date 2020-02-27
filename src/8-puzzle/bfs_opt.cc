@@ -56,6 +56,7 @@ void BfsOptEightPuzzle::run_bfs() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
         if(is_print_path) print_board(initial_state);
+        printf("\n");
         return;
     }
     while(!q.empty()) {

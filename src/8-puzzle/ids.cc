@@ -56,7 +56,7 @@ int IdsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
 bool IdsEightPuzzle::run_dls(Node *current_node, int depth_limit) {
 //    printf("depth_limit: %d\n", depth_limit);
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(current_node->depth > IDS_MAX_DEPTH) return false;
 

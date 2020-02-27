@@ -54,7 +54,7 @@ int DlsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
 
 void DlsEightPuzzle::run_dls(Node *current_node) {
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(current_node->depth > DLS_MAX_DEPTH) return;
 

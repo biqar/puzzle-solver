@@ -82,69 +82,6 @@ inline State *move_to_new_state(State *current_state, Move move) {
     return new_state = NULL;
 }
 
-//inline int calculate_hamming_distance(State *current_state, State *compare_state) {
-//    int ret = 0;
-//
-//    for(int i=0; i<BOARD_DIM_X; i+=1) {
-//        for (int j = 0; j < BOARD_DIM_Y; j += 1) {
-//            if (current_state->board[i][j] != BLANK_TILE && current_state->board[i][j] != compare_state->board[i][j]) {
-//                ret += 1;
-//            }
-//        }
-//    }
-//
-//    return ret;
-//}
-//
-//inline int calculate_manhattan_distance(State *current_state, State *compare_state) {
-//    int ret = 0;
-//
-//    for(int i=0; i<BOARD_DIM_X; i+=1) {
-//        for(int j=0; j<BOARD_DIM_Y; j+=1) {
-//            if(current_state->board[i][j] != BLANK_TILE && current_state->board[i][j] != compare_state->board[i][j]) {
-//                bool found = false;
-//                for(int ii=0; ii<BOARD_DIM_X; ii+=1) {
-//                    for(int jj=0; jj<BOARD_DIM_Y; jj+=1) {
-//                        if(current_state->board[i][j] == compare_state->board[ii][jj]) {
-//                            ret += (utils::_abs(i-ii) + utils::_abs(j-jj));
-//                            found = true;
-//                            break;
-//                        }
-//                    }
-//                    if(found) break;
-//                }
-//            }
-//        }
-//    }
-//
-//    return ret;
-//}
-//
-////todo: need to be confirm if: without square-root, euclidean distance is a Admissible Heuristics
-//inline int calculate_euclidean_distance(State *current_state, State *compare_state) {
-//    int ret = 0;
-//
-//    for(int i=0; i<BOARD_DIM_X; i+=1) {
-//        for(int j=0; j<BOARD_DIM_Y; j+=1) {
-//            if(current_state->board[i][j] != BLANK_TILE && current_state->board[i][j] != compare_state->board[i][j]) {
-//                bool found = false;
-//                for(int ii=0; ii<BOARD_DIM_X; ii+=1) {
-//                    for(int jj=0; jj<BOARD_DIM_Y; jj+=1) {
-//                        if(current_state->board[i][j] == compare_state->board[ii][jj]) {
-//                            ret += (((i-ii)*(i-ii)) + ((j-jj)*(j-jj)));
-//                            found = true;
-//                            break;
-//                        }
-//                    }
-//                    if(found) break;
-//                }
-//            }
-//        }
-//    }
-//
-//    return ret;
-//}
-
 inline bool equal_state(State *current_state, State *compare_state) {
     for(int i=0; i<BOARD_DIM_X; i+=1) {
         for (int j = 0; j < BOARD_DIM_Y; j += 1) {
@@ -164,7 +101,7 @@ inline void print_board(State *state) {
         }
         printf("\n");
     }
-    printf("\n");
+    //printf("\n");
 }
 
 inline State *construct_goal_state() {

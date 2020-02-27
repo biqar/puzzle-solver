@@ -60,7 +60,7 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
     int current_node_total_cost = get_total_cost(current_node);
 
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(equal_state(current_node->state, goal_state)) {
         printf("solution found!\n");

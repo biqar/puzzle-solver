@@ -58,7 +58,7 @@ int IdsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heurist
 
 bool IdsBidirEightPuzzle::initial_to_goal_dls(Node *current_node, int depth_limit) {
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(current_node->depth > IDS_BIDIR_MAX_DEPTH) return false;
 
@@ -83,7 +83,7 @@ bool IdsBidirEightPuzzle::initial_to_goal_dls(Node *current_node, int depth_limi
 bool IdsBidirEightPuzzle::goal_to_initial_dls(Node *current_node, int depth_limit) {
     //printf("current node depth: %d\n", current_node->depth);
     //printf("board_key: %lld\n", construct_board_key(current_node->state));
-    //print_board(current_node->state);
+    //print_board(current_node->state); printf("\n");
 
     if(current_node->depth > IDS_BIDIR_MAX_DEPTH) return false;
 

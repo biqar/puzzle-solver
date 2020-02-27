@@ -56,13 +56,14 @@ void AStarEightPuzzle::run_astar() {
     if(equal_state(initial_state, goal_state)) {
         printf("solution found!\n");
         if(is_print_path) print_board(initial_state);
+        printf("\n");
         return;
     }
     while(!q.empty()) {
         Node *current_node = q.top(); q.pop();
 
 //        printf("current node depth: %d\n", current_node->depth);
-//        print_board(current_node->state);
+//        print_board(current_node->state); printf("\n");
 
         long long int current_node_key = construct_board_key(current_node->state);
         if(m.find(current_node_key) != m.end()) {

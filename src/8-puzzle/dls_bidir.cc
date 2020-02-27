@@ -61,7 +61,7 @@ int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heurist
 
 void DlsBidirEightPuzzle::run_dls_backward(Node *current_node) {
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(current_node->depth > MAX_DEPTH) return;
 
@@ -86,7 +86,7 @@ void DlsBidirEightPuzzle::run_dls_backward(Node *current_node) {
 
 void DlsBidirEightPuzzle::run_dls_forward(Node *current_node) {
 //    printf("current node depth: %d\n", current_node->depth);
-//    print_board(current_node->state);
+//    print_board(current_node->state); printf("\n");
 
     if(current_node->depth > MAX_DEPTH) return;
 
