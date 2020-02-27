@@ -3,10 +3,10 @@
 ## Project Goal
 
 The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. 8-puzzle, 15-puzzle,
-8-queen, Sudoku, etc.) using different problem solving techniques (i.e. informed search, uninformed search, etc.).
+8-queen, Sudoku, etc.) using different problem-solving techniques (i.e. informed search, uninformed search, etc.).
 Here by word "pluggable" we mean in solving puzzles user can independently decide the search strategy along with the 
 custom heuristic functions. If needed, user can extend this project to device their own solution with a very low effort. 
-Besides, this application is designed in a way that, it will be a easy going platform for benchmarking any puzzles w.r.t. different
+Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
 state space search strategy, optimization techniques and heuristic functions.
 
 ### Search Strategies
@@ -41,6 +41,14 @@ Relaxed heuristic functions
 * Linear Conflict Heuristics
 * Gaschnig’s Heuristics
 
+## Project Structure
+The project has several independent parts that we combine to work as a whole. Directory "core" contains two factory 
+methods that produce the puzzle solver and heuristic instance based on the parameter passed. Puzzle solutions can be 
+implemented in separate directory as we have done for "8-puzzle" here. All the heuristic implementations placed in the 
+"heuristic" directory. Directory "utils" all the utility methods that help other functions to operate.
+
+Please keep in mind, this is an active project and project architecture may change without any prior announcement.
+
 ## How to Build
 
 ```
@@ -69,9 +77,14 @@ Here is the parameter definition,
 
 ## 8-puzzle
 
+### Problem Formulation 
+8-puzzle problem is a classical state space search problem. Here, we device several search algorithms to solve 8-puzzle problem. 
+8-puzzle has an initial state, from where we explore possible search paths with a strategy to reach the goal state. 
+Informed search strategies associate a path cost g(n) with a heuristic cost h(n) to find a optimal solution.
+
 ### Implementation Domain
 
-Currently I have implemented the following heuristic functions:
+Currently we have implemented the following heuristic functions:
 
 | Heuristic Functions | Parameter token for this application |
 | --- | --- |
@@ -81,7 +94,7 @@ Currently I have implemented the following heuristic functions:
 
 If you do not specify any particular heuristic function in the program parameter, `manhattan` will be considered as the default one. 
 
-I have used the following algorithms (with the modes) for solving 8-puzzle,
+We have used the following algorithms (with the modes) for solving 8-puzzle,
 
 |  | bi-directional | greedy | recursive | stack-based | optimized |
 | --- | --- | --- | --- | --- | --- |
@@ -95,8 +108,8 @@ I have used the following algorithms (with the modes) for solving 8-puzzle,
 Please keep in mind that, for the current implementation all the names specified above is actually expected as the parameter name.
 
 ### Motivation of Algorithm Mode
-While implementing different algorithms for solving 8-puzzle problem, I found some optimization techniques help the algorithms' 
-to be more efficient. This techniques can be rigid or independent w.r.t. the algorithm itself. 
+While implementing different algorithms for solving 8-puzzle problem, we found some optimization techniques help the algorithms' 
+to be more efficient. These techniques can be rigid or independent w.r.t. the algorithm itself. 
 For example, bi-directional search technique is very common in the domain of searching algorithms and can be applied to 
 a large number of algorithms. Bi-directional search launch two searches, one from the initial state to the goal state 
 and another one from the reverse direction. The key benefit here is it help reduce the search space, as we know the 
@@ -110,6 +123,7 @@ DLS vs. Bi-directional DLS for input 5). This become possible due to the lower s
     <img align="middle" src="https://github.com/biqar/puzzle-solver/blob/master/resources/bidirectional_search_space_reduction.png" height="400" width="584" alt="bidirectional_search_space_reduction"/>
     <figcaption>Figure 1: Showing search space reduction by bi-directional search</figcaption>
 </figure>
+
 
 Some techniques can be applied to very selective algorithms. For example, DFS is a very well known algorithm in the domain of 
 state space search and can be implemented in recursive and non-recursive (stack based) way. The benefit of using stack based 
@@ -134,7 +148,7 @@ Run command:
 Iterative deepening A* (IDA*), a variant of iterative deepening depth-first search (IDS), that borrows the idea of using
 heuristic function to evaluate the remaining cost to get to the goal from the A* search algorithm. As the working principle 
 is depth-first search, you can consider IDA* as a memory constraint version of A* algorithm. Here for 8-puzzle while applying 
-IDA*, I consider the constraint of the maximum cost (heuristic cost + path cost) as 200.
+IDA*, we consider the constraint of the maximum cost (heuristic cost + path cost) as 200.
 
 Run command:
 ```
@@ -163,9 +177,9 @@ Run command:
 * BFS Greedy
 
 This variation of BFS is also known as best-first search, where we consider the heuristic path cost to predict the goal 
-and expand the node which has lowest such cost. For efficient selection of the current best node to expand, I used 
+and expand the node which has lowest such cost. For efficient selection of the current best node to expand, we used 
 priority_queue from C++ Standard Template Library (STL). From table 2 we can observe that, BFS greedy performs the best 
-in solving 8-puzzle. I will discuss about this later.
+in solving 8-puzzle. We will discuss about this later.
 
 Run command:
 ```
@@ -242,7 +256,7 @@ Run command:
 ./puzzle -problem 8-puzzle -algo ids -mode bi-directional -heu manhattan -initial 1,2,3,7,4,5,6,8,0 -goal 1,2,3,8,6,4,7,5,0 -print_path false
 ```
 
-### Sample Bord Configuration
+### Sample Board Configuration
 All the test cases is listed in the following table. Input 6 is the base case, where the initial state and the goal state is actually same.
 Input 9 is the impossible case where the solution actually not exist. Input 7 and 8 is considered as the hardest eight-puzzle instances,
 as both require at least 31 moves to solve.
@@ -256,6 +270,8 @@ as both require at least 31 moves to solve.
 | input [9] | 2 1 3<br>8 0 4<br>6 7 5 | 1 2 3<br>4 5 6<br>7 8 0 | input [10] | 1 3 4<br>8 6 2<br>7 0 5 | 1 2 3<br>8 0 4<br>7 6 5 |
 
 ### Performance Characterization
+
+#### Algorithm Performance
 
 The following table contains the performance (w.r.t. the number of generated and expanded nodes) of the algorithms in solving 8-puzzle.
 If not stated otherwise, all the performance in this report is demonstrated as the format of {# of generated nodes} / {# of expanded nodes}.
@@ -300,14 +316,16 @@ Sixth, DLS perform the worst among all the algorithms, but it reaches to goal st
     </td>
   </tr>
   <tr>
-    <td align="middle">Figure 1 (a): Input 1</td>
-    <td align="middle">Figure 1 (b): Input 4</td>
-    <td align="middle">Figure 1 (c): Input 8</td>
+    <td align="middle">Figure 2 (a): Input 1</td>
+    <td align="middle">Figure 2 (b): Input 4</td>
+    <td align="middle">Figure 2 (c): Input 8</td>
   </tr>
   <tr>
     <td colspan="3" align="middle">Figure 2: Comparing performance of different algorithms for solving 8-puzzle</td>
   </tr>
 </table>
+
+#### Heuristic Function Performance in A* Algorithm
 
 The following table compares the performance of heuristic methods in A* algorithm. 
 We found euclidean distance perform best among all the heuristic functions. 
@@ -332,9 +350,9 @@ We also plotted the performance metric for the three input cases (input 1, 7 and
     </td>
   </tr>
   <tr>
-    <td align="middle">Figure 2 (a): Input 1</td>
-    <td align="middle">Figure 2 (b): Input 7</td>
-    <td align="middle">Figure 2 (c): Input 8</td>
+    <td align="middle">Figure 3 (a): Input 1</td>
+    <td align="middle">Figure 3 (b): Input 7</td>
+    <td align="middle">Figure 3 (c): Input 8</td>
   </tr>
   <tr>
     <td colspan="3" align="middle">Figure 3: Comparing performance of different heuristic methods for solving 8-puzzle using A* algorithm</td>
