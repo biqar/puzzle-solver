@@ -268,6 +268,7 @@ as both require at least 31 moves to solve.
 | input [5] | 4 1 3<br>2 5 6<br>7 8 0 | 1 2 3<br>4 5 6<br>7 8 0 | input [6] | 1 2 3<br>4 5 6<br>7 8 0 | 1 2 3<br>4 8 5<br>7 6 0 |
 | input [7] | 8 6 7<br>2 5 4<br>3 0 1 | 1 2 3<br>4 5 6<br>7 8 0 | input [8] | 6 4 7<br>8 5 0<br>3 2 1 | 1 2 3<br>4 5 6<br>7 8 0 |
 | input [9] | 2 1 3<br>8 0 4<br>6 7 5 | 1 2 3<br>4 5 6<br>7 8 0 | input [10] | 1 3 4<br>8 6 2<br>7 0 5 | 1 2 3<br>8 0 4<br>7 6 5 |
+| input [11] | 2 1 3<br>8 0 4<br>6 7 5 | 1 2 3<br>8 0 4<br>7 6 5 | input [12] | 5 6 7<br>4 0 8<br>3 2 1 | 1 2 3<br>8 0 4<br>7 6 5 |
 
 ### Performance Characterization
 
@@ -376,4 +377,5 @@ We also plotted the performance metric for the three input cases (input 1, 7 and
 4. [Github Repo] Heavily influenced by the following github repository:
     * C-Collamar's 8-Puzzle-Solver: https://github.com/C-Collamar/8-Puzzle-Solver
     * wolfchimneyrock's 8-Puzzle-Solver: https://github.com/wolfchimneyrock/8-Puzzle-Solver
+    * jules's 8-puzzle: https://github.com/jubear720/8-puzzle
 
