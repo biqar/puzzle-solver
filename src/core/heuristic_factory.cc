@@ -3,9 +3,9 @@
 //
 
 #include "heuristic_factory.h"
-#include "../heuristic/hamming.cc"
-#include "../heuristic/manhattan.cc"
-#include "../heuristic/euclidean.cc"
+#include "../8-puzzle/heuristic/hamming.cc"
+#include "../8-puzzle/heuristic/manhattan.cc"
+#include "../8-puzzle/heuristic/euclidean.cc"
 using utils::Properties;
 
 Heuristic *HeuristicFactory::CreateHeuristic(utils::Properties &props) {

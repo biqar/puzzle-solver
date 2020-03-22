@@ -5,7 +5,7 @@
 #ifndef HEURISTIC_H
 #define HEURISTIC_H
 
-#include "state.h"
+#include "../8-puzzle/core/state.h"
 
 class Heuristic {
 public:

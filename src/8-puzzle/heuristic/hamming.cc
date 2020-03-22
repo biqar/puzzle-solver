@@ -2,7 +2,7 @@
 // Created by aislam6 on 2/16/20.
 //
 
-#include "../core/heuristic.h"
+#include "../../core/heuristic.h"
 #include "../core/state.h"
 
 class Hamming : public Heuristic {

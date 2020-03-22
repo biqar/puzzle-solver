@@ -9,7 +9,7 @@
 #include <list>
 #include <iostream>
 #include <stdlib.h>
-#include "heuristic.h"
+#include "../../core/heuristic.h"
 
 typedef struct Node {
     int depth;

@@ -5,7 +5,7 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
-#include "state.h"
+#include "../8-puzzle/core/state.h"
 #include "heuristic.h"
 
 class Solver {
