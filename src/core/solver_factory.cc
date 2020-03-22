@@ -4,6 +4,7 @@
 
 #include "solver_factory.h"
 #include "heuristic.h"
+
 #include "../8-puzzle/a_star.cc"
 #include "../8-puzzle/ida_star.cc"
 #include "../8-puzzle/bfs.cc"
@@ -16,6 +17,11 @@
 #include "../8-puzzle/dls_bidir.cc"
 #include "../8-puzzle/ids.cc"
 #include "../8-puzzle/ids_bidir.cc"
+
+#include "../n-queens/hill_climbing.cc"
+#include "../n-queens/hill_climbing_sways_move.cc"
+#include "../n-queens/hill_climbing_rr.cc"
+#include "../n-queens/hill_climbing_rr_sways_move.cc"
 
 using utils::Properties;
 
@@ -61,7 +67,23 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
             return new IdsEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
         }
         return NULL;
-    } else {
+    }
+    else if (props["puzzle"] == "n-queens") {
+        if(props["algorithm"] == "hill-climbing") {
+            if(props["mode"] == "sideways-move") {
+                return new HillClimbingWSideWaysNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+            }
+            if(props["mode"] == "random-restart") {
+                return new HillClimbingRRNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+            }
+            if(props["mode"] == "random-restart-sways-move") {
+                return new HillClimbingRRWSideWaysNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+            }
+            return new HillClimbingNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+        }
+        return NULL;
+    }
+    else {
         return NULL;
     }
 }
