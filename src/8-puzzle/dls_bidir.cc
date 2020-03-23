@@ -110,10 +110,10 @@ void DlsBidirEightPuzzle::run_dls_forward(Node *current_node) {
 }
 
 int DlsBidirEightPuzzle::run() {
-    run_dls_forward(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    run_dls_forward(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state));
     if(!is_found) {
         node_generated += 1;
-        run_dls_backward(create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state));
+        run_dls_backward(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(goal_state, initial_state)), NULL, goal_state));
     }
 
     printf("[8-puzzle] [dls-bidir] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);

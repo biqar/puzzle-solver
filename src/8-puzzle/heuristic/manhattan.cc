@@ -10,10 +10,12 @@ public:
     Manhattan() {
     }
 
-    int guess_distance(State *_current_state, State *_goal_state);
+    int guess_distance(void *_parameter);
 };
 
-int Manhattan::guess_distance(State *_current_state, State *_goal_state) {
+int Manhattan::guess_distance(void *_parameter) {
+    State *_current_state = ((EightPuzzleHeuristicParam *) _parameter)->current_state;
+    State *_goal_state = ((EightPuzzleHeuristicParam *) _parameter)->goal_state;
     int ret = 0;
 
     for(int i=0; i<BOARD_DIM_X; i+=1) {

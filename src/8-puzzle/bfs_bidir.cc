@@ -50,12 +50,12 @@ int BfsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heurist
     heuristic = _heuristic;
     is_print_path = _print_path;
 
-    Node *initial_node = create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state);
+    Node *initial_node = create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state);
     initial_to_goal_q.push(initial_node);
     long long int initial_state_key = construct_board_key(initial_state);
     initial_to_goal_m[initial_state_key] = true;
 
-    Node *goal_node = create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state);
+    Node *goal_node = create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(goal_state, initial_state)), NULL, goal_state);
     goal_to_initial_q.push(goal_node);
     long long int goal_state_key = construct_board_key(goal_state);
     goal_to_initial_m[goal_state_key] = true;

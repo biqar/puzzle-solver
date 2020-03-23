@@ -9,7 +9,18 @@
 
 class Heuristic {
 public:
-    virtual int guess_distance(State *_current_state, State *_goal_state) = 0;
+    virtual int guess_distance(void *_parameter) = 0;
+};
+
+class EightPuzzleHeuristicParam {
+public:
+    State *current_state;
+    State *goal_state;
+
+    EightPuzzleHeuristicParam(State *_current_state, State *_goal_state) {
+        current_state = _current_state;
+        goal_state = _goal_state;
+    }
 };
 
 #endif //HEURISTIC_H

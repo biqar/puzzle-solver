@@ -89,7 +89,7 @@ int IdaStarEightPuzzle::run_astar(int max_cost, Node *current_node) {
 }
 
 void IdaStarEightPuzzle::ida_star() {
-    int bound = heuristic->guess_distance(initial_state, goal_state);
+    int bound = heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state));
     int initial_goal_hval = bound;
     is_found = false;
     node_expanded = 0;

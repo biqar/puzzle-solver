@@ -116,13 +116,13 @@ void IdsBidirEightPuzzle::run_iddfs_bidir() {
         node_generated += 1;
 
         initial_to_goal_m[initial_state_key] = 0;
-        if(initial_to_goal_dls(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state), depth)) {
+        if(initial_to_goal_dls(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state), depth)) {
 //            printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, initial_to_goal_m[goal_state_key]);
             printf("[8-puzzle] [ids-bidir] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
             break;
         }
         goal_to_initial_m[goal_state_key] = 0;
-        if(goal_to_initial_dls(create_new_node(0, heuristic->guess_distance(goal_state, initial_state), NULL, goal_state), depth)) {
+        if(goal_to_initial_dls(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(goal_state, initial_state)), NULL, goal_state), depth)) {
             //todo: need to fix the depth here ...
 //            printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, goal_to_initial_m[initial_state_key]);
             printf("[8-puzzle] [ids-bidir] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);

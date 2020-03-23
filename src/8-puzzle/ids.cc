@@ -83,7 +83,7 @@ void IdsEightPuzzle::run_iddfs() {
         m.clear();
         m[construct_board_key(initial_state)] = true;
         node_generated += 1;
-        if(run_dls(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state), depth)) {
+        if(run_dls(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state), depth)) {
 //            printf("found solution by expending [%d] nodes at depth: %d\n", node_expanded, depth);
             printf("[8-puzzle] [ids] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
             break;

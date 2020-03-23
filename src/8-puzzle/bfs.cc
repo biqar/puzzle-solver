@@ -43,7 +43,7 @@ int BfsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_
     heuristic = _heuristic;
     is_print_path = _print_path;
 
-    q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    q.push(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
 
     node_expanded = 0;

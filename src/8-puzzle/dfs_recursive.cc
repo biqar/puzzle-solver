@@ -71,7 +71,7 @@ bool DfsRecursivEightPuzzle::run_dfs_recursive(Node *current_node) {
 }
 
 int DfsRecursivEightPuzzle::run() {
-    run_dfs_recursive(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    run_dfs_recursive(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state));
     printf("[8-puzzle] [dfs-recursive] generated_nodes: [%d], expanded_node: [%d]\n", node_generated, node_expanded);
     return 1;
 }

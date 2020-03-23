@@ -47,7 +47,7 @@ int AStarEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic 
 
     node_expanded = 0;
     node_generated = 1;
-    q.push(create_new_node(0, heuristic->guess_distance(initial_state, goal_state), NULL, initial_state));
+    q.push(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state));
 
     return 1;
 }
