@@ -2,6 +2,10 @@
 
 ## Problem Formulation
 
+Given an integer N > 3, place N queens in an NxN board in such a way that no queens can attack each other. 
+According to the chess rule, a queen is able to attack another queen if and only if both queens occupy 
+the same row, column or diagonal on the board.
+
 ## Implementation Domain
 
 To solve n-queen problem, currently we have implemented different variation of hill-climbing search, they are:

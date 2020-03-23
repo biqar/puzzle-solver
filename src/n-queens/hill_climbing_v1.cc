@@ -3,11 +3,12 @@
 //
 
 #include "core/queen.h"
+#include "core/board.h"
 
-class HillClimbingWSideWaysNQueens : public Solver {
+class HillClimbingV1NQueens : public Solver {
 public:
-    HillClimbingWSideWaysNQueens(void *_parameter) {
-        HillClimbingWSideWaysNQueens::init(_parameter);
+    HillClimbingV1NQueens(void *_parameter) {
+        HillClimbingV1NQueens::init(_parameter);
     }
 
     int init(void *_parameter);
@@ -25,7 +26,7 @@ private:
     NQueenBoard *initial_state;
 };
 
-int HillClimbingWSideWaysNQueens::init(void *_parameter) {
+int HillClimbingV1NQueens::init(void *_parameter) {
     board_dimension = ((NQueenInitParam *)_parameter)->board_dimension;
     mx_sideways_move = ((NQueenInitParam *)_parameter)->mx_sideways_move;
     print_path = ((NQueenInitParam *)_parameter)->print_path;
@@ -35,16 +36,15 @@ int HillClimbingWSideWaysNQueens::init(void *_parameter) {
     return 1;
 }
 
-int HillClimbingWSideWaysNQueens::run() {
+int HillClimbingV1NQueens::run() {
     NQueenBoard next = NULL;
     NQueenBoard current = *initial_state;
     int iteration = 0;
-    int sideways_move = 0;
     int current_attack = current.calculate_attack(), next_attack;
 
     while(true) {
         iteration += 1;
-        next = current.best_successor();
+        next = current.best_successor_v1();
         next_attack = next.calculate_attack();
 
         //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
@@ -53,26 +53,16 @@ int HillClimbingWSideWaysNQueens::run() {
             return 1;
         }
         else if(current_attack > next_attack) {
-            sideways_move = 0;
             current = next;
             current_attack = next_attack;
         }
-        else if(current_attack == next_attack) {    //sideways walk
-            sideways_move += 1;
-            current = next;
-
-            if(sideways_move > mx_sideways_move) {
-                printf("[failure] %d\n", iteration);
-                return 0;
-            }
-        }
-        else {
+        else if(current_attack <= next_attack) {
             printf("[failure] %d\n", iteration);
             return 0;
         }
     }
 }
 
-void HillClimbingWSideWaysNQueens::destroy() {
+void HillClimbingV1NQueens::destroy() {
     //
 }

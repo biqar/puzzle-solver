@@ -19,6 +19,9 @@
 #include "../8-puzzle/ids_bidir.cc"
 
 #include "../n-queens/hill_climbing.cc"
+#include "../n-queens/hill_climbing_v1.cc"
+#include "../n-queens/hill_climbing_stochastic.cc"
+#include "../n-queens/hill_climbing_fc.cc"
 #include "../n-queens/hill_climbing_sways_move.cc"
 #include "../n-queens/hill_climbing_rr.cc"
 #include "../n-queens/hill_climbing_rr_sways_move.cc"
@@ -68,18 +71,27 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
         }
         return NULL;
     }
-    else if (props["puzzle"] == "n-queens") {
+    else if (props["puzzle"] == "n-queen") {
         if(props["algorithm"] == "hill-climbing") {
+            if(props["mode"] == "v1") {
+                return new HillClimbingV1NQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
+            }
+            if(props["mode"] == "first-choice") {
+                return new HillClimbingFCNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
+            }
+            if(props["mode"] == "stochastic") {
+                return new HillClimbingStochasticNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
+            }
             if(props["mode"] == "sideways-move") {
-                return new HillClimbingWSideWaysNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+                return new HillClimbingWSideWaysNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "random-restart") {
-                return new HillClimbingRRNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+                return new HillClimbingRRNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "random-restart-sways-move") {
-                return new HillClimbingRRWSideWaysNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+                return new HillClimbingRRWSideWaysNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
             }
-            return new HillClimbingNQueens(NULL, NULL, _heuristic, utils::to_bool(props["print_path"]));
+            return new HillClimbingNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
         }
         return NULL;
     }
