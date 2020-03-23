@@ -15,11 +15,11 @@
 
 class IdsEightPuzzle : public Solver {
 public:
-    IdsEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-        IdsEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
+    IdsEightPuzzle(void *_parameter) {
+        IdsEightPuzzle::init(_parameter);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
+    int init(void *_parameter);
 
     int run();
 
@@ -41,11 +41,11 @@ private:
     void run_iddfs();
 };
 
-int IdsEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-    goal_state = _goal_state;
-    initial_state = _initial_state;
-    heuristic = _heuristic;
-    is_print_path = _print_path;
+int IdsEightPuzzle::init(void *_parameter) {
+    goal_state = ((EightPuzzleInitParam *)_parameter)->_goal_state;
+    initial_state = ((EightPuzzleInitParam *)_parameter)->_initial_state;
+    heuristic = ((EightPuzzleInitParam *)_parameter)->_heuristic;
+    is_print_path = ((EightPuzzleInitParam *)_parameter)->_print_path;
 
     node_expanded = 0;
     node_generated = 0;

@@ -28,43 +28,43 @@ using utils::Properties;
 Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuristic) {
     if (props["puzzle"] == "8-puzzle") {
         if(props["algorithm"] == "a_star") {
-            return new AStarEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+            return new AStarEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
         }
         if(props["algorithm"] == "ida_star") {
-            return new IdaStarEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+            return new IdaStarEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
         }
         if(props["algorithm"] == "bfs") {
             if(props["mode"] == "bi-directional") {
-                return new BfsBidirEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new BfsBidirEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "greedy") {
-                return new BfsGreedyEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new BfsGreedyEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "optimized") {
-                return new BfsOptEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new BfsOptEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
-            return new BfsEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+            return new BfsEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
         }
         if(props["algorithm"] == "dfs") {
             if(props["mode"] == "recursive") {
-                return new DfsRecursivEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new DfsRecursivEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "stack-based") {
-                return new DfsStackEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new DfsStackEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
             return NULL;
         }
         if(props["algorithm"] == "dls") {
             if(props["mode"] == "bi-directional") {
-                return new DlsBidirEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new DlsBidirEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
-            return new DlsEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+            return new DlsEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
         }
         if(props["algorithm"] == "ids") {
             if(props["mode"] == "bi-directional") {
-                return new IdsBidirEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+                return new IdsBidirEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
             }
-            return new IdsEightPuzzle(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"]));
+            return new IdsEightPuzzle(new EightPuzzleInitParam(construct_state(props["initial_state"]), construct_state(props["goal_state"]), _heuristic, utils::to_bool(props["print_path"])));
         }
         return NULL;
     }

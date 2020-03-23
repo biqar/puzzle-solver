@@ -15,11 +15,11 @@
 
 class DlsBidirEightPuzzle : public Solver {
 public:
-    DlsBidirEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-        DlsBidirEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
+    DlsBidirEightPuzzle(void *_parameter) {
+        DlsBidirEightPuzzle::init(_parameter);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
+    int init(void *_parameter);
 
     int run();
 
@@ -43,11 +43,11 @@ private:
     void run_dls_forward(Node *current_node);
 };
 
-int DlsBidirEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-    goal_state = _goal_state;
-    initial_state = _initial_state;
-    heuristic = _heuristic;
-    is_print_path = _print_path;
+int DlsBidirEightPuzzle::init(void *_parameter) {
+    goal_state = ((EightPuzzleInitParam *)_parameter)->_goal_state;
+    initial_state = ((EightPuzzleInitParam *)_parameter)->_initial_state;
+    heuristic = ((EightPuzzleInitParam *)_parameter)->_heuristic;
+    is_print_path = ((EightPuzzleInitParam *)_parameter)->_print_path;
 
     forward_m[construct_board_key(initial_state)] = true;
     backward_m[construct_board_key(goal_state)] = true;

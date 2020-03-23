@@ -13,11 +13,11 @@
 
 class DfsStackEightPuzzle : public Solver {
 public:
-    DfsStackEightPuzzle(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-        DfsStackEightPuzzle::init(_initial_state, _goal_state, _heuristic, _print_path);
+    DfsStackEightPuzzle(void *_parameter) {
+        DfsStackEightPuzzle::init(_parameter);
     }
 
-    int init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path);
+    int init(void *_parameter);
 
     int run();
 
@@ -38,11 +38,11 @@ private:
     void run_dfs_stack();
 };
 
-int DfsStackEightPuzzle::init(State *_initial_state, State *_goal_state, Heuristic *_heuristic, bool _print_path) {
-    goal_state = _goal_state;
-    initial_state = _initial_state;
-    heuristic = _heuristic;
-    is_print_path = _print_path;
+int DfsStackEightPuzzle::init(void *_parameter) {
+    goal_state = ((EightPuzzleInitParam *)_parameter)->_goal_state;
+    initial_state = ((EightPuzzleInitParam *)_parameter)->_initial_state;
+    heuristic = ((EightPuzzleInitParam *)_parameter)->_heuristic;
+    is_print_path = ((EightPuzzleInitParam *)_parameter)->_print_path;
 
     s.push(create_new_node(0, heuristic->guess_distance(new EightPuzzleHeuristicParam(initial_state, goal_state)), NULL, initial_state));
     m[construct_board_key(initial_state)] = true;
