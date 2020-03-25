@@ -9,6 +9,10 @@
 using utils::Properties;
 
 Heuristic *HeuristicFactory::CreateHeuristic(utils::Properties &props) {
+    if (props.properties().find("heuristic") == props.properties().end()) {
+        return NULL;
+    }
+
     if (props["heuristic"] == "hamming") {
         return new Hamming();
     } else if (props["heuristic"] == "manhattan") {
