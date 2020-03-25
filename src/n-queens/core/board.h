@@ -129,6 +129,13 @@ public:
     void setQueens(std::vector<NQueen> _queens) {
         queens = _queens;
     }
+
+    void print_queens() {
+        for(int i=0; i<dim; i+=1) {
+            printf(" <%d, %d>", queens[i].getRow(), queens[i].getColumn());
+        }
+        printf("\n");
+    }
 };
 
 #endif //PUZZLE_SOLVER_NQUEEN_BOARD_H
