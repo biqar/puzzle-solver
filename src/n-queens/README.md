@@ -90,10 +90,17 @@ Run command:
 ./puzzle -problem n-queen -algo hill-climbing -mode first-choice -board_dim 10 -mx_sideways_move 0 -print_path false
 ```
 
-<figure>
-    <img align="middle" src="https://github.com/biqar/puzzle-solver/blob/master/resources/state_space_landscape.png" height="400" width="584" alt="state_space_landscape"/>
-    <figcaption>Figure 1: State-space landscape</figcaption>
-</figure>
+<table>
+  <tr>
+    <td>
+       <img align="middle" src="https://github.com/biqar/puzzle-solver/blob/master/resources/state_space_landscape.png"  alt="state_space_landscape"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="middle">Figure 1: State-space landscape</td>
+  </tr>
+</table>
+
 
 * Hill-Climbing search with sideways move
 

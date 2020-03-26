@@ -1,5 +1,9 @@
 # Puzzle Solver (by using problem solving techniques)
 
+## Solved Puzzles
+* [8-puzzle](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle)
+* [n-queen](https://github.com/biqar/puzzle-solver/blob/master/src/n-queens)
+
 ## Project Goal
 
 The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. 8-puzzle, 15-puzzle,
