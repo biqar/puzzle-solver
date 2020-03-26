@@ -19,7 +19,7 @@
 #include "../8-puzzle/ids_bidir.cc"
 
 #include "../n-queens/hill_climbing.cc"
-#include "../n-queens/hill_climbing_v1.cc"
+#include "../n-queens/hill_climbing_random_best.cc"
 #include "../n-queens/hill_climbing_stochastic.cc"
 #include "../n-queens/hill_climbing_fc.cc"
 #include "../n-queens/hill_climbing_sways_move.cc"
@@ -73,8 +73,8 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
     }
     else if (props["puzzle"] == "n-queen") {
         if(props["algorithm"] == "hill-climbing") {
-            if(props["mode"] == "v1") {
-                return new HillClimbingV1NQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
+            if(props["mode"] == "random-best") {
+                return new HillClimbingRandBestNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
             }
             if(props["mode"] == "first-choice") {
                 return new HillClimbingFCNQueens(new NQueenInitParam(std::stoi(props["dim"]), std::stoi(props["mx_sways_move"]), utils::to_bool(props["print_path"])));
