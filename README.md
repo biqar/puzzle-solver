@@ -3,7 +3,7 @@
 ## Project Goal
 
 The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. 8-puzzle, 15-puzzle,
-8-queen, Sudoku, etc.) using different problem-solving techniques (i.e. informed search, uninformed search, etc.).
+n-queen, Sudoku, etc.) using different problem-solving techniques (i.e. informed search, uninformed search, hill-climbing search etc.).
 Here by word "pluggable" we mean in solving puzzles user can independently decide the search strategy along with the 
 custom heuristic functions. If needed, user can extend this project to device their own solution with a very low effort. 
 Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
@@ -47,7 +47,9 @@ methods that produce the puzzle solver and heuristic instance based on the param
 implemented in separate directory as we have done for "8-puzzle" here. All the heuristic implementations placed in the 
 "heuristic" directory. Directory "utils" all the utility methods that help other functions to operate.
 
-Please keep in mind, this is an active project and project architecture may change without any prior announcement.
+Please keep in mind, this is an active project and project architecture may change without any prior announcement. 
+But all the future updates will be maintained in a way so that the project integrity will ke kept, meaning you will not 
+face any difficulty in building or running the project.
 
 ## How to Build
 
