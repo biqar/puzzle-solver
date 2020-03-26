@@ -195,6 +195,22 @@ public:
         }
         printf("\n");
     }
+
+    void print_board() {
+        bool board[dim][dim];
+        memset(board, 0, sizeof(board));
+        for(int i=0; i<dim; i+=1) {
+            board[queens[i].getRow()][queens[i].getColumn()] = 1;
+        }
+        for(int i=0; i<dim; i+=1) {
+            for(int j=0; j<dim; j+=1) {
+                if(board[i][j]) printf("Q ");
+                else printf("_ ");
+            }
+            printf("\n");
+        }
+        printf("\n\n");
+    }
 };
 
 #endif //PUZZLE_SOLVER_NQUEEN_BOARD_H
