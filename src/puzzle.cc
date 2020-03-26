@@ -23,6 +23,7 @@ int main(const int argc, const char *argv[]) {
     Heuristic *_heuristic = HeuristicFactory::CreateHeuristic(props);
     Solver *solver = SolverFactory::CreateSolver(props, _heuristic);
     solver->run();
+    solver->destroy();
 
     return 0;
 }
