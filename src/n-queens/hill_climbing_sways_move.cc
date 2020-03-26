@@ -74,5 +74,5 @@ int HillClimbingWSideWaysNQueens::run() {
 }
 
 void HillClimbingWSideWaysNQueens::destroy() {
-    //
+    free(initial_state);
 }

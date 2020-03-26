@@ -4,8 +4,6 @@
 
 #include "core/queen.h"
 #include "core/board.h"
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
 
 class HillClimbingNQueens : public Solver {
 public:
@@ -35,7 +33,7 @@ int HillClimbingNQueens::init(void *_parameter) {
 
     srand (time(NULL)); //initialize random seed
     initial_state = new NQueenBoard(board_dimension);
-    initial_state->print_queens();
+    //initial_state->print_queens();
     return 1;
 }
 

@@ -36,9 +36,32 @@ int HillClimbingStochasticNQueens::init(void *_parameter) {
 }
 
 int HillClimbingStochasticNQueens::run() {
-    return 1;
+    NQueenBoard next = NULL;
+    NQueenBoard current = *initial_state;
+    int iteration = 0;
+    int current_attack = current.calculate_attack(), next_attack;
+
+    while(true) {
+        iteration += 1;
+        next = current.better_successor_stochastic(current_attack);
+        next_attack = next.calculate_attack();
+
+        //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
+        if(next_attack == 0) {
+            printf("[success] %d\n", iteration);
+            return 1;
+        }
+        else if(current_attack > next_attack) {
+            current = next;
+            current_attack = next_attack;
+        }
+        else if(current_attack <= next_attack) {
+            printf("[failure] %d\n", iteration);
+            return 0;
+        }
+    }
 }
 
 void HillClimbingStochasticNQueens::destroy() {
-    //
+    free(initial_state);
 }

@@ -71,7 +71,7 @@ public:
         return best;
     }
 
-    NQueenBoard best_successor_v1() {
+    NQueenBoard best_successor_random() {
         int current_row, current_column;
         int min_attack = dim * dim, current_attack;
         std::vector<NQueenBoard> bests;
@@ -111,7 +111,66 @@ public:
             tmp.queens[i].setRow(current_row);
             tmp.queens[i].setColumn(current_column);
         }
-        return bests[rand() % bests.size()];
+        return bests.size() > 0 ? bests[rand() % bests.size()] : (*this);
+    }
+
+    NQueenBoard first_choice_successor(int prev_attack) {
+        int current_row, current_column;
+        NQueenBoard tmp = (*this);
+
+        for(int i=0; i<dim; i+=1) {
+            current_row = tmp.queens[i].getRow();
+            current_column = tmp.queens[i].getColumn();
+
+            while(tmp.queens[i].move_up()) {
+                if(tmp.calculate_attack() < prev_attack) {
+                    return tmp;     //first choice return
+                }
+            }
+
+            tmp.queens[i].setRow(current_row);
+            tmp.queens[i].setColumn(current_column);
+
+            while(tmp.queens[i].move_down(dim)) {
+                if(tmp.calculate_attack() < prev_attack) {
+                    return tmp;     //first choice return
+                }
+            }
+
+            tmp.queens[i].setRow(current_row);
+            tmp.queens[i].setColumn(current_column);
+        }
+        return (*this);    //return the current one
+    }
+
+    NQueenBoard better_successor_stochastic(int prev_attack) {
+        int current_row, current_column;
+        std::vector<NQueenBoard> betters;
+        NQueenBoard tmp = (*this);
+
+        for(int i=0; i<dim; i+=1) {
+            current_row = tmp.queens[i].getRow();
+            current_column = tmp.queens[i].getColumn();
+
+            while(tmp.queens[i].move_up()) {
+                if(tmp.calculate_attack() < prev_attack) {
+                    betters.push_back(tmp);
+                }
+            }
+
+            tmp.queens[i].setRow(current_row);
+            tmp.queens[i].setColumn(current_column);
+
+            while(tmp.queens[i].move_down(dim)) {
+                if(tmp.calculate_attack() < prev_attack) {
+                    betters.push_back(tmp);
+                }
+            }
+
+            tmp.queens[i].setRow(current_row);
+            tmp.queens[i].setColumn(current_column);
+        }
+        return betters.size() > 0 ? betters[rand() % betters.size()] : (*this);
     }
 
     int getDim() {

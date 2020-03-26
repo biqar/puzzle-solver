@@ -5,10 +5,10 @@
 #include "core/queen.h"
 #include "core/board.h"
 
-class HillClimbingV1NQueens : public Solver {
+class HillClimbingRandBestNQueens : public Solver {
 public:
-    HillClimbingV1NQueens(void *_parameter) {
-        HillClimbingV1NQueens::init(_parameter);
+    HillClimbingRandBestNQueens(void *_parameter) {
+        HillClimbingRandBestNQueens::init(_parameter);
     }
 
     int init(void *_parameter);
@@ -26,7 +26,7 @@ private:
     NQueenBoard *initial_state;
 };
 
-int HillClimbingV1NQueens::init(void *_parameter) {
+int HillClimbingRandBestNQueens::init(void *_parameter) {
     board_dimension = ((NQueenInitParam *)_parameter)->board_dimension;
     mx_sideways_move = ((NQueenInitParam *)_parameter)->mx_sideways_move;
     print_path = ((NQueenInitParam *)_parameter)->print_path;
@@ -36,7 +36,7 @@ int HillClimbingV1NQueens::init(void *_parameter) {
     return 1;
 }
 
-int HillClimbingV1NQueens::run() {
+int HillClimbingRandBestNQueens::run() {
     NQueenBoard next = NULL;
     NQueenBoard current = *initial_state;
     int iteration = 0;
@@ -44,7 +44,7 @@ int HillClimbingV1NQueens::run() {
 
     while(true) {
         iteration += 1;
-        next = current.best_successor_v1();
+        next = current.best_successor_random();
         next_attack = next.calculate_attack();
 
         //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
@@ -63,6 +63,6 @@ int HillClimbingV1NQueens::run() {
     }
 }
 
-void HillClimbingV1NQueens::destroy() {
-    //
+void HillClimbingRandBestNQueens::destroy() {
+    free(initial_state);
 }

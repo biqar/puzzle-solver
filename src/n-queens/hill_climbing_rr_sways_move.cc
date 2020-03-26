@@ -50,7 +50,7 @@ int HillClimbingRRWSideWaysNQueens::run() {
 
         //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
         if(next_attack == 0) {
-            printf("[success] step: %d, restart: %d\n", iteration, restart);
+            printf("[success] %d %d\n", restart, iteration);
             return 1;
         }
         else if(current_attack > next_attack) {
@@ -63,14 +63,14 @@ int HillClimbingRRWSideWaysNQueens::run() {
             current = next;
 
             if(sideways_move > mx_sideways_move) {
-                printf("[failure] %d\n", iteration);
+                //printf("[failure] %d\n", iteration);
                 restart += 1;
                 current = *(new NQueenBoard(board_dimension));
                 current_attack = current.calculate_attack();
             }
         }
         else {
-            printf("[failure] %d\n", iteration);
+            //printf("[failure] %d\n", iteration);
             restart += 1;
             current = *(new NQueenBoard(board_dimension));
             current_attack = current.calculate_attack();
@@ -79,5 +79,5 @@ int HillClimbingRRWSideWaysNQueens::run() {
 }
 
 void HillClimbingRRWSideWaysNQueens::destroy() {
-    //
+    free(initial_state);
 }

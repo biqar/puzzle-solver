@@ -49,7 +49,7 @@ int HillClimbingRRNQueens::run() {
 
         //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
         if(next_attack == 0) {
-            printf("[success] step: %d, restart: %d\n", iteration, restart);
+            printf("[success] %d %d\n", restart, iteration);
             return 1;
         }
         else if(current_attack > next_attack) {
@@ -57,7 +57,7 @@ int HillClimbingRRNQueens::run() {
             current_attack = next_attack;
         }
         else if(current_attack <= next_attack) {
-            printf("[failure] %d\n", iteration);
+            //printf("[failure] %d\n", iteration);
             restart += 1;
             current = *(new NQueenBoard(board_dimension));
             current_attack = current.calculate_attack();
@@ -66,5 +66,5 @@ int HillClimbingRRNQueens::run() {
 }
 
 void HillClimbingRRNQueens::destroy() {
-    //
+    free(initial_state);
 }
