@@ -6,6 +6,9 @@ Given an integer N > 3, place N queens in an NxN board in such a way that no que
 According to the chess rule, a queen is able to attack another queen if and only if both queens occupy 
 the same row, column or diagonal on the board.
 
+In this part of the project, we will start from a random board state and apply different variation of hill-climbing search to 
+find a board configuration where all the queens will be placed in a way so that they don’t able to attack each other.
+
 ## Implementation Domain
 
 To solve n-queen problem, currently we have implemented different variation of hill-climbing search, they are:
@@ -36,7 +39,7 @@ General run command:
 ```
 
 Here is the parameter definition,
-1. **-problem:** Specify the puzzle name to solve, for example, "8-puzzle".
+1. **-problem:** Specify the puzzle name to solve, for example, "n-queen".
 2. **-algo:** Specify the search strategy to solve the puzzle, for example, "A*", "bfs", "dfs", etc.
 3. **-mode:** Specify the inner methodology for the search strategy, for example, "bi-directional" bfs, "stack-based" dfs, etc.
 4. **-board_dim:** Board dimension, may use representing any square board
@@ -130,6 +133,25 @@ the row cursor in the range of highest possible UP and DOWN limit.
 
 ### How to reproduce
 
+To reproduce the performance evaluation, please run scripts kept in "benchmark/n-queen" directory. You will get bash scripts to 
+run different hill-climbing algorithms to solve custom  n-queen problem. You can pass the board dimension and maximum number of 
+consecutive steps in sideways move as the parameter of the program. You can save the output of these scripts in a file and use 
+the parser python script to parse it. For incomplete searches you should use parser "parser_incomplete_search.py" and for 
+complete searches you should use "parser_complete_search.py". Here I am giving the steps to reproduce the evaluation 
+(one for incomplete search and another for complete search).
+
+```
+#incomplete search [Default Hill-Climbing search]
+> cd benchmark/n-queen
+> ./hill_climbing-benchmark.sh > hill_climbing-benchmark.out
+> python3 parser_incomplete_search.py hill_climbing-benchmark.out
+
+#complete search [Random-restart Hill-Climbing search without sideways move]
+> cd benchmark/n-queen
+> ./hill_climbing_rr-benchmark.sh > hill_climbing_rr-benchmark.out
+> python3 parser_complete_search.py hill_climbing_rr-benchmark.out
+```
+
 ### Performance of Incomplete Searches
 
 | Incomplete Searches | Success Rate (in %) | Avg. steps in success | Avg. steps in failure |
@@ -162,13 +184,13 @@ the row cursor in the range of highest possible UP and DOWN limit.
     <td align="middle">Figure 2 (c): Comparison of Complete Searches</td>
   </tr>
   <tr>
-    <td colspan="3" align="middle">Figure 2: Comparing performance of different algorithms for solving 8-puzzle</td>
+    <td colspan="3" align="middle">Figure 2: Comparing performance of different algorithms for solving n-queen</td>
   </tr>
 </table>
 
 ### Performance of Complete Searches
 
-| Incomplete Searches | Success Rate (in %) | Avg. steps | Avg. restart |
+| Complete Searches | Success Rate (in %) | Avg. steps | Avg. restart |
 | --- | --- | --- | --- |
 | Random-restart Hill-Climbing search without sideways move | 100 | 74.43 | 14.03 |
 | Random-restart Hill-Climbing search with sideways move | 100 | 71.33 | 4.19 |
@@ -183,4 +205,4 @@ the row cursor in the range of highest possible UP and DOWN limit.
 * Do compare performance (w.r.t. execution time) of backtracking Vs. Random-restart Hill-Climbing search w/wo sideways walk for smaller board.
 
 ## Resources
-TBA
+* [Blog-post] The 8 Queens Problem (An Introduction): https://kushalvyas.github.io/gen_8Q.html
