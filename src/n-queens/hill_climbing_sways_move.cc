@@ -21,6 +21,7 @@ private:
     int board_dimension;
     int mx_sideways_move;
     bool print_path;
+    vector<NQueenBoard> path;
 
     NQueenBoard *initial_state;
 };
@@ -42,14 +43,24 @@ int HillClimbingWSideWaysNQueens::run() {
     int sideways_move = 0;
     int current_attack = current.calculate_attack(), next_attack;
 
+    if(print_path) path.push_back(current);
+
     while(true) {
         iteration += 1;
         next = current.best_successor();
         next_attack = next.calculate_attack();
 
+        if(print_path) path.push_back(next);
+
         //printf("current attack: %d, next attack: %d\n", current_attack, next_attack);
         if(next_attack == 0) {
             printf("[success] %d\n", iteration);
+            if(print_path) {
+                int path_size = path.size();
+                for(int i=0; i<path_size; i+=1) {
+                    path[i].print_board();
+                }
+            }
             return 1;
         }
         else if(current_attack > next_attack) {
