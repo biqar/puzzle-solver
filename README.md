@@ -63,7 +63,12 @@ $ make clean && make
 
 General run command:
 ```
-./puzzle -problem {PUZZLE_NAME} -algo {ALGORITHM_NAME} -mode {MODE} -heu {HEURISTIC_METHOD} -initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} -print_path {PRINT_INITIAL_TO_GOAL}
+./puzzle -problem {PUZZLE_NAME} \
+-algo {ALGORITHM_NAME} -mode {MODE} \
+-heu {HEURISTIC_METHOD} \
+-initial {INITIAL_STATE_OF_THE_GAME} -goal {GOAL_STATE_OF_THE_GAME} \
+-board_dim {DIMENSION_OF_THE_BOARD} -mx_sideways_move {MAX_SIDEWAYS_MOVE}\
+-print_path {PRINT_INITIAL_TO_GOAL}
 ```
 
 Here is the parameter definition,
@@ -73,7 +78,9 @@ Here is the parameter definition,
 4. **-heuristic:** Specify the heuristic function you want to use, for example, "hamming", "manhattan", "euclidean", etc. [default: manhattan]
 5. **-initial:** Specify the initial board setup for your puzzle
 6. **-goal:** Specify the goal state of your puzzle
-7. **-print_path:** Flag to indicate printing path if solution exist, accepts boolean string, i.e., "true" or "false".
+7. **-board_dim:** Board dimension, may use representing any square board
+8. **-mx_sideways_move:** Maximum allowed sideways move in hill-climbing search
+9. **-print_path:** Flag to indicate printing path if solution exist, accepts boolean string, i.e., "true" or "false".
 
 ## Motivation of Algorithm Mode
 While implementing different algorithms for solving 8-puzzle problem, we found some optimization techniques help the algorithms' 
@@ -100,6 +107,14 @@ DFS is avoiding stack overflow due to excessively deep recursions.
 ## Future Work
 * Will solve 8-queen puzzle by different non-classical search strategy.
 * Will solve 2 player game by applying  minimax decisions and α–β pruning.
+* Found several puzzles that can be tried later
+    * [Hidato puzzle](https://rosettacode.org/wiki/Solve_a_Hidato_puzzle)
+    * [Knight's tour](https://rosettacode.org/wiki/Knight%27s_tour)
+    * [Holy Knight's tour](https://rosettacode.org/wiki/Solve_a_Holy_Knight%27s_tour)
+    * [Hopido puzzle](https://rosettacode.org/wiki/Solve_a_Hopido_puzzle)
+    * [Numbrix puzzle](https://rosettacode.org/wiki/Solve_a_Numbrix_puzzle)
+    * [No connection puzzle](https://rosettacode.org/wiki/Solve_the_no_connection_puzzle)
+    * [Peaceful chess queen armies](https://rosettacode.org/wiki/Peaceful_chess_queen_armies)
 
 ## Resources
 1. [Blog] Problem Solving Techniques part1: https://mhesham.wordpress.com/2010/04/08/problem-solving-techniques-part1/
