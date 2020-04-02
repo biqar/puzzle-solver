@@ -206,6 +206,11 @@ complete searches you should use "parser_complete_search.py". Here I am giving t
 1. Random-restart Hill-Climbing search perform better with sideways move and reduces the number of restarts 70%.
 
 ## Future Works
+* Add the following implementation for n-queen:
+  * local beam search
+  * stochastic beam search
+  * simulated annealing 
+  * genetic algorithm
 * Do analysis on complete searches' random restart required count distribution chart 
 * Do similar performance test on higher dimension board.
 * Do performance characterization of sideways move (impact on increasing limit of sideways move for fixed board dimension).
