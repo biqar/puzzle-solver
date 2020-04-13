@@ -13,6 +13,37 @@ custom heuristic functions. If needed, user can extend this project to device th
 Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
 state space search strategy, optimization techniques and heuristic functions.
 
+## Target Domain
+
+* Solving Problems by Searching
+  * Informed Search
+    * Best-First Greedy Search
+    * A* Search
+  * Uninformed Search
+    * Breadth-First Search
+    * Uniform-Cost Search
+    * Depth-First Search
+    * Depth-Limited Search
+    * Iterative Deepening Search
+  * State Space Reduction Strategy
+    * Bidirectional Search
+* Hill Climbing Search
+* Simulated Annealing
+* Beam Search
+* Genetic Algorithms
+* Game Playing
+  * Minimax
+  * α–β Pruning
+* Constraint Satisfaction Problems
+  * Backtracking
+    * Heuristic
+      * Minimum Remaining Values (MRV)
+      * Degree Heuristic
+      * Least Constraining Value
+    * Constraint Propagation
+      * Forward Checking
+      * Arc Consistency (AC-3)
+
 ### Search Strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
 * Completeness: does it always find a solution if one exists?
