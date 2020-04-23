@@ -13,6 +13,37 @@ custom heuristic functions. If needed, user can extend this project to device th
 Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
 state space search strategy, optimization techniques and heuristic functions.
 
+## Target Domain
+
+* Solving Problems by Searching
+  * Informed Search
+    * Best-First Greedy Search
+    * A* Search
+  * Uninformed Search
+    * Breadth-First Search
+    * Uniform-Cost Search
+    * Depth-First Search
+    * Depth-Limited Search
+    * Iterative Deepening Search
+  * State Space Reduction Strategy
+    * Bidirectional Search
+* Hill Climbing Search
+* Simulated Annealing
+* Beam Search
+* Genetic Algorithms
+* Game Playing
+  * Minimax
+  * α–β Pruning
+* Constraint Satisfaction Problems
+  * Backtracking
+    * Heuristic
+      * Minimum Remaining Values (MRV)
+      * Degree Heuristic
+      * Least Constraining Value
+    * Constraint Propagation
+      * Forward Checking
+      * Arc Consistency (AC-3)
+
 ### Search Strategies
 A search strategy is defined by picking the order of node expansion, Strategies are evaluated along the following dimensions:
 * Completeness: does it always find a solution if one exists?
@@ -116,6 +147,31 @@ Some techniques can be applied to very selective algorithms. For example, DFS is
 state space search and can be implemented in recursive and non-recursive (stack based) way. The benefit of using stack based 
 DFS is avoiding stack overflow due to excessively deep recursions.
 
+## Heuristics Vs. Metaheuristics
+H.E. Lehtihet's reply in [[3](https://www.researchgate.net/post/What_are_the_differences_between_heuristics_and_metaheuristics)]
+
+```
+Heuristics are problem-dependent techniques. As such, they usually are adapted to the problem at 
+hand and they try to take full advantage of the particularities of this problem. However, because 
+they are often too greedy, they usually get trapped in a local optimum and thus fail, in general, 
+to obtain the global optimum solution.
+
+Meta-heuristics, on the other hand, are problem-independent techniques. As such, they do not take 
+advantage of any specificity of the problem and, therefore, can be used as black boxes. In general, 
+they are not greedy. In fact, they may even accept a temporary deterioration of the solution (see 
+for example, the simulated-annealing technique), which allows them to explore more thoroughly the 
+solution space and thus to get a hopefully better solution (that sometimes will coincide with the 
+global optimum). Please note that although a meta-heuristic is a problem-independent technique, 
+it is nonetheless necessary to do some fine-tuning of its intrinsic parameters in order to adapt 
+the technique to the problem at hand.
+
+You might want to take a look also at the so-called hyper-heuristics that go a step beyond 
+meta-heuristics. The particularity of hyper-heuristics is that their search space is not the 
+usual space of the solutions but is rather the space of heuristics or meta-heuristics. Indeed, 
+hyper-heuristics can be viewed as "heuristics to search for heuristics". There is also a slightly 
+different category defined as "heuristics to generate heuristics".
+```
+
 ## Future Work
 * Will solve 8-queen puzzle by different non-classical search strategy.
 * Will solve 2 player game by applying  minimax decisions and α–β pruning.
@@ -127,7 +183,12 @@ DFS is avoiding stack overflow due to excessively deep recursions.
     * [Numbrix puzzle](https://rosettacode.org/wiki/Solve_a_Numbrix_puzzle)
     * [No connection puzzle](https://rosettacode.org/wiki/Solve_the_no_connection_puzzle)
     * [Peaceful chess queen armies](https://rosettacode.org/wiki/Peaceful_chess_queen_armies)
+* Solving Sudoku with Ant Colony Optimization
+    * [Original Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8845599)
+    * [GithHub Repo](https://github.com/huwlloyd-mmu/sudoku_acs)
 
 ## Resources
 1. [Blog] Problem Solving Techniques part1: https://mhesham.wordpress.com/2010/04/08/problem-solving-techniques-part1/
 2. [Blog] Problem Solving Techniques part2: https://mhesham.wordpress.com/tag/depth-limited-search/
+3. [ResearchGate] What are the differences between heuristics and metaheuristics? https://www.researchgate.net/post/What_are_the_differences_between_heuristics_and_metaheuristics
+4. [Paper] A Comparison between Heuristic and Meta- Heuristic Methods for Solving the Multiple Traveling Salesman Problem: https://publications.waset.org/4699/a-comparison-between-heuristic-and-meta-heuristic-methods-for-solving-the-multiple-traveling-salesman-problem
