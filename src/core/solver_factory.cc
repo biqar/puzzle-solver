@@ -26,6 +26,10 @@
 #include "../n-queens/hill_climbing_rr.cc"
 #include "../n-queens/hill_climbing_rr_sways_move.cc"
 
+#include "../k-coloring/bt.cc"
+#include "../k-coloring/bt_fc.cc"
+#include "../k-coloring/bt_fc_st.cc"
+
 using utils::Properties;
 
 Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuristic) {
@@ -148,6 +152,24 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
             return new HillClimbingNQueens(new NQueenInitParam(
                     std::stoi(props["dim"]),
                     std::stoi(props["mx_sways_move"]),
+                    utils::to_bool(props["print_path"])));
+        }
+        return NULL;
+    }
+    else if (props["puzzle"] == "map-color") {
+        if(props["algorithm"] == "bt") {
+            return new BtMapColorSolver(new MapColoringInitParam(
+                    props["filename"], std::stoi(props["mx_colors"]),
+                    utils::to_bool(props["print_path"])));
+        }
+        if(props["algorithm"] == "bt-fc") {
+            return new BtFcMapColorSolver(new MapColoringInitParam(
+                    props["filename"], std::stoi(props["mx_colors"]),
+                    utils::to_bool(props["print_path"])));
+        }
+        if(props["algorithm"] == "bt-fc-st") {
+            return new BtFcStMapColorSolver(new MapColoringInitParam(
+                    props["filename"], std::stoi(props["mx_colors"]),
                     utils::to_bool(props["print_path"])));
         }
         return NULL;

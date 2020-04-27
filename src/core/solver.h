@@ -45,4 +45,17 @@ public:
     }
 };
 
+class MapColoringInitParam {
+public:
+    string file_name_;
+    int max_colors_;
+    bool print_graph_;
+
+    MapColoringInitParam(string file_name, int max_colors, bool print_graph) {
+        file_name_ = file_name;
+        max_colors_ = max_colors;
+        print_graph_ = print_graph;
+    }
+};
+
 #endif //SOLVER_H

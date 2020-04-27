@@ -103,6 +103,24 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             }
             props.SetProperty("mx_sways_move", argv[argindex]);
             argindex++;
+        } else if (strcmp(argv[argindex], "-file") == 0) {
+            // it denotes the goal state of the board
+            argindex++;
+            if (argindex >= argc) {
+                UsageMessage(argv[0]);
+                exit(0);
+            }
+            props.SetProperty("filename", argv[argindex]);
+            argindex++;
+        } else if (strcmp(argv[argindex], "-mcolor") == 0) {
+            // it denotes the goal state of the board
+            argindex++;
+            if (argindex >= argc) {
+                UsageMessage(argv[0]);
+                exit(0);
+            }
+            props.SetProperty("mx_colors", argv[argindex]);
+            argindex++;
         } else if (strcmp(argv[argindex], "-print_path") == 0) {
             // flag denotes if you like to print the path after reaching goal
             argindex++;
