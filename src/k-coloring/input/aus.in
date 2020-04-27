@@ -1,8 +1,16 @@
 7
+New-South-Wales
+Western-Australia
+
+Northern-Territory
+Queensland
+South-Australia
+Tasmania
+Victoria
+Western-Australia Northern-Territory South-Australia
+Queensland Northern-Territory South-Australia New-South-Wales
 New-South-Wales Victoria South-Australia Queensland
 Victoria South-Australia New-South-Wales
-Queensland Northern-Territory South-Australia New-South-Wales
-South-Australia Western-Australia Northern-Territory Queensland New-South-Wales Victoria
-Western-Australia Northern-Territory South-Australia
 Tasmania
 Northern-Territory Western-Australia South-Australia Queensland
+South-Australia Western-Australia Northern-Territory Queensland New-South-Wales Victoria
