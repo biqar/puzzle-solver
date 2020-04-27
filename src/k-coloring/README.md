@@ -50,11 +50,11 @@ To solve k-coloring problem, currently I have implemented the following algorith
 | Depth first search only | bt |
 | Depth first search <br>+ forward checking | bt-fc |
 | Depth first search <br>+ forward checking <br>+ propagation through singleton domains | bt-fc-st |
-| Depth first search <br>+ forward checking <br>+ propagation through reduced domains (AC-2/AC-3) | - |
+| Depth first search <br>+ forward checking <br>+ propagation through reduced domains (AC-2/AC-3) | N/A |
 
 Currently I have implemented the following heuristic functions:
 
-| Heuristic Functions | Parameter token for this application |
+| Heuristic Functions | Parameter token for this heuristic function |
 | --- | --- |
 | Minimum Remaining Values (MRV) | -mrv |
 | Degree Heuristic | -degree_heu |
@@ -91,7 +91,7 @@ Here is the parameter definition,
 
 For k-coloring, here is the list of run commands for different implemented variations of the backtrack search algorithm -
 
-* Default Backtrack Search
+* **Default Backtrack Search**
 
 Implemented standard Backtrack search algorithm, picked a random unassigned vertex if no heuristic specified (i.e. MRV, Degree Heuristic, etc).
 
@@ -100,7 +100,7 @@ Run command:
 ./puzzle -problem map-color -algo bt -file aus.in -mcolor -1 -print_path false
 ```
 
-* Backtrack Search + Forward Checking
+* **Backtrack Search + Forward Checking**
 
 Improvised Backtrack search algorithm with forward checking. While assigning a color to a vertex, removed this color from the neighboring
 vertices' color domain. This will thus reduce the color choices for the future vertices.
@@ -110,7 +110,7 @@ Run command:
 ./puzzle -problem map-color -algo bt-fc -file aus.in -mcolor 3 -print_path false
 ```
 
-* Backtrack Search + Forward Checking + Singleton Propagation
+* **Backtrack Search + Forward Checking + Singleton Propagation**
 
 Further improvised Backtrack search algorithm with singleton propagation. Besides reducing the color choices for the future vertices,
 we further check whether there are any vertex that has a single available color in it's domain. Those vertices are called singleton vertex.
