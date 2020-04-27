@@ -69,6 +69,11 @@ namespace utils {
         properties_[key] = value;
     }
 
+    // get time difference in nano seconds
+    static inline long time_diff(struct timespec start, struct timespec end) {
+        return (end.tv_sec - start.tv_sec) * (long) 1e9 + (end.tv_nsec - start.tv_nsec);
+    }
+
 } // utils
 
 #endif //UTILLS_H
