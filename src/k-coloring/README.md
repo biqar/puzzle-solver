@@ -507,3 +507,4 @@ Tabu search (TS), local and stochastic beam search, etc.
 * [Web] List of Neighboring States: https://state.1keydata.com/bordering-states-list.php
 * [Web] US State Information: https://people.sc.fsu.edu/~jburkardt/datasets/states/states.html
 * [Web] Heuristics for use in backtracking constraint-satisfaction search: https://people.cs.pitt.edu/~wiebe/courses/CS2710/lectures/constraintSat.example.txt
+* [GitHub] C++ Graph Coloring Package: https://github.com/brrcrites/graph-coloring
