@@ -23,7 +23,7 @@ private:
     bool bt_func(int n_node);
     void forward_checking(int node_i, int color, vector<int> &marked_nodes);
     void revert_forward_checking(int color, vector<int> &marked_nodes);
-    int get_color_unassigned_singleton_node();
+    int get_unassigned_singleton_node();
 };
 
 void MapColorBacktrackingFCSt::forward_checking(int node_i, int color, vector<int> &marked_nodes) {
@@ -47,10 +47,25 @@ void MapColorBacktrackingFCSt::revert_forward_checking(int color, vector<int> &m
 }
 
 // return a singleton node that has not been colored yet, return -1 if there is no such node
-inline int MapColorBacktrackingFCSt::get_color_unassigned_singleton_node() {
+inline int MapColorBacktrackingFCSt::get_unassigned_singleton_node() {
+    vector<int> available_nodes;
     for(int node_i=0; node_i<num_node; node_i+=1) {
-        if(color_assigned[node_i] == COLOR_UNASSIGNED && is_singleton(node_i)) return node_i;
+        if(color_assigned[node_i] == COLOR_UNASSIGNED && is_singleton(node_i)) available_nodes.push_back(node_i);
     }
+
+    if(try_mrv) {
+        mrv(available_nodes);
+    }
+
+    if(try_degree_c) {
+        degree_heuristic(available_nodes);
+    }
+
+    if(available_nodes.size()) {
+        std::random_shuffle(available_nodes.begin(), available_nodes.end(), utils::my_random);
+        return available_nodes[0];
+    }
+
     return NOT_FOUND;
 }
 
@@ -67,10 +82,16 @@ bool MapColorBacktrackingFCSt::bt_func(int n_node) {
         return false;
     }
 
-    int curr_node = get_color_unassigned_singleton_node();
-    if(curr_node == NOT_FOUND) curr_node = get_color_unassigned_node();
+    int curr_node = get_unassigned_singleton_node();
+    if(curr_node == NOT_FOUND) curr_node = get_unassigned_node();
+    assert(curr_node != NOT_FOUND);
 
-    for(int color=0; color < num_color; color+=1) {
+    priority_queue<pair<int, int> > pq;
+    prepare_color_queue(curr_node, pq);
+    while(!pq.empty()) {
+        int color = pq.top().second;
+        pq.pop();
+
         // check whether this color exist in the domain of this node
         if(is_valid_in_domain(curr_node, color)) {
             // forward checking will make this color unavailable to the neighboring nodes

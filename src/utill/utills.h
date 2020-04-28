@@ -74,6 +74,22 @@ namespace utils {
         return (end.tv_sec - start.tv_sec) * (long) 1e9 + (end.tv_nsec - start.tv_nsec);
     }
 
+    // count number of 1 bits
+    static inline int count_set_bit(int num) {
+        int cnt = 0;
+        while(num) {
+            cnt += (num & 1);
+            num = num >> 1;
+        }
+        return cnt;
+    }
+
+    // random generator function
+    static inline int my_random(int i) {
+        srand(time(0));
+        return rand() % i;
+    }
+
 } // utils
 
 #endif //UTILLS_H

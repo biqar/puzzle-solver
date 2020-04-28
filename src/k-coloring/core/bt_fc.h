@@ -58,9 +58,15 @@ bool MapColorBacktrackingFC::bt_func(int n_node) {
         return false;
     }
 
-    int curr_node = get_color_unassigned_node();
+    int curr_node = get_unassigned_node();
+    assert(curr_node != NOT_FOUND);
 
-    for(int color=0; color < num_color; color+=1) {
+    priority_queue<pair<int, int> > pq;
+    prepare_color_queue(curr_node, pq);
+    while(!pq.empty()) {
+        int color = pq.top().second;
+        pq.pop();
+
         // check whether this color exist in the domain of this node
         if(is_valid_in_domain(curr_node, color)) {
             // forward checking will make this color unavailable to the neighboring nodes
