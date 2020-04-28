@@ -3,6 +3,7 @@
 ## Solved Puzzles
 * [8-puzzle](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle)
 * [n-queen](https://github.com/biqar/puzzle-solver/blob/master/src/n-queens)
+* [k-coloring](https://github.com/biqar/puzzle-solver/tree/master/src/k-coloring)
 
 ## Project Goal
 
