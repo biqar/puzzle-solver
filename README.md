@@ -7,9 +7,9 @@
 
 ## Project Goal
 
-The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. 8-puzzle, 15-puzzle,
-n-queen, Sudoku, etc.) using different problem-solving techniques (i.e. informed search, uninformed search, hill-climbing search etc.).
-Here by word "pluggable" we mean in solving puzzles user can independently decide the search strategy along with the 
+The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. [`8-puzzle`](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle), `15-puzzle`,
+[`n-queens`](https://github.com/biqar/puzzle-solver/blob/master/src/n-queens), `Sudoku`, [`graph-coloring`](https://github.com/biqar/puzzle-solver/tree/master/src/k-coloring) etc.) using different problem-solving techniques (i.e. informed search, uninformed search, hill-climbing search etc.).
+Here by word `pluggable` we mean in solving puzzles user can independently decide the search strategy along with the 
 custom heuristic functions. If needed, user can extend this project to device their own solution with a very low effort. 
 Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
 state space search strategy, optimization techniques and heuristic functions.
@@ -80,8 +80,11 @@ Relaxed heuristic functions
 ## Project Structure
 The project has several independent parts that we combine to work as a whole. Directory "core" contains two factory 
 methods that produce the puzzle solver and heuristic instance based on the parameter passed. Puzzle solutions can be 
-implemented in separate directory as we have done for "8-puzzle" here. All the heuristic implementations placed in the 
-"heuristic" directory. Directory "utils" all the utility methods that help other functions to operate.
+implemented in separate directory as we have done for [`8-puzzle`](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle), 
+[`n-queens`](https://github.com/biqar/puzzle-solver/blob/master/src/n-queens), 
+and [`k-coloring`](https://github.com/biqar/puzzle-solver/tree/master/src/k-coloring) here. Heuristic implementations 
+placed in the `heuristic` sub-directory under the corresponding puzzle. Directory "utils" all the utility methods that 
+help other functions to operate.
 
 Please keep in mind, this is an active project and project architecture may change without any prior announcement. 
 But all the future updates will be maintained in a way so that the project integrity will ke kept, meaning you will not 
@@ -110,7 +113,7 @@ General run command:
 ```
 
 Here is the parameter definition,
-1. **-problem:** Specify the puzzle name to solve, for example, "8-puzzle".
+1. **-problem:** Specify the puzzle name to solve, for example, [`8-puzzle`](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle).
 2. **-algo:** Specify the search strategy to solve the puzzle, for example, "A*", "bfs", "dfs", etc.
 3. **-mode:** Specify the inner methodology for the search strategy, for example, "bi-directional" bfs, "stack-based" dfs, etc.
 4. **-heuristic:** Specify the heuristic function you want to use, for example, "hamming", "manhattan", "euclidean", etc. [default: manhattan]
@@ -119,9 +122,14 @@ Here is the parameter definition,
 7. **-board_dim:** Board dimension, may use representing any square board
 8. **-mx_sideways_move:** Maximum allowed sideways move in hill-climbing search
 9. **-print_path:** Flag to indicate printing path if solution exist, accepts boolean string, i.e., "true" or "false".
+10. **-file:** Input file containing large input data. For example, we keep the constraint graph needed by [`k-coloring`](https://github.com/biqar/puzzle-solver/tree/master/src/k-coloring) algorithm.
+11. **-mcolor:** Maximum allowed color, value -1 means we need to find the chromatic number, value (>0) means we need to color the graph by using this number of colors.
+12. **-mrv:** Flag to indicate whether we will apply heuristic Minimum Remaining Values (MRV) for selecting the next vertex to color.
+13. **-degree_heu:** Flag to indicate whether we will apply heuristic Minimum Remaining Values (MRV) for selecting the next vertex to color.
+14. **-lcv:** Flag to indicate whether we will apply heuristic Minimum Remaining Values (MRV) for selecting the next vertex to color.
 
 ## Motivation of Algorithm Mode
-While implementing different algorithms for solving 8-puzzle problem, we found some optimization techniques help the algorithms' 
+While implementing different algorithms for solving [`8-puzzle`](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle) problem, we found some optimization techniques help the algorithms' 
 to be more efficient. These techniques can be rigid or independent w.r.t. the algorithm itself. 
 For example, bi-directional search technique is very common in the domain of searching algorithms and can be applied to 
 a large number of algorithms. Bi-directional search launch two searches, one from the initial state to the goal state 
@@ -193,3 +201,4 @@ different category defined as "heuristics to generate heuristics".
 2. [Blog] Problem Solving Techniques part2: https://mhesham.wordpress.com/tag/depth-limited-search/
 3. [ResearchGate] What are the differences between heuristics and metaheuristics? https://www.researchgate.net/post/What_are_the_differences_between_heuristics_and_metaheuristics
 4. [Paper] A Comparison between Heuristic and Meta- Heuristic Methods for Solving the Multiple Traveling Salesman Problem: https://publications.waset.org/4699/a-comparison-between-heuristic-and-meta-heuristic-methods-for-solving-the-multiple-traveling-salesman-problem
+5. [Online Book] Clever Algorithms: Nature-Inspired Programming Recipes: www.cleveralgorithms.com/nature-inspired/index.html
