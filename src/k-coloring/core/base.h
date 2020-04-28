@@ -67,7 +67,7 @@ public:
     void print_graph_node_label();
 
     // return the id of a node (i.e. node can be city/state, we internally map it to a integer id)
-    // if the "node_str" doesn't exist, EXIT the program
+    // if the "node_str" doesn't exist, add it to the map and return the assigned node-id
     int get_node_id(const string &node_str);
 
     // set an integer id for the node
@@ -124,16 +124,9 @@ void MapColorBase::build_graph(const string &filename_) {
     string line;
     string src, neigh;
     int src_i, neigh_i;
-    int nodes;
 
     // first line will contain how many nodes exist in the graph
     getline(file, line);
-    nodes = std::stoi(line);
-    for(int i=0; i<nodes; i+=1) {
-        getline(file, line);
-        // setting the node-id
-        set_node_id(line);
-    }
 
     // reading the adjacency list
     while(!file.eof()) {
@@ -165,14 +158,18 @@ void MapColorBase::init_domain() {
 }
 
 // return the id of a node (i.e. node can be city/state, we internally map it to a integer id)
-// if the "node_str" doesn't exist, EXIT the program
+// if the "node_str" doesn't exist, add it to the map and return the assigned node-id
 inline int MapColorBase::get_node_id(const string &node_str) {
     if(m.find(node_str) != m.end()) {
         return m[node_str];
     }
 
-    // node is not mapped yet, ERROR
-    exit(0);
+    // node is not mapped yet, mapping it now
+    m[node_str] = num_node;
+    m_rev[num_node] = node_str;
+    num_node += 1;
+
+    return m[node_str];
 }
 
 // set an integer id for the node
