@@ -1,0 +1,70 @@
+##### ncrypt -l it -n 2..5 
+##### Search 2 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (158 puzzles examined)
+Total time = 50 msec.
+##### Search 3 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+TRE+CINQUE+CINQUE=TREDICI (184+923054+923054=1846292)
+CINQUE+CINQUE+SEI=SEDICI (426195+426195+852=853242)
+2 unique-solution puzzles found (649 puzzles examined)
+Total time = 490 msec.
+##### Search 4 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+ZERO+UNO+TRE+TRE=SETTE (9075+245+670+670=10660)
+ZERO+UNO+CINQUE+CINQUE=UNDICI (7031+851+425680+425680=859242)
+ZERO+DIECI+DIECI+DIECI=TRENTA (3890+64874+64874+64874=198512)
+UNO+CINQUE+CINQUE+CINQUE=SEDICI (876+317085+317085+317085=952131)
+DUE+DUE+CINQUE+SETTE=SEDICI (581+581+643081+71221=715464)
+DUE+SETTE+DIECI+UNDICI=TRENTA (941+81661+90130+479030=651762)
+TRE+TRE+DODICI+DODICI=TRENTA (729+729+363858+363858=729174)
+TRE+SEI+DIECI+UNDICI=TRENTA (805+253+13563+791363=805984)
+CINQUE+DIECI+DIECI+QUINDICI=QUARANTA (163750+26016+26016+75632616=75848398)
+SEI+SEI+OTTO+DIECI=TRENTA (726+726+5115+96246=102813)
+10 unique-solution puzzles found (2655 puzzles examined)
+Total time = 2300 msec.
+##### Search 5 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+ZERO+ZERO+UNO+CINQUE+CINQUE=UNDICI (6358+6358+418+201943+201943=417020)
+ZERO+DUE+DUE+TRE+TRE=DIECI (9752+147+147+357+357=10760)
+ZERO+TRE+TRE+QUATTRO+OTTANTA=NOVANTA (8476+174+174+3501176+6110910=9620910)
+ZERO+SEI+SETTE+OTTO+NOVE=TRENTA (4206+827+82112+6116+9652=102913)
+UNO+UNO+DUE+CINQUE+SETTE=SEDICI (439+439+540+183740+20660=205818)
+UNO+UNO+OTTO+OTTO+DODICI=TRENTA (279+279+9559+9559+494080=513756)
+UNO+UNO+OTTO+DIECI+DIECI=TRENTA (583+583+3113+49269+49269=102817)
+UNO+DUE+TRE+DODICI+DODICI=TRENTA (215+328+708+353464+353464=708179)
+UNO+TRE+OTTO+OTTO+DIECI=TRENTA (235+107+5115+5115+96746=107318)
+UNO+SETTE+SETTE+SETTE+OTTO=TRENTA (943+58118+58118+58118+3113=178410)
+DUE+DUE+TRE+UNDICI+DODICI=TRENTA (429+429+689+254010+434010=689567)
+DUE+DUE+CINQUE+DIECI+UNDICI=TRENTA (926+926+513726+91651+239151=846380)
+DUE+DUE+DIECI+UNDICI+QUINDICI=QUARANTA (745+745+73513+467313+84367313=84909629)
+DUE+TRE+CINQUE+DIECI+DIECI=TRENTA (934+784+601534+90460+90460=784172)
+CINQUE+CINQUE+SEI+SETTE+SETTE=TRENTA (354809+354809+295+29779+29779=769471)
+CINQUE+SEI+SEI+SEI+SETTE=TRENTA (438219+693+693+693+69559=509857)
+OTTO+NOVE+TREDICI+VENTI+TRENTA=OTTANTA (5445+7531+4910282+31742+491746=5446746)
+OTTO+DIECI+DODICI+TRENTA+TRENTA=NOVANTA (7997+64304+676404+983295+983295=2715295)
+VENTI+VENTI+VENTI+VENTI+VENTI=CENTO (12498+12498+12498+12498+12498=62490)
+19 unique-solution puzzles found (10947 puzzles examined)
+Total time = 8380 msec.
+##### ncrypt -l it -d -n 6..10 
+##### Search 6 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (8280 puzzles examined)
+Total time = 2380 msec.
+##### Search 7 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (14513 puzzles examined)
+Total time = 1660 msec.
+##### Search 8 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+UNO+DUE+TRE+OTTO+UNDICI+DODICI+TREDICI+TRENTA=OTTANTA (274+629+309+4334+276818+646818+3096818+309735=4335735)
+1 unique-solution puzzles found (18804 puzzles examined)
+Total time = 1220 msec.
+##### Search 9 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (17293 puzzles examined)
+Total time = 710 msec.
+##### Search 10 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (10492 puzzles examined)
+Total time = 460 msec.

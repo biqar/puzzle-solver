@@ -1,0 +1,52 @@
+##### ncrypt -l fr -n 2..5 
+##### Search 2 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (141 puzzles examined)
+Total time = 60 msec.
+##### Search 3 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+UN+UN+NEUF=ONZE (81+81+1987=2149)
+CINQ+CINQ+VINGT=TRENTE (6483+6483+94851=107817)
+2 unique-solution puzzles found (538 puzzles examined)
+Total time = 400 msec.
+##### Search 4 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+ZERO+NEUF+NEUF+DOUZE=TRENTE (9206+3257+3257+86592=102312)
+1 unique-solution puzzles found (1932 puzzles examined)
+Total time = 1540 msec.
+##### Search 5 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+ZERO+ZERO+ZERO+UN+DOUZE=TREIZE (9506+9506+9506+82+76895=105495)
+ZERO+ZERO+SEPT+SEPT+SEIZE=TRENTE (6904+6904+7921+7921+79869=109519)
+ZERO+UN+TROIS+ONZE+QUINZE=TRENTE (7139+68+53902+9871+460871=531851)
+ZERO+TROIS+TROIS+TROIS+SEPT=SEIZE (4273+17356+17356+17356+6201=62542)
+ZERO+TROIS+TROIS+DOUZE+DOUZE=TRENTE (3496+19625+19625+76034+76034=194814)
+ZERO+QUATRE+QUATRE+ONZE+ONZE=TRENTE (4876+130278+130278+6548+6548=278528)
+UN+UN+QUATRE+DOUZE+DOUZE=TRENTE (59+59+652801+74531+74531=801981)
+UN+DEUX+DEUX+DEUX+DEUX=NEUF (25+1326+1326+1326+1326=5329)
+UN+QUATRE+CINQ+CINQ+QUINZE=TRENTE (50+356724+8103+8103+351094=724074)
+TROIS+TROIS+TROIS+CINQ+SEIZE=TRENTE (14509+14509+14509+7063+98028=148618)
+QUATRE+QUATRE+QUATRE+NEUF+NEUF=TRENTE (172536+172536+172536+9674+9674=536956)
+11 unique-solution puzzles found (6857 puzzles examined)
+Total time = 3880 msec.
+##### ncrypt -l fr -d -n 6..10 
+##### Search 6 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (3846 puzzles examined)
+Total time = 120 msec.
+##### Search 7 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (5559 puzzles examined)
+Total time = 240 msec.
+##### Search 8 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (6997 puzzles examined)
+Total time = 180 msec.
+##### Search 9 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (7819 puzzles examined)
+Total time = 290 msec.
+##### Search 10 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (6204 puzzles examined)
+Total time = 300 msec.

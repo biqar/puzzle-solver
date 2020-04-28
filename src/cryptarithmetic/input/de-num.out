@@ -1,0 +1,45 @@
+##### ncrypt -l de -n 2..5 
+##### Search 2 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (158 puzzles examined)
+Total time = 80 msec.
+##### Search 3 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (649 puzzles examined)
+Total time = 290 msec.
+##### Search 4 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+EINS+EINS+EINS+EINS=VIER (1329+1329+1329+1329=5316)
+EINS+ZWEI+SIEBEN+SECHZIG=SIEBZIG (2451+3624+142925+1280347=1429347)
+2 unique-solution puzzles found (2655 puzzles examined)
+Total time = 770 msec.
+##### Search 5 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+NULL+FuNF+FuNF+ZWANZIG+ZWANZIG=FuNFZIG (1477+5615+5615+2801293+2801293=5615293)
+EINS+EINS+EINS+EINS+EINS=FuNF (1049+1049+1049+1049+1049=5245)
+EINS+EINS+EINS+DREI+DREI=NEUN (1384+1384+1384+2013+2013=8178)
+ZWEI+ZWEI+ZWEI+SIEBEN+SIEBEN=ZWANZIG (1358+1358+1358+685054+685054=1374182)
+ZWEI+VIER+VIER+VIERZIG+VIERZIG=NEUNZIG (8647+2740+2740+2740873+2740873=5495873)
+5 unique-solution puzzles found (10947 puzzles examined)
+Total time = 2170 msec.
+##### ncrypt -l de -d -n 6..10 
+##### Search 6 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (8280 puzzles examined)
+Total time = 230 msec.
+##### Search 7 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (14513 puzzles examined)
+Total time = 620 msec.
+##### Search 8 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (18804 puzzles examined)
+Total time = 740 msec.
+##### Search 9 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (17293 puzzles examined)
+Total time = 590 msec.
+##### Search 10 words addition
+Cryptarithmetic Puzzle Solver by N. Tamura (type help for help)
+0 unique-solution puzzles found (10492 puzzles examined)
+Total time = 440 msec.
