@@ -90,6 +90,8 @@ public:
     int get_num_nodes();
     void set_num_nodes(int num_node_);
 
+    void set_heuristics(bool try_mrv_, bool try_degree_c_, bool try_lcv_);
+
 protected:
     int num_node = 0;
     int num_color = -1;
@@ -97,6 +99,10 @@ protected:
 
     std::map<string, int> m;
     std::map<int, string> m_rev;
+
+    bool try_mrv = false;
+    bool try_degree_c = false;
+    bool try_lcv = false;
 
     // constraint graph
     std::vector<int> c_graph[MAX_NODES];
@@ -300,6 +306,12 @@ int MapColorBase::get_num_nodes() {
 
 void MapColorBase::set_num_nodes(int num_node_) {
     num_node = num_node_;
+}
+
+void MapColorBase::set_heuristics(bool try_mrv_, bool try_degree_c_, bool try_lcv_) {
+    try_mrv = try_mrv_;
+    try_degree_c = try_degree_c_;
+    try_lcv = try_lcv_;
 }
 
 #endif //MAPCOLOR_BASE_H

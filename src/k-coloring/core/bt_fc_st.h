@@ -10,8 +10,9 @@
 
 class MapColorBacktrackingFCSt : public MapColorBase {
 public:
-    MapColorBacktrackingFCSt(const string &file_name_, const int &num_color_) {
+    MapColorBacktrackingFCSt(const string &file_name_, const int &num_color_, bool try_mrv_, bool try_degree_c_, bool try_lcv_) {
         //todo: we need to find a way to guarantee the following function calls in-this-order
+        set_heuristics(try_mrv_, try_degree_c_, try_lcv_);
         build_graph(file_name_);
         set_num_color(num_color_);
         if(num_color_ > 0) init_domain();

@@ -160,17 +160,26 @@ Solver *SolverFactory::CreateSolver(utils::Properties &props, Heuristic *_heuris
         if(props["algorithm"] == "bt") {
             return new BtMapColorSolver(new MapColoringInitParam(
                     props["filename"], std::stoi(props["mx_colors"]),
-                    utils::to_bool(props["print_path"])));
+                    utils::to_bool(props["print_path"]),
+                    utils::to_bool(props.GetProperty("mrv", "false")),
+                    utils::to_bool(props.GetProperty("degree_heu", "false")),
+                    utils::to_bool(props.GetProperty("lcv", "false"))));
         }
         if(props["algorithm"] == "bt-fc") {
             return new BtFcMapColorSolver(new MapColoringInitParam(
                     props["filename"], std::stoi(props["mx_colors"]),
-                    utils::to_bool(props["print_path"])));
+                    utils::to_bool(props["print_path"]),
+                    utils::to_bool(props.GetProperty("mrv", "false")),
+                    utils::to_bool(props.GetProperty("degree_heu", "false")),
+                    utils::to_bool(props.GetProperty("lcv", "false"))));
         }
         if(props["algorithm"] == "bt-fc-st") {
             return new BtFcStMapColorSolver(new MapColoringInitParam(
                     props["filename"], std::stoi(props["mx_colors"]),
-                    utils::to_bool(props["print_path"])));
+                    utils::to_bool(props["print_path"]),
+                    utils::to_bool(props.GetProperty("mrv", "false")),
+                    utils::to_bool(props.GetProperty("degree_heu", "false")),
+                    utils::to_bool(props.GetProperty("lcv", "false"))));
         }
         return NULL;
     }

@@ -50,11 +50,17 @@ public:
     string file_name_;
     int max_colors_;
     bool print_graph_;
+    bool try_mrv_;
+    bool try_degree_c_;
+    bool try_lcv_;
 
-    MapColoringInitParam(string file_name, int max_colors, bool print_graph) {
+    MapColoringInitParam(string file_name, int max_colors, bool print_graph, bool mrv, bool degree_heu, bool lcv) {
         file_name_ = file_name;
         max_colors_ = max_colors;
         print_graph_ = print_graph;
+        try_mrv_ = mrv;
+        try_degree_c_ = degree_heu;
+        try_lcv_ = lcv;
     }
 };
 

@@ -121,6 +121,15 @@ void ParseCommandLine(int argc, const char *argv[], utils::Properties &props) {
             }
             props.SetProperty("mx_colors", argv[argindex]);
             argindex++;
+        } else if (strcmp(argv[argindex], "-mrv") == 0) {
+            props.SetProperty("mrv", "true");
+            argindex++;
+        } else if (strcmp(argv[argindex], "-degree_heu") == 0) {
+            props.SetProperty("degree_heu", "true");
+            argindex++;
+        } else if (strcmp(argv[argindex], "-lcv") == 0) {
+            props.SetProperty("lcv", "true");
+            argindex++;
         } else if (strcmp(argv[argindex], "-print_path") == 0) {
             // flag denotes if you like to print the path after reaching goal
             argindex++;

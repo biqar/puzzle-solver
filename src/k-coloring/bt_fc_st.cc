@@ -24,7 +24,10 @@ private:
 
 int BtFcStMapColorSolver::init(void *_parameter) {
     map_color = new MapColorBacktrackingFCSt(((MapColoringInitParam *)_parameter)->file_name_,
-                                            ((MapColoringInitParam *)_parameter)->max_colors_);
+                                            ((MapColoringInitParam *)_parameter)->max_colors_,
+                                             ((MapColoringInitParam *)_parameter)->try_mrv_,
+                                             ((MapColoringInitParam *)_parameter)->try_degree_c_,
+                                             ((MapColoringInitParam *)_parameter)->try_lcv_);
     print_graph = ((MapColoringInitParam *)_parameter)->print_graph_;
     return 1;
 }
