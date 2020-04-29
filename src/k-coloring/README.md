@@ -284,10 +284,10 @@ Here is the table of recorded performance of graph coloring algorithms without h
 
 **Observations:**
 1.	Coloring of USA map using basic Backtrack search is not possible within a satisfactory timeout, as the program complexity is nearly O(3^50).
-2.	Impact of forward checking and propagation through singleton domains is clearly visible for small graphs (i.e. Australian map).
-3.	Backtrack search better perform while using combination of forward checking and propagation through singleton domains, 
-comparing with forward checking only. As we just record the results from four runs, it is very hard to give a straightforward comparison. 
-It could be better if we can manage it from 1000 runs and generate the percentile results.
+2.	I tried with some simple improvements to the basic Backtrack search, like, instead of checking the sanity of the whole graph color assignment, try checking the neighbors of a unassigned vertex while assigning a color to it. This may seem very close to Forward Checking, but they are not the same. In Forward Checking, we remove the color from the neighboring vertex of the currently assigning vertex and need to revert it when backtrack happen, thus need to perfom some extra work. By this way I was able to manage the result for USA map within a very reasonable time. Though I didn't put this implementation in this repo yet.
+3.	Impact of forward checking and propagation through singleton domains is clearly visible for small graphs (i.e. Australian map).
+4.	Backtrack search better perform while using combination of forward checking and propagation through singleton domains, 
+comparing with forward checking only. As we just record the results from four runs, it is very hard to give a straightforward comparison. It could be better if we can manage it from 1000 runs and generate the percentile results.
 
 ### Performance Evaluation With Heuristic
 
