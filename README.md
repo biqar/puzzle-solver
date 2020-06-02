@@ -14,6 +14,7 @@ custom heuristic functions. If needed, user can extend this project to device th
 Besides, this application is designed in a way that, it will be an easy-going platform for benchmarking any puzzles w.r.t. different
 state space search strategy, optimization techniques and heuristic functions.
 
+<!---
 ## Target Domain
 
 * Solving Problems by Searching
@@ -76,6 +77,7 @@ Relaxed heuristic functions
 * Pattern Database Heuristics 
 * Linear Conflict Heuristics
 * Gaschnig’s Heuristics
+--->
 
 ## Project Structure
 The project has several independent parts that we combine to work as a whole. Directory "core" contains two factory 
