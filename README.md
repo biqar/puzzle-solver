@@ -5,6 +5,9 @@
 * [n-queen](https://github.com/biqar/puzzle-solver/blob/master/src/n-queens)
 * [k-coloring](https://github.com/biqar/puzzle-solver/tree/master/src/k-coloring)
 
+## Give a Star! :star:
+If you like this project please consider giving it a :star: star :star:. Thanks!
+
 ## Project Goal
 
 The goal of this project is to build a generic interactive pluggable application for solving puzzles (i.e. [`8-puzzle`](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle), `15-puzzle`,
