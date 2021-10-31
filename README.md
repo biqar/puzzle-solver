@@ -1,4 +1,4 @@
-# Puzzle Solver (by using problem solving techniques)
+# Puzzle Solver (by using problem solving techniques)</br>![Language](https://img.shields.io/badge/language-c++-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=biqar.puzzle.solver)
 
 ## Solved Puzzles
 * [8-puzzle](https://github.com/biqar/puzzle-solver/tree/master/src/8-puzzle)
